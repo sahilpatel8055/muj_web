@@ -1,10 +1,39 @@
+import React from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Star, Clock, Users, BookOpen, Award, CheckCircle } from "lucide-react";
+import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp } from "lucide-react";
 import MBAImage from "@/assets/course-mba.jpg";
+import SpecializationCard from "@/components/SpecializationCard";
+
+const mbaSpecializations = [
+  {
+    icon: Brain,
+    title: "Marketing Management",
+  },
+  {
+    icon: Users,
+    title: "Human Resource Management",
+  },
+  {
+    icon: Award,
+    title: "Finance Management",
+  },
+  {
+    icon: TrendingUp,
+    title: "Operations Management",
+  },
+  {
+    icon: Lightbulb,
+    title: "Digital Marketing",
+  },
+  {
+    icon: Lock,
+    title: "International Business",
+  },
+];
 
 const MBA = () => {
   return (
@@ -72,6 +101,44 @@ const MBA = () => {
         </div>
       </section>
 
+      {/* Specializations Offered Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-10">
+            <h2 className="text-3xl font-bold text-foreground">
+              Specializations Offered
+            </h2>
+            <div className="flex space-x-2">
+              {/* Navigation arrows for scrolling */}
+              <Button variant="outline" className="rounded-full w-10 h-10 p-0 flex items-center justify-center">
+                &larr;
+              </Button>
+              <Button variant="outline" className="rounded-full w-10 h-10 p-0 flex items-center justify-center">
+                &rarr;
+              </Button>
+            </div>
+          </div>
+          
+          {/* Specialization Cards with Horizontal Scrolling */}
+          <div className="flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
+            {mbaSpecializations.map((spec, index) => (
+              <SpecializationCard
+                key={index}
+                icon={spec.icon}
+                title={spec.title}
+              />
+            ))}
+          </div>
+
+          {/* Pagination dots (optional, as seen in the image) */}
+          <div className="flex justify-center mt-6 space-x-2">
+            <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+          </div>
+        </div>
+      </section>
+
       {/* Key Features */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -115,33 +182,6 @@ const MBA = () => {
               <h3 className="text-xl font-semibold mb-2">Career Support</h3>
               <p className="text-muted-foreground">Comprehensive placement assistance and career guidance</p>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Specializations */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-            Specializations Available
-          </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "Marketing Management",
-              "Human Resource Management", 
-              "Finance Management",
-              "Operations Management",
-              "Digital Marketing",
-              "International Business"
-            ].map((specialization, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-semibold text-foreground mb-2">{specialization}</h3>
-                <p className="text-muted-foreground text-sm">
-                  Develop expertise in {specialization.toLowerCase()} with industry-focused curriculum
-                </p>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
