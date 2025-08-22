@@ -14,16 +14,56 @@ import NIRF from "@/assets/icons/nirf.png";
 import UGC from "@/assets/icons/ugc.png";
 
 const accreditations = [
-  { name: "UGC Entitled", image: UGC },
-  { name: "NAAC A+ Grade", image: NAAC },
-  { name: "NIRF Ranked", image: NIRF },
-  { name: "AICTE Approved", image: AICTE },
-  { name: "ACU Member", image: ACU },
-  { name: "WES Recognized", image: WES },
-  { name: "ICAS Member", image: ICAS },
-  { name: "IQAS Recognized", image: IQAS },
-  { name: "Career360 Ranked", image: Career360 },
-  { name: "The Week Ranked", image: TheWeek },
+  { 
+    name: "UGC Entitled", 
+    image: UGC,
+    description: "University Grants Commission recognized institution ensuring quality education standards"
+  },
+  { 
+    name: "NAAC A+ Grade", 
+    image: NAAC,
+    description: "National Assessment and Accreditation Council A+ grade for academic excellence"
+  },
+  { 
+    name: "NIRF Ranked", 
+    image: NIRF,
+    description: "National Institutional Ranking Framework ranked university by Government of India"
+  },
+  { 
+    name: "AICTE Approved", 
+    image: AICTE,
+    description: "All India Council for Technical Education approved programs"
+  },
+  { 
+    name: "ACU Member", 
+    image: ACU,
+    description: "Association of Commonwealth Universities member institution"
+  },
+  { 
+    name: "WES Recognized", 
+    image: WES,
+    description: "World Education Services recognized for global credential evaluation"
+  },
+  { 
+    name: "ICAS Member", 
+    image: ICAS,
+    description: "International Congress of Academic Specialists member"
+  },
+  { 
+    name: "IQAS Recognized", 
+    image: IQAS,
+    description: "International Qualifications Assessment Service recognized"
+  },
+  { 
+    name: "Career360 Ranked", 
+    image: Career360,
+    description: "Ranked among top universities by Career360 education magazine"
+  },
+  { 
+    name: "The Week Ranked", 
+    image: TheWeek,
+    description: "Featured and ranked by The Week magazine for educational excellence"
+  },
 ];
 
 const RankingsAccreditations = () => {
@@ -50,12 +90,15 @@ const RankingsAccreditations = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {accreditations.map((accreditation, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
-                  <Card className="h-32 flex items-center justify-center p-4 bg-card hover:shadow-lg transition-shadow duration-300 border border-border/50">
+                  <Card className="h-40 flex flex-col items-center justify-center p-4 bg-card shadow-lg transition-shadow duration-300 border border-border/50 group">
                     <img
                       src={accreditation.image}
                       alt={accreditation.name}
-                      className="max-h-20 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                      className="max-h-16 max-w-full object-contain mb-2"
                     />
+                    <p className="text-xs text-center text-muted-foreground leading-tight">
+                      {accreditation.description}
+                    </p>
                   </Card>
                 </CarouselItem>
               ))}

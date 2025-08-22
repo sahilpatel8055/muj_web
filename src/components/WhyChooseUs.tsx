@@ -1,47 +1,39 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Clock, Users, Award, BookOpen, Headphones, Globe, TrendingUp } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
+// Import SVG icons
+import TopRankedIcon from "@/assets/svg_icons/top-ranked.svg";
+import WebinarIcon from "@/assets/svg_icons/webinar.svg";
+import ScholarshipIcon from "@/assets/svg_icons/scholarship.svg";
+import EasyFinanceIcon from "@/assets/svg_icons/easy-finance.svg";
+import AlumniIcon from "@/assets/svg_icons/alumni.svg";
 
 const features = [
   {
-    icon: Award,
-    title: "Industry-Aligned Curriculum",
-    description: "Programs designed with industry experts to meet current market demands and future trends"
+    icon: TopRankedIcon,
+    title: "Degree from top ranked Manipal universities",
+    description: "Graduate with UGC-entitled & AICTE approved online degrees which are at par with on-campus degree programs."
   },
   {
-    icon: Users,
-    title: "Expert Faculty",
-    description: "Learn from experienced professors and industry professionals with years of expertise"
+    icon: WebinarIcon,
+    title: "Exclusive Coursera access",
+    description: "Free access to 10K+ courses & professional certifications from top global universities."
   },
   {
-    icon: Clock,
-    title: "Flexible Learning",
-    description: "Study at your own pace with 24/7 access to course materials and recorded lectures"
+    icon: ScholarshipIcon,
+    title: "Scholarships up to 30%",
+    description: "Avail scholarship benefits under merit, defense, Divyaang, alumni, and other categories."
   },
   {
-    icon: Globe,
-    title: "Global Recognition",
-    description: "Degrees recognized worldwide with international accreditations and partnerships"
+    icon: EasyFinanceIcon,
+    title: "Easy financing options",
+    description: "Improved affordability with flexible financing and no cost EMI options."
   },
   {
-    icon: Headphones,
-    title: "Dedicated Support",
-    description: "Personal academic advisors and round-the-clock technical support for all students"
-  },
-  {
-    icon: BookOpen,
-    title: "Practical Learning",
-    description: "Hands-on projects, case studies, and real-world applications in every program"
-  },
-  {
-    icon: TrendingUp,
-    title: "Career Services",
-    description: "Comprehensive placement assistance with resume building and interview preparation"
-  },
-  {
-    icon: CheckCircle,
-    title: "Quality Assurance",
-    description: "Regular assessments and feedback mechanisms to ensure high educational standards"
+    icon: AlumniIcon,
+    title: "Strong Alumni Network",
+    description: "Connect with a vast network of successful alumni across various industries worldwide."
   }
 ];
 
@@ -61,22 +53,36 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300 bg-card border border-border/50 group">
-              <div className="flex flex-col items-center text-center">
-                <div className="p-3 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </Card>
-          ))}
+        <div className="relative">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: false,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {features.map((feature, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <Card className="p-6 h-full bg-card border border-border/50 shadow-lg">
+                    <div className="flex flex-col items-center text-center h-full">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
+                        <img src={feature.icon} alt="" className="w-8 h-8" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-foreground mb-3">
+                        {feature.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12" />
+            <CarouselNext className="hidden md:flex -right-12" />
+          </Carousel>
         </div>
 
         <div className="mt-12 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg p-8 text-center">
