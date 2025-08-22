@@ -34,14 +34,14 @@ const CourseFeesSection = () => {
   const feesData = courseFees[activeTab];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-8">
+    <section className="py-16 bg-white text-black">
+      <div className="container mx-auto px-4 max-w-4xl md:max-w-[70rem]">
+        <h2 className="text-3xl md:text-4xl font-bold text-left text-foreground mb-8">
           Online MBA Course Fee
         </h2>
         
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-muted/50 rounded-full p-1 mb-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-muted/50 rounded-full p-1 mb-8 md:justify-start md:w-fit">
             <TabsTrigger value="indian" className="rounded-full data-[state=active]:bg-foreground data-[state=active]:text-background font-semibold">Indian Nationals</TabsTrigger>
             <TabsTrigger value="nri" className="rounded-full data-[state=active]:bg-foreground data-[state=active]:text-background font-semibold">Non-Resident Indians</TabsTrigger>
             <TabsTrigger value="foreign" className="rounded-full data-[state=active]:bg-foreground data-[state=active]:text-background font-semibold">Foreign Nationals</TabsTrigger>
@@ -49,7 +49,7 @@ const CourseFeesSection = () => {
           </TabsList>
           
           <TabsContent value={activeTab}>
-            <Card className="bg-purple-100/50 p-6 md:p-12 rounded-xl text-black">
+            <Card className="bg-purple-100/50 p-6 md:p-8 rounded-xl text-black">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div className="mb-4 md:mb-0">
                   <h3 className="text-sm font-semibold text-gray-600">Full course fee (Four semesters)</h3>
@@ -75,10 +75,6 @@ const CourseFeesSection = () => {
                     <p className="text-xs text-gray-500 mt-1">T&C</p>
                   </Card>
                 </div>
-              </div>
-              <div className="flex items-start gap-2 text-sm text-gray-600 mt-4">
-                <AlertCircle className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>Note for online payments</span>
               </div>
             </Card>
           </TabsContent>
