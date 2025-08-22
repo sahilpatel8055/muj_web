@@ -9,33 +9,22 @@ import MBAImage from "@/assets/course-mba.jpg";
 import SpecializationCard from "@/components/SpecializationCard";
 
 const mbaSpecializations = [
-  {
-    icon: Brain,
-    title: "Marketing Management",
-  },
-  {
-    icon: Users,
-    title: "Human Resource Management",
-  },
-  {
-    icon: Award,
-    title: "Finance Management",
-  },
-  {
-    icon: TrendingUp,
-    title: "Operations Management",
-  },
-  {
-    icon: Lightbulb,
-    title: "Digital Marketing",
-  },
-  {
-    icon: Lock,
-    title: "International Business",
-  },
+  { icon: Brain, title: "Marketing Management" },
+  { icon: Users, title: "Human Resource Management" },
+  { icon: Award, title: "Finance Management" },
+  { icon: TrendingUp, title: "Operations Management" },
+  { icon: Lightbulb, title: "Digital Marketing" },
+  { icon: Lock, title: "International Business" },
+  { icon: Clock, title: "Data Science" },
+  { icon: BookOpen, title: "Business Analytics" },
+  { icon: TrendingUp, title: "Logistics and Supply Chain" },
+  { icon: CheckCircle, title: "IT and Systems Management" },
 ];
 
 const MBA = () => {
+  const firstRow = mbaSpecializations.slice(0, 5);
+  const secondRow = mbaSpecializations.slice(5);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -119,15 +108,26 @@ const MBA = () => {
             </div>
           </div>
           
-          {/* Specialization Cards with Horizontal Scrolling */}
-          <div className="flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
-            {mbaSpecializations.map((spec, index) => (
-              <SpecializationCard
-                key={index}
-                icon={spec.icon}
-                title={spec.title}
-              />
-            ))}
+          {/* Two Rows of Specialization Cards with Horizontal Scrolling */}
+          <div className="space-y-6">
+            <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
+              {firstRow.map((spec, index) => (
+                <SpecializationCard
+                  key={index}
+                  icon={spec.icon}
+                  title={spec.title}
+                />
+              ))}
+            </div>
+            <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
+              {secondRow.map((spec, index) => (
+                <SpecializationCard
+                  key={index + 5}
+                  icon={spec.icon}
+                  title={spec.title}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Pagination dots (optional, as seen in the image) */}
