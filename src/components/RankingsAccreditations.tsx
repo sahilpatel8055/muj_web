@@ -17,22 +17,22 @@ const accreditations = [
   { 
     name: "UGC Entitled", 
     image: UGC,
-    description: "University Grants Commission recognized institution ensuring quality education standards"
+    description: "UGC-entitled Online Degrees Equivalent to Campus Degree"
   },
   { 
     name: "NAAC A+ Grade", 
     image: NAAC,
-    description: "National Assessment and Accreditation Council A+ grade for academic excellence"
+    description: "Rajasthan's 1st NAAC A+ Accredited University"
   },
   { 
     name: "NIRF Ranked", 
     image: NIRF,
-    description: "National Institutional Ranking Framework ranked university by Government of India"
+    description: "Ranked 64 amongst India's top universities in 2024"
   },
   { 
     name: "AICTE Approved", 
     image: AICTE,
-    description: "All India Council for Technical Education approved programs"
+    description: "AICTE Norms Compliant"
   },
   { 
     name: "ACU Member", 
@@ -52,7 +52,7 @@ const accreditations = [
   { 
     name: "IQAS Recognized", 
     image: IQAS,
-    description: "International Qualifications Assessment Service recognized"
+    description: "Degrees Evaluated by-International Qualifications Assessment Service"
   },
   { 
     name: "Career360 Ranked", 
@@ -85,20 +85,26 @@ const RankingsAccreditations = () => {
             className="w-full"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
-              {accreditations.map((accreditation, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
-                  <Card className="h-40 flex flex-col items-center justify-center p-4 bg-gray-50 shadow-lg border border-gray-200 group">
-                    <img
-                      src={accreditation.image}
-                      alt={accreditation.name}
-                      className="max-h-16 max-w-full object-contain mb-2"
-                    />
-                    <p className="text-xs text-center text-muted-foreground leading-tight">
-                      {accreditation.description}
-                    </p>
-                  </Card>
-                </CarouselItem>
-              ))}
+              {accreditations.map((accreditation, index) => {
+                const isRedCard = accreditation.name === "NIRF Ranked" || accreditation.name === "AICTE Approved";
+                return (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <Card 
+                      className={`h-[12.5rem] flex flex-col items-center justify-center p-4 shadow-lg border group
+                      ${isRedCard ? 'bg-red-700 text-white border-white' : 'bg-gray-50 text-gray-800 border-gray-200'}`}
+                    >
+                      <img
+                        src={accreditation.image}
+                        alt={accreditation.name}
+                        className={`max-h-16 max-w-full object-contain mb-2 ${isRedCard ? 'invert' : ''}`}
+                      />
+                      <p className="text-xs text-center leading-tight">
+                        {accreditation.description}
+                      </p>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
             </CarouselContent>
             <CarouselPrevious className="hidden md:flex -left-12" />
             <CarouselNext className="hidden md:flex -right-12" />
