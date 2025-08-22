@@ -1,3 +1,4 @@
+// src/pages/MBA.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,6 +9,7 @@ import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbul
 import MBAImage from "@/assets/course-mba.jpg";
 import SpecializationCard from "@/components/SpecializationCard";
 import RankingsAccreditations from "@/components/RankingsAccreditations";
+import OnlineAdvantagesSection from "@/components/OnlineAdvantagesSection"; // New import
 
 const mbaSpecializations = [
   { icon: BarChart2, title: "Marketing Management" },
@@ -27,7 +29,7 @@ const MBA = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const totalCards = mbaSpecializations.length;
-  const cardsPerView = 5; // Assumed number of cards visible at once
+  const cardsPerView = 5; 
   const totalPages = Math.ceil(totalCards / cardsPerView);
 
   const scrollLeft = () => {
@@ -62,7 +64,7 @@ const MBA = () => {
   const handleDotClick = (index) => {
     if (scrollContainerRef.current) {
       const cardWidth = scrollContainerRef.current.scrollWidth / totalCards;
-      const cardsInPage = 5; // Number of cards per page
+      const cardsInPage = 5;
       const scrollToPosition = index * cardWidth * cardsInPage;
       scrollContainerRef.current.scrollTo({
         left: scrollToPosition,
@@ -241,6 +243,9 @@ const MBA = () => {
           </div>
         </div>
       </section>
+      
+      {/* Online Advantages Section */}
+      <OnlineAdvantagesSection />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-primary-foreground">
