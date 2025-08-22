@@ -1,11 +1,10 @@
 // src/components/SpecializationCard.jsx
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { MoveRight } from 'lucide-react';
 
 const SpecializationCard = ({ icon: Icon, title }) => {
   return (
-    <Card className="flex-shrink-0 w-64 md:w-72 lg:w-80 snap-center rounded-xl shadow-md p-6 bg-gray-100 border-none">
+    <Card className="flex-shrink-0 w-64 md:w-72 lg:w-80 snap-center rounded-3xl shadow-md p-6 bg-gray-100 border-none">
       <CardContent className="flex items-center p-0 space-x-4">
         <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-white">
           {Icon && (
