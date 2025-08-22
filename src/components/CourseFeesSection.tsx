@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { AlertCircle } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Percent, GraduationCap, ChevronRight } from "lucide-react";
 
 const courseFees = {
   indian: {
@@ -29,13 +30,22 @@ const courseFees = {
   }
 };
 
+const scholarships = [
+  { category: "Divyaang (For persons with disabilities)", discount: "20%", criteria: "Divyaang certificate" },
+  { category: "Defence personnel", discount: "20%", criteria: "Personnel / Service / IC number" },
+  { category: "Alumni of Manipal University Jaipur", discount: "20%", criteria: "UG/PG alumni of Manipal University Jaipur" },
+  { category: "Government employees", discount: "10%", criteria: "Identity card" },
+  { category: "Merit (80% and above in bachelor’s degree)", discount: "10%", criteria: "Mark sheet" },
+];
+
 const CourseFeesSection = () => {
   const [activeTab, setActiveTab] = useState("indian");
+  const [isScholarshipModalOpen, setIsScholarshipModalOpen] = useState(false);
   const feesData = courseFees[activeTab];
 
   return (
     <section className="py-16 bg-white text-black">
-      <div className="container mx-auto px-4 max-w-4xl md:max-w-[70rem]">
+      <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold text-left text-foreground mb-8">
           Online MBA Course Fee
         </h2>
@@ -58,7 +68,7 @@ const CourseFeesSection = () => {
                   </p>
                   <p className="text-sm text-black mt-1">Inclusive of all taxes</p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-2 gap-2">
                   <Card className="p-4 bg-white rounded-lg">
                     <h4 className="text-sm font-semibold text-black">Each semester fee</h4>
                     <p className="text-2xl font-bold mt-1">
@@ -79,7 +89,69 @@ const CourseFeesSection = () => {
             </Card>
           </TabsContent>
         </Tabs>
+
+        <div className="mt-12">
+          <h3 className="text-xl md:text-2xl font-bold text-left mb-6">Easy EMI & Scholarships</h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="p-6 flex items-center gap-4">
+              <div className="bg-pink-100 p-3 rounded-full">
+                <Percent className="w-6 h-6 text-pink-600" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-1">No-cost EMI</h4>
+                <p className="text-muted-foreground text-sm">
+                  Hassle-free learning with no-cost EMIs, low interest rates, and flexible part-payment options.
+                </p>
+              </div>
+            </Card>
+            <Card className="p-6 flex items-center justify-between gap-4 cursor-pointer" onClick={() => setIsScholarshipModalOpen(true)}>
+              <div className="flex items-center gap-4">
+                <div className="bg-pink-100 p-3 rounded-full">
+                  <GraduationCap className="w-6 h-6 text-pink-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Manipal scholarship scheme</h4>
+                  <p className="text-muted-foreground text-sm">
+                    Exclusive scholarships of up to 20% for various categories.
+                  </p>
+                </div>
+              </div>
+              <span className="text-black font-semibold text-sm flex items-center gap-1">
+                Learn More <ChevronRight className="w-4 h-4" />
+              </span>
+            </Card>
+          </div>
+        </div>
       </div>
+
+      {/* Scholarship Modal */}
+      <Dialog open={isScholarshipModalOpen} onOpenChange={setIsScholarshipModalOpen}>
+        <DialogContent className="sm:max-w-md">
+          <div className="p-6">
+            <h2 className="text-2xl font-bold mb-4 text-center">Manipal Scholarship Scheme</h2>
+            <div className="overflow-x-auto">
+              <table className="min-w-full">
+                <thead>
+                  <tr className="bg-lime-200">
+                    <th className="px-4 py-2 text-left font-semibold">Scholarship category</th>
+                    <th className="px-4 py-2 text-left font-semibold">Scholarship discount</th>
+                    <th className="px-4 py-2 text-left font-semibold">Eligibility criteria</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scholarships.map((item, index) => (
+                    <tr key={index} className="border-b border-gray-200 last:border-b-0">
+                      <td className="px-4 py-2 text-sm">{item.category}</td>
+                      <td className="px-4 py-2 text-sm">{item.discount}</td>
+                      <td className="px-4 py-2 text-sm">{item.criteria}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
