@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center hero-pattern overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center lg:h-[70vh]"> {/* Added lg:h-[70vh] to help the image fill its space */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center lg:h-[70vh]">
           {/* Left Content */}
           <div className="space-y-8">
             {/* UGC Badge */}
@@ -83,22 +83,22 @@ const HeroSection = () => {
           </div>
 
           {/* Right Image */}
-          <div className="relative flex justify-center items-center lg:h-full">
+          {/* Decreased the height of the image section by ~20% */}
+          <div className="relative flex justify-center items-center lg:h-[80%]"> 
             <div className="relative w-full lg:h-full flex items-center justify-center">
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-1xl lg:h-full" // Adjusted height and max-height for better fit
+                className="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-2xl lg:h-full" 
               />
               
               {/* Floating Badge */}
-              <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground rounded-full p-3 shadow-primary">
+              <div className="absolute top-8 left-8 bg-primary text-primary-foreground rounded-full p-3 shadow-primary">
                 <div className="text-center">
                   <div className="text-lg font-bold">360°</div>
                   <div className="text-xs">DEGREE OF SUCCESS</div>
                 </div>
               </div>
-              {/* The "Experience Badge" has been removed */}
             </div>
           </div>
         </div>
