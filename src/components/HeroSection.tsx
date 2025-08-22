@@ -88,11 +88,11 @@ const HeroSection = () => {
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-[75%] object-cover rounded-2xl shadow-2xl"
+                className="w-full h-[50%] object-cover rounded-2xl shadow-2xl"
               />
               
               {/* Floating Badge */}
-              <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-full p-4 shadow-primary">
+              <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground rounded-full p-3 shadow-primary">
                 <div className="text-center">
                   <div className="text-lg font-bold">360°</div>
                   <div className="text-xs">DEGREE OF SUCCESS</div>
