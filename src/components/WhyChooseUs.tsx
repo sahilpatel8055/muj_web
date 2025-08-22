@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {features.map((feature, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <Card className="p-6 h-full bg-card border border-border/50 shadow-lg">
+                  <Card className="p-6 h-full bg-gray-50 border border-gray-200 shadow-lg">
                     <div className="flex flex-col items-center text-center h-full">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
                         <img src={feature.icon} alt="" className="w-8 h-8" />
@@ -83,6 +83,15 @@ const WhyChooseUs = () => {
             <CarouselPrevious className="hidden md:flex -left-12" />
             <CarouselNext className="hidden md:flex -right-12" />
           </Carousel>
+          
+          {/* Navigation dots */}
+          <div className="flex justify-center mt-6">
+            <img 
+              src="/src/assets/scroll-dots.png" 
+              alt="Navigation dots" 
+              className="h-4 w-auto opacity-60"
+            />
+          </div>
         </div>
 
         <div className="mt-12 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg p-8 text-center">

@@ -90,7 +90,7 @@ const RankingsAccreditations = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {accreditations.map((accreditation, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
-                  <Card className="h-40 flex flex-col items-center justify-center p-4 bg-card shadow-lg transition-shadow duration-300 border border-border/50 group">
+                  <Card className="h-40 flex flex-col items-center justify-center p-4 bg-gray-50 shadow-lg border border-gray-200 group">
                     <img
                       src={accreditation.image}
                       alt={accreditation.name}
@@ -106,6 +106,15 @@ const RankingsAccreditations = () => {
             <CarouselPrevious className="hidden md:flex -left-12" />
             <CarouselNext className="hidden md:flex -right-12" />
           </Carousel>
+          
+          {/* Navigation dots */}
+          <div className="flex justify-center mt-6">
+            <img 
+              src="/src/assets/scroll-dots.png" 
+              alt="Navigation dots" 
+              className="h-4 w-auto opacity-60"
+            />
+          </div>
         </div>
       </div>
     </section>
