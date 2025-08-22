@@ -1,4 +1,5 @@
 // src/pages/MBA.jsx
+
 import React, { useState, useRef, useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,9 +13,11 @@ import RankingsAccreditations from "@/components/RankingsAccreditations";
 import OnlineAdvantagesSection from "@/components/OnlineAdvantagesSection";
 import CourseraBenefitsSection from "@/components/CourseraBenefitsSection";
 import CourseCurriculumSection from "@/components/CourseCurriculumSection";
-import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"; // New import
+import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection";
+import CourseFeesSection from "@/components/CourseFeesSection"; // New import
 
 const mbaSpecializations = [
+  // ... (existing specialization data)
   { icon: BarChart2, title: "Marketing Management" },
   { icon: Users, title: "Human Resource Management" },
   { icon: Handshake, title: "Finance Management" },
@@ -208,9 +211,12 @@ const MBA = () => {
 
       {/* Course Curriculum Section */}
       <CourseCurriculumSection />
-
+      
       {/* Sample Degree Section */}
       <ManipalSampleDegreeSection />
+
+      {/* Course Fees Section */}
+      <CourseFeesSection />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">
