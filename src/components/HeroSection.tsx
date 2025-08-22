@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center hero-pattern overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center lg:h-[70vh]"> {/* Added lg:h-[70vh] to help the image fill its space */}
           {/* Left Content */}
           <div className="space-y-8">
             {/* UGC Badge */}
@@ -83,12 +83,12 @@ const HeroSection = () => {
           </div>
 
           {/* Right Image */}
-          <div className="relative">
-            <div className="relative">
+          <div className="relative flex justify-center items-center lg:h-full">
+            <div className="relative w-full lg:h-full flex items-center justify-center">
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-[30%] object-cover rounded-2xl shadow-2xl"
+                className="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-2xl lg:h-full" // Adjusted height and max-height for better fit
               />
               
               {/* Floating Badge */}
@@ -98,19 +98,7 @@ const HeroSection = () => {
                   <div className="text-xs">DEGREE OF SUCCESS</div>
                 </div>
               </div>
-
-              {/* Experience Badge */}
-              <div className="absolute bottom-6 -left-6 bg-card border border-border rounded-lg p-4 shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-success rounded-full flex items-center justify-center">
-                    <Award className="w-6 h-6 text-success-foreground" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-card-foreground">Personalise Your</div>
-                    <div className="text-success font-medium">Experience</div>
-                  </div>
-                </div>
-              </div>
+              {/* The "Experience Badge" has been removed */}
             </div>
           </div>
         </div>
