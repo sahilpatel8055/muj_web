@@ -2,17 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Award, Play } from 'lucide-react';
 import heroImage from '@/assets/ChatGPT_Image_Aug_22__2025__02_36_01_PM-removebg-preview.png';
+import ugcIcon from '@/assets/icons/ugc.png';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center hero-pattern overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="relative min-h-[90vh] flex hero-pattern overflow-hidden">
+      <div className="container mx-auto px-4 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center lg:h-[70vh]">
           {/* Left Content */}
           <div className="space-y-8">
             {/* UGC Badge */}
             <div className="flex items-center space-x-2">
-              <Award className="w-5 h-5 text-primary" />
+              <img src={ugcIcon} alt="UGC Entitled" className="w-5 h-5" />
               <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
                 UGC-Entitled
               </Badge>
