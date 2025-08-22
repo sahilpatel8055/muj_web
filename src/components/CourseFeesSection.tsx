@@ -52,27 +52,27 @@ const CourseFeesSection = () => {
             <Card className="bg-purple-100/50 p-6 md:p-8 rounded-xl text-black">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <div className="mb-4 md:mb-0">
-                  <h3 className="text-sm font-semibold text-gray-600">Full course fee (Four semesters)</h3>
+                  <h3 className="text-sm font-semibold text-black">Full course fee (Four semesters)</h3>
                   <p className="text-4xl font-bold mt-1">
                     {feesData.currency || "₹"} {feesData.fullFee}
                   </p>
-                  <p className="text-sm text-gray-600 mt-1">Inclusive of all taxes</p>
+                  <p className="text-sm text-black mt-1">Inclusive of all taxes</p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <Card className="p-4 bg-white rounded-lg">
-                    <h4 className="text-sm font-semibold text-gray-600">Each semester fee</h4>
+                    <h4 className="text-sm font-semibold text-black">Each semester fee</h4>
                     <p className="text-2xl font-bold mt-1">
                       {feesData.currency || "₹"} {feesData.semesterFee}
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">Inclusive of all taxes</p>
+                    <p className="text-xs text-black mt-1">Inclusive of all taxes</p>
                   </Card>
                   <Card className="p-4 bg-white rounded-lg">
-                    <h4 className="text-sm font-semibold text-gray-600">EMI starting at</h4>
+                    <h4 className="text-sm font-semibold text-black">EMI starting at</h4>
                     <p className="text-2xl font-bold mt-1">
                       {feesData.currency || "₹"} {feesData.emi}
-                      <span className="text-base text-gray-600">/Month</span>
+                      <span className="text-base text-black">/Month</span>
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">T&C</p>
+                    <p className="text-xs text-black mt-1">T&C</p>
                   </Card>
                 </div>
               </div>
