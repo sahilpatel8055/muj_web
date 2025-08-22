@@ -12,30 +12,32 @@ import TheUniversityOfVirginia from "@/assets/Certificates/The-University-of-Vir
 import UniversityOfMichigan from "@/assets/Certificates/University-of-Michigan.svg";
 
 const universities = [
-  { name: "Johns Hopkins University", logo: JohnsHopkins },
-  { name: "University of Maryland", logo: UniversityOfMaryland },
-  { name: "University of California Irvine", logo: UniversityOfCaliforniaIrvine },
-  { name: "University of Minnesota", logo: UniversityOfMinnesota },
-  { name: "University of Illinois at Urbana-Champaign", logo: UniversityOfIllinois },
-  { name: "University of Rochester", logo: UniversityOfRochester },
   { name: "The University of Virginia", logo: TheUniversityOfVirginia },
   { name: "University of Michigan", logo: UniversityOfMichigan },
+  { name: "University of Maryland", logo: UniversityOfMaryland },
+  { name: "University of Rochester", logo: UniversityOfRochester },
+  { name: "University of Illinois at Urbana-Champaign", logo: UniversityOfIllinois },
+  { name: "University of Minnesota", logo: UniversityOfMinnesota },
+  { name: "University of California Irvine", logo: UniversityOfCaliforniaIrvine },
+  { name: "Johns Hopkins University", logo: JohnsHopkins },
 ];
 
 const CourseraBenefitsSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
+        {/* Left-aligned Heading and Description */}
+        <div className="mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get access to exclusive Coursera benefits
+            Get Access To Exclusive Coursera Benefits
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             Choose from <span className="font-semibold">10,000+</span> courses & professional certifications from leading global universities while pursuing your degree.
           </p>
         </div>
 
-        <div className="flex justify-center space-x-4 mb-10">
+        {/* Tab Navigation */}
+        <div className="flex space-x-4 mb-10">
           <button className="px-6 py-2 rounded-full bg-gray-800 text-white font-semibold">
             Top Universities
           </button>
@@ -47,19 +49,23 @@ const CourseraBenefitsSection = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-          {universities.map((uni, index) => (
-            <Card key={index} className="flex flex-col items-center justify-center p-4 h-32 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img
-                src={uni.logo}
-                alt={uni.name}
-                className="max-h-full max-w-full object-contain"
-              />
-            </Card>
-          ))}
-        </div>
+        {/* Single box containing all university logos */}
+        <Card className="p-4 sm:p-6 md:p-8 bg-gray-50 border border-gray-200 rounded-lg shadow-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+            {universities.map((uni, index) => (
+              <div key={index} className="flex flex-col items-center justify-center h-32 p-2 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <img
+                  src={uni.logo}
+                  alt={uni.name}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </Card>
 
-        <p className="text-sm text-muted-foreground text-center mt-8">
+        {/* Note at the bottom */}
+        <p className="text-sm text-muted-foreground mt-8">
           Note: Free Coursera access for limited period only
         </p>
       </div>
