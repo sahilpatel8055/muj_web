@@ -45,7 +45,7 @@ const Header = () => {
             <img 
               src="/src/assets/muj_logo-removebg-preview.png" 
               alt="Manipal University Jaipur" 
-              className="h-16 w-auto"
+              className="h-14 w-auto"
             />
           </div>
 
