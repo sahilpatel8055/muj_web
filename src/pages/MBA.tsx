@@ -199,6 +199,9 @@ const MBA = () => {
 
       {/* Online Advantages Section */}
       <OnlineAdvantagesSection />
+      
+      {/* Coursera Benefits Section */}
+      <CourseraBenefitsSection />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">
