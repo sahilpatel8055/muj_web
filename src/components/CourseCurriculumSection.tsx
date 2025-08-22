@@ -9,7 +9,7 @@ const CourseCurriculumSection = () => {
   const year1Content = [
     {
       semester: "Semester 1",
-      color: "bg-blue-500",
+      color: "bg-blue-200",
       subjects: [
         "Entrepreneurial Practice",
         "Business Communication (WAC)",
@@ -22,7 +22,7 @@ const CourseCurriculumSection = () => {
     },
     {
       semester: "Semester 2",
-      color: "bg-green-500",
+      color: "bg-green-200",
       subjects: [
         "Business Research Methods (R/Python)",
         "Operation Management",
@@ -38,7 +38,7 @@ const CourseCurriculumSection = () => {
   const year2Content = [
     {
       semester: "Semester 3",
-      color: "bg-blue-500",
+      color: "bg-blue-200",
       subjects: [
         "Core Subjects",
         "Strategic Management",
@@ -48,7 +48,7 @@ const CourseCurriculumSection = () => {
     },
     {
       semester: "Semester 4",
-      color: "bg-green-500",
+      color: "bg-green-200",
       subjects: [
         "Core Subjects",
         "International Business Management",
@@ -97,23 +97,22 @@ const CourseCurriculumSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {contentToDisplay.map((semester, index) => (
-            <Card key={index} className="bg-white p-0 rounded-lg overflow-hidden">
-              <div className={`h-2 ${semester.color}`}></div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-black mb-4">{semester.semester}</h3>
-                <ul className="space-y-4 text-black">
-                  {semester.subjects.map((subject, subjectIndex) => (
-                    <li key={subjectIndex} className="flex items-start gap-2">
-                      <span className="flex-shrink-0 text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mt-1" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                      </span>
-                      <span>{subject}</span>
-                    </li>
-                  ))}
-                </ul>
+            <Card key={index} className="bg-white p-6 text-black rounded-lg">
+              <div className={`inline-block px-4 py-1 rounded-full text-black font-semibold mb-4 ${semester.color}`}>
+                {semester.semester}
               </div>
+              <ul className="space-y-4">
+                {semester.subjects.map((subject, subjectIndex) => (
+                  <li key={subjectIndex} className="flex items-start gap-2">
+                    <span className="flex-shrink-0 text-gray-500 mt-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 12l10 10 10-10-10-10z" />
+                      </svg>
+                    </span>
+                    <span>{subject}</span>
+                  </li>
+                ))}
+              </ul>
             </Card>
           ))}
         </div>
