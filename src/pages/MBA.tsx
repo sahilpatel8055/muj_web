@@ -4,19 +4,19 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp } from "lucide-react";
+import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp, Handshake, Globe, BarChart2 } from "lucide-react";
 import MBAImage from "@/assets/course-mba.jpg";
 import SpecializationCard from "@/components/SpecializationCard";
 
 const mbaSpecializations = [
-  { icon: Brain, title: "Marketing Management" },
+  { icon: BarChart2, title: "Marketing Management" },
   { icon: Users, title: "Human Resource Management" },
-  { icon: Award, title: "Finance Management" },
+  { icon: Handshake, title: "Finance Management" },
   { icon: TrendingUp, title: "Operations Management" },
   { icon: Lightbulb, title: "Digital Marketing" },
-  { icon: Lock, title: "International Business" },
   { icon: Clock, title: "Data Science" },
   { icon: BookOpen, title: "Business Analytics" },
+  { icon: Globe, title: "International Business" },
   { icon: TrendingUp, title: "Logistics and Supply Chain" },
   { icon: CheckCircle, title: "IT and Systems Management" },
 ];
@@ -106,9 +106,9 @@ const MBA = () => {
           </div>
           
           {/* Two Rows of Specialization Cards with unified Horizontal Scrolling */}
-          <div className="flex flex-wrap space-x-4 overflow-x-auto snap-x snap-mandatory -mb-6">
+          <div className="grid grid-flow-col-dense grid-rows-2 gap-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
             {mbaSpecializations.map((spec, index) => (
-              <div key={index} className="flex-shrink-0 mb-6 snap-start">
+              <div key={index} className="w-64 md:w-72 lg:w-80 flex-shrink-0 snap-start">
                 <SpecializationCard
                   icon={spec.icon}
                   title={spec.title}
