@@ -90,13 +90,13 @@ const RankingsAccreditations = () => {
                 return (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <Card 
-                      className={`h-[12.5rem] flex flex-col items-center justify-center p-4 shadow-lg border group
+                      className={`h-[15rem] flex flex-col items-center justify-center p-4 shadow-lg border group
                       ${isRedCard ? 'bg-red-700 text-white border-white' : 'bg-gray-50 text-gray-800 border-gray-200'}`}
                     >
                       <img
                         src={accreditation.image}
                         alt={accreditation.name}
-                        className={`max-h-16 max-w-full object-contain mb-2 ${isRedCard ? 'invert' : ''}`}
+                        className={`max-h-20 max-w-full object-contain mb-2 ${isRedCard ? 'invert' : ''}`}
                       />
                       <p className="text-xs text-center leading-tight">
                         {accreditation.description}
