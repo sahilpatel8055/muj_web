@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, BookOpen, GraduationCap, Trophy } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const CourseCurriculumSection = () => {
   const [activeYear, setActiveYear] = useState('Year 1');
@@ -95,7 +96,8 @@ const CourseCurriculumSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Desktop View (md and up) */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8">
           {contentToDisplay.map((semester, index) => (
             <Card key={index} className="bg-white p-6 text-black rounded-lg">
               <div className={`inline-block px-4 py-1 rounded-full text-black font-semibold mb-4 ${semester.color}`}>
@@ -115,6 +117,33 @@ const CourseCurriculumSection = () => {
               </ul>
             </Card>
           ))}
+        </div>
+
+        {/* Mobile View (sm and below) */}
+        <div className="md:hidden">
+          <Accordion type="single" collapsible className="w-full">
+            {contentToDisplay.map((semester, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-700">
+                <AccordionTrigger className={`w-full py-4 px-6 text-left font-semibold text-white ${semester.color} rounded-t-lg transition-colors`}>
+                  {semester.semester}
+                </AccordionTrigger>
+                <AccordionContent className="bg-white p-4 text-black rounded-b-lg">
+                  <ul className="space-y-4">
+                    {semester.subjects.map((subject, subjectIndex) => (
+                      <li key={subjectIndex} className="flex items-start gap-2">
+                        <span className="flex-shrink-0 text-gray-500 mt-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 12l10 10 10-10-10-10z" />
+                          </svg>
+                        </span>
+                        <span>{subject}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
