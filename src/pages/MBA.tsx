@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp, Handshake, Globe, BarChart2 } from "lucide-react";
+import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp, Handshake, Globe, BarChart2, ChevronLeft, ChevronRight } from "lucide-react";
 import MBAImage from "@/assets/course-mba.jpg";
 import SpecializationCard from "@/components/SpecializationCard";
 
@@ -22,6 +22,54 @@ const mbaSpecializations = [
 ];
 
 const MBA = () => {
+  const scrollContainerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const totalCards = mbaSpecializations.length;
+  const cardsPerView = 5; // Assumed number of cards visible at once
+  const totalPages = Math.ceil(totalCards / cardsPerView);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollLeft = scrollContainerRef.current.scrollLeft;
+      const scrollWidth = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+      const newIndex = Math.round((scrollLeft / scrollWidth) * (totalPages - 1));
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const handleDotClick = (index) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.scrollWidth / totalCards;
+      const cardsInPage = 5; // Number of cards per page
+      const scrollToPosition = index * cardWidth * cardsInPage;
+      scrollContainerRef.current.scrollTo({
+        left: scrollToPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -94,11 +142,30 @@ const MBA = () => {
             <h2 className="text-3xl font-bold text-foreground">
               Specializations Offered
             </h2>
-            {/* The navigation buttons and dots have been removed as requested */}
+            <div className="flex space-x-2">
+              <Button 
+                variant="outline" 
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                onClick={scrollLeft}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Button>
+              <Button 
+                variant="outline" 
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                onClick={scrollRight}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Button>
+            </div>
           </div>
           
           {/* Two Rows of Specialization Cards with unified Horizontal Scrolling */}
-          <div className="grid grid-flow-col-dense grid-rows-2 gap-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar rounded-3xl">
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="grid grid-flow-col-dense grid-rows-2 gap-4 overflow-x-auto snap-x snap-mandatory rounded-3xl pb-4 custom-scrollbar"
+          >
             {mbaSpecializations.map((spec, index) => (
               <div key={index} className="w-64 md:w-72 lg:w-80 flex-shrink-0 snap-start">
                 <SpecializationCard
@@ -109,6 +176,18 @@ const MBA = () => {
             ))}
           </div>
 
+          {/* Pagination dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {[...Array(totalPages)].map((_, index) => (
+              <div
+                key={index}
+                className={`w-3 h-3 rounded-full cursor-pointer transition-colors ${
+                  activeIndex === index ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+                onClick={() => handleDotClick(index)}
+              ></div>
+            ))}
+          </div>
         </div>
       </section>
 
