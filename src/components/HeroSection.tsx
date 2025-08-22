@@ -88,7 +88,7 @@ const HeroSection = () => {
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-2xl lg:h-full" // Adjusted height and max-height for better fit
+                className="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-1xl lg:h-full" // Adjusted height and max-height for better fit
               />
               
               {/* Floating Badge */}
