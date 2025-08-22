@@ -18,7 +18,7 @@ const CourseGrid = () => {
       students: '15,000+',
       rating: '4.8',
       popular: true,
-      href: '/online-mba-courses'
+      href: '/mba'
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const CourseGrid = () => {
       students: '8,000+',
       rating: '4.7',
       popular: false,
-      href: '/online-mca-courses'
+      href: '/mca'
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ const CourseGrid = () => {
       students: '12,000+',
       rating: '4.6',
       popular: true,
-      href: '/online-bba-courses'
+      href: '/bba'
     },
     {
       id: 4,
@@ -51,7 +51,7 @@ const CourseGrid = () => {
       students: '10,000+',
       rating: '4.5',
       popular: false,
-      href: '/online-bca-courses'
+      href: '/bca'
     },
     {
       id: 5,
@@ -62,7 +62,7 @@ const CourseGrid = () => {
       students: '18,000+',
       rating: '4.7',
       popular: true,
-      href: '/online-bcom-courses'
+      href: '/bcom'
     }
   ];
 
@@ -83,10 +83,8 @@ const CourseGrid = () => {
         {/* Course Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {courses.map((course) => (
-            <Card
-              key={course.id}
-              className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer border-border/50 hover:border-primary/20"
-            >
+            <a href={course.href} key={course.id}>
+              <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer border-border/50 hover:border-primary/20">
               <CardContent className="p-0">
                 <div className="relative">
                   <img
@@ -132,7 +130,8 @@ const CourseGrid = () => {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </a>
           ))}
         </div>
 

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Award, Play } from 'lucide-react';
-import heroStudent from '@/assets/hero-student.jpg';
+import heroImage from '@/assets/ChatGPT_Image_Aug_22__2025__02_36_01_PM-removebg-preview.png';
 
 const HeroSection = () => {
   return (
@@ -86,7 +86,7 @@ const HeroSection = () => {
           <div className="relative">
             <div className="relative">
               <img
-                src={heroStudent}
+                src={heroImage}
                 alt="Successful student giving thumbs up"
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />

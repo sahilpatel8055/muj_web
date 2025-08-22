@@ -6,13 +6,13 @@
 All colors MUST be HSL. Inspired by modern educational excellence.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Fonts imported in index.html */
 
 @layer base {
   :root {
     /* Educational Brand Colors */
     --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    --foreground: 0 0% 0%; /* #000000 */
     
     /* Manipal Orange Theme */
     --primary: 14 100% 60%; /* Vibrant orange */
@@ -28,7 +28,7 @@ All colors MUST be HSL. Inspired by modern educational excellence.
     --accent-foreground: 215 25% 27%;
     
     --muted: 210 9% 96%;
-    --muted-foreground: 215 13% 65%;
+    --muted-foreground: 218 11% 8%; /* #151419 */
     
     /* Semantic Colors */
     --success: 142 71% 45%;
@@ -143,11 +143,15 @@ All colors MUST be HSL. Inspired by modern educational excellence.
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground font-queen antialiased;
   }
   
   .font-inter {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  .font-queen {
+    font-family: 'Queen', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
   
   .text-gradient {
