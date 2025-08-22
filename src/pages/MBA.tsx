@@ -22,9 +22,6 @@ const mbaSpecializations = [
 ];
 
 const MBA = () => {
-  const firstRow = mbaSpecializations.slice(0, 5);
-  const secondRow = mbaSpecializations.slice(5);
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -108,26 +105,16 @@ const MBA = () => {
             </div>
           </div>
           
-          {/* Two Rows of Specialization Cards with Horizontal Scrolling */}
-          <div className="space-y-6">
-            <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
-              {firstRow.map((spec, index) => (
+          {/* Two Rows of Specialization Cards with unified Horizontal Scrolling */}
+          <div className="flex flex-wrap space-x-4 overflow-x-auto snap-x snap-mandatory -mb-6">
+            {mbaSpecializations.map((spec, index) => (
+              <div key={index} className="flex-shrink-0 mb-6 snap-start">
                 <SpecializationCard
-                  key={index}
                   icon={spec.icon}
                   title={spec.title}
                 />
-              ))}
-            </div>
-            <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
-              {secondRow.map((spec, index) => (
-                <SpecializationCard
-                  key={index + 5}
-                  icon={spec.icon}
-                  title={spec.title}
-                />
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
           {/* Pagination dots (optional, as seen in the image) */}
