@@ -83,13 +83,12 @@ const HeroSection = () => {
           </div>
 
           {/* Right Image */}
-          {/* Decreased the height of the image section by ~20% */}
           <div className="relative flex justify-center items-center lg:h-[80%]"> 
             <div className="relative w-full lg:h-full flex items-center justify-center">
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-auto max-h-[600px] object-cover rounded-2xl shadow-2xl lg:h-full" 
+                className="w-full h-auto object-contain rounded-2xl lg:h-[450px] lg:w-auto" 
               />
               
               {/* Floating Badge */}
