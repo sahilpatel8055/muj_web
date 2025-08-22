@@ -41,13 +41,12 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">M</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground">Online MANIPAL</span>
-            </div>
+          <div className="flex items-center">
+            <img 
+              src="/src/assets/muj_logo-removebg-preview.png" 
+              alt="Manipal University Jaipur" 
+              className="h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
