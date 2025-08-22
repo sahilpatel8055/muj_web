@@ -3,11 +3,32 @@ import { Badge } from '@/components/ui/badge';
 import { Award, Play } from 'lucide-react';
 import heroImage from '@/assets/ChatGPT_Image_Aug_22__2025__02_36_01_PM-removebg-preview.png';
 import ugcIcon from '@/assets/icons/ugc.png';
+import React, { useState, useEffect } from 'react';
+
+// New component for the counting animation
+const AnimatedNumber = ({ endValue, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * endValue));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [endValue, duration]);
+
+  return <>{count}</>;
+};
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex hero-pattern overflow-hidden">
-      <div className="container mx-auto px-4 pt-20">
+      <div className="container mx-auto px-4 pt-14">
         <div className="grid lg:grid-cols-2 gap-12 items-center lg:h-[70vh]">
           {/* Left Content */}
           <div className="space-y-8">
@@ -66,18 +87,24 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Stats */}
+            {/* Stats with Animation */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">50,000+</div>
+                <div className="text-2xl font-bold text-primary">
+                  <AnimatedNumber endValue={50000} />+
+                </div>
                 <div className="text-sm text-muted-foreground">Students</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">100+</div>
+                <div className="text-2xl font-bold text-primary">
+                  <AnimatedNumber endValue={100} />+
+                </div>
                 <div className="text-sm text-muted-foreground">Programs</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">95%</div>
+                <div className="text-2xl font-bold text-primary">
+                  <AnimatedNumber endValue={95} />%
+                </div>
                 <div className="text-sm text-muted-foreground">Satisfaction</div>
               </div>
             </div>
