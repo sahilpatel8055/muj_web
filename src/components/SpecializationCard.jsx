@@ -1,6 +1,7 @@
 // src/components/SpecializationCard.jsx
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { MoveRight } from 'lucide-react';
 
 const SpecializationCard = ({ icon: Icon, title }) => {
   return (
