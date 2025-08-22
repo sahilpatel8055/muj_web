@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp, Handshake, Globe, BarChart2, ChevronLeft, ChevronRight } from "lucide-react";
 import MBAImage from "@/assets/course-mba.jpg";
 import SpecializationCard from "@/components/SpecializationCard";
+import RankingsAccreditations from "@/components/RankingsAccreditations";
 
 const mbaSpecializations = [
   { icon: BarChart2, title: "Marketing Management" },
@@ -190,6 +191,9 @@ const MBA = () => {
           </div>
         </div>
       </section>
+
+      {/* Rankings & Accreditations Section */}
+      <RankingsAccreditations />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">
