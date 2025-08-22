@@ -86,17 +86,15 @@ const RankingsAccreditations = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {accreditations.map((accreditation, index) => {
-                const isRedCard = accreditation.name === "NIRF Ranked" || accreditation.name === "AICTE Approved";
                 return (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-[35%] md:basis-[23%] lg:basis-[17.5%]">
                     <Card 
-                      className={`h-[15rem] flex flex-col items-center justify-center p-4 shadow-lg border group
-                      ${isRedCard ? 'bg-red-700 text-white border-white' : 'bg-gray-50 text-gray-800 border-gray-200'}`}
+                      className="h-[20rem] flex flex-col items-center justify-center p-4 shadow-lg border bg-gray-50 text-gray-800 border-gray-200"
                     >
                       <img
                         src={accreditation.image}
                         alt={accreditation.name}
-                        className={`max-h-20 max-w-full object-contain mb-2 ${isRedCard ? 'invert' : ''}`}
+                        className="max-h-32 max-w-full object-contain mb-2"
                       />
                       <p className="text-xs text-center leading-tight">
                         {accreditation.description}
