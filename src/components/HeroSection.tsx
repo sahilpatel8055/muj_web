@@ -88,7 +88,7 @@ const HeroSection = () => {
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-[50%] object-cover rounded-2xl shadow-2xl"
+                className="w-full h-[30%] object-cover rounded-2xl shadow-2xl"
               />
               
               {/* Floating Badge */}
