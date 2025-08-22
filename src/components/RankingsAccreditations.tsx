@@ -87,9 +87,9 @@ const RankingsAccreditations = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {accreditations.map((accreditation, index) => {
                 return (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-[35%] md:basis-[23%] lg:basis-[17.5%]">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-[45.5%] md:basis-[23%] lg:basis-[17.5%]">
                     <Card 
-                      className="h-[20rem] flex flex-col items-center justify-center p-4 shadow-lg border bg-gray-50 text-gray-800 border-gray-200"
+                      className="h-[14rem] md:h-[20rem] flex flex-col items-center justify-center p-4 shadow-lg border bg-gray-50 text-black border-gray-200"
                     >
                       <img
                         src={accreditation.image}
