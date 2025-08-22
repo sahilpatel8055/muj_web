@@ -11,7 +11,8 @@ import SpecializationCard from "@/components/SpecializationCard";
 import RankingsAccreditations from "@/components/RankingsAccreditations";
 import OnlineAdvantagesSection from "@/components/OnlineAdvantagesSection";
 import CourseraBenefitsSection from "@/components/CourseraBenefitsSection";
-import CourseCurriculumSection from "@/components/CourseCurriculumSection"; // New import
+import CourseCurriculumSection from "@/components/CourseCurriculumSection";
+import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"; // New import
 
 const mbaSpecializations = [
   { icon: BarChart2, title: "Marketing Management" },
@@ -207,6 +208,9 @@ const MBA = () => {
 
       {/* Course Curriculum Section */}
       <CourseCurriculumSection />
+
+      {/* Sample Degree Section */}
+      <ManipalSampleDegreeSection />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">
