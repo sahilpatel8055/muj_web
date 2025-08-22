@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp, Handshake, Globe, BarChart2 } from "lucide-react";
+import { Star, Clock, Users, BookOpen, Award, CheckCircle, Brain, Lock, Lightbulb, TrendingUp, Handshake, Globe, BarChart2, ChevronLeft, ChevronRight } from "lucide-react";
 import MBAImage from "@/assets/course-mba.jpg";
 import SpecializationCard from "@/components/SpecializationCard";
 
@@ -22,6 +22,68 @@ const mbaSpecializations = [
 ];
 
 const MBA = () => {
+  const scrollContainerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const totalCards = mbaSpecializations.length;
+  const cardsPerView = 5; // Assuming 5 cards are visible at a time
+  const totalPages = Math.ceil(totalCards / cardsPerView);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.clientWidth;
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollLeft = scrollContainerRef.current.scrollLeft;
+      const scrollWidth = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+      const newIndex = Math.round((scrollLeft / scrollWidth) * (totalPages - 1));
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const handleDotClick = (index) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.scrollWidth / totalPages;
+      scrollContainerRef.current.scrollTo({
+        left: index * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // You could add logic here to know which card is in view
+        }
+      });
+    }, {
+      root: scrollContainerRef.current,
+      rootMargin: '0px',
+      threshold: 0.5
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -95,18 +157,29 @@ const MBA = () => {
               Specializations Offered
             </h2>
             <div className="flex space-x-2">
-              {/* Navigation arrows for scrolling */}
-              <Button variant="outline" className="rounded-full w-10 h-10 p-0 flex items-center justify-center">
-                &larr;
+              <Button 
+                variant="outline" 
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                onClick={scrollLeft}
+              >
+                <ChevronLeft className="w-6 h-6" />
               </Button>
-              <Button variant="outline" className="rounded-full w-10 h-10 p-0 flex items-center justify-center">
-                &rarr;
+              <Button 
+                variant="outline" 
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                onClick={scrollRight}
+              >
+                <ChevronRight className="w-6 h-6" />
               </Button>
             </div>
           </div>
           
           {/* Two Rows of Specialization Cards with unified Horizontal Scrolling */}
-          <div className="grid grid-flow-col-dense grid-rows-2 gap-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar">
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="grid grid-flow-col-dense grid-rows-2 gap-4 overflow-x-auto snap-x snap-mandatory pb-4 custom-scrollbar rounded-xl"
+          >
             {mbaSpecializations.map((spec, index) => (
               <div key={index} className="w-64 md:w-72 lg:w-80 flex-shrink-0 snap-start">
                 <SpecializationCard
@@ -117,11 +190,17 @@ const MBA = () => {
             ))}
           </div>
 
-          {/* Pagination dots (optional, as seen in the image) */}
+          {/* Pagination dots */}
           <div className="flex justify-center mt-6 space-x-2">
-            <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
+            {[...Array(totalPages)].map((_, index) => (
+              <div
+                key={index}
+                className={`w-3 h-3 rounded-full cursor-pointer transition-colors ${
+                  activeIndex === index ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+                onClick={() => handleDotClick(index)}
+              ></div>
+            ))}
           </div>
         </div>
       </section>
