@@ -36,6 +36,10 @@ const Header = () => {
     }
   ];
 
+  const handleMobileDropdownToggle = (title: string) => {
+    setOpenDropdown(openDropdown === title ? null : title);
+  };
+
   return (
     <header className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] lg:w-[85%] z-50 bg-background/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg">
       <div className="px-6">
@@ -97,14 +101,40 @@ const Header = () => {
 
           {/* Mobile navigation (visible on mobile) */}
           <div className="flex items-center space-x-4 lg:hidden">
-            <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
-              Apply Now
-            </Button>
+            {navigationItems.filter(item => item.hasDropdown).map(item => (
+              <div key={item.title} className="relative">
+                <button
+                  onClick={() => handleMobileDropdownToggle(item.title)}
+                  className="flex items-center space-x-1 text-foreground hover:text-primary transition-smooth font-medium"
+                >
+                  <span>{item.title.split(' ')[0]}</span>
+                  <ChevronDown className={cn(
+                    "w-4 h-4 transition-transform",
+                    openDropdown === item.title && "rotate-180"
+                  )} />
+                </button>
+                {openDropdown === item.title && (
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg p-2 z-50">
+                    {item.items?.map((subItem) => (
+                      <a
+                        key={subItem.name}
+                        href={subItem.href}
+                        className="block px-4 py-2 text-card-foreground hover:bg-accent rounded-md transition-smooth"
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-foreground hover:text-primary transition-smooth"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <MoreVertical className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -113,50 +143,20 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border">
             <nav className="space-y-4">
-              {navigationItems.map((item) => (
-                <div key={item.title} className="space-y-2">
-                  {item.hasDropdown ? (
-                    <>
-                      <button
-                        onClick={() => setOpenDropdown(openDropdown === item.title ? null : item.title)}
-                        className="flex items-center justify-between w-full text-left text-foreground hover:text-primary transition-smooth font-medium"
-                      >
-                        <span>{item.title}</span>
-                        <ChevronDown className={cn(
-                          "w-4 h-4 transition-transform",
-                          openDropdown === item.title && "rotate-180"
-                        )} />
-                      </button>
-                      {openDropdown === item.title && (
-                        <div className="pl-4 space-y-2">
-                          {item.items?.map((subItem) => (
-                            <a
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block py-2 text-muted-foreground hover:text-primary transition-smooth"
-                            >
-                              {subItem.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <a
-                      href={item.href}
-                      className="block text-foreground hover:text-primary transition-smooth font-medium"
-                    >
-                      {item.title}
-                    </a>
-                  )}
-                </div>
-              ))}
+              <a
+                href={navigationItems.find(item => !item.hasDropdown)?.href}
+                className="block text-foreground hover:text-primary transition-smooth font-medium"
+              >
+                {navigationItems.find(item => !item.hasDropdown)?.title}
+              </a>
               <div className="pt-4 space-y-3">
                 <Button variant="outline" className="w-full">
                   <Search className="w-4 h-4 mr-2" />
                   Search Courses
                 </Button>
-                
+                <Button className="w-full bg-gradient-primary hover:opacity-90 transition-smooth">
+                  Apply Now
+                </Button>
               </div>
             </nav>
           </div>
