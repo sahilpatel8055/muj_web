@@ -1,87 +1,46 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, Users, Globe, Award, BookOpen, Briefcase } from "lucide-react";
 
 const impactStats = [
   {
-    icon: Users,
-    number: "2.5 Lakh+",
-    label: "Students Empowered",
-    description: "Across various programs and disciplines"
+    number: "60+",
+    description: "Countries and 2000+ towns & cities- our students span the globe"
   },
   {
-    icon: Globe,
-    number: "50+",
-    label: "Countries",
-    description: "Students from around the world"
+    number: "100k+",
+    description: "Learners have been empowered through Online Manipal"
   },
   {
-    icon: BookOpen,
-    number: "100+",
-    label: "Programs Offered",
-    description: "Undergraduate to Doctoral levels"
+    number: "93%",
+    description: "Of students say their online degree has a positive ROI"
   },
   {
-    icon: Award,
-    number: "95%",
-    label: "Placement Rate",
-    description: "Industry-ready graduates"
-  },
-  {
-    icon: Briefcase,
-    number: "500+",
-    label: "Industry Partners",
-    description: "For internships and placements"
-  },
-  {
-    icon: TrendingUp,
-    number: "30%",
-    label: "Salary Hike",
-    description: "Average increase post-graduation"
+    number: "81%",
+    description: "Of students find online is better than or equal to on-campus learning"
   }
 ];
 
 const OurImpact = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/5 to-primary/10">
+    <section className="py-16 bg-gray-900 text-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+        <div className="text-center mb-12 md:text-left">
+          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
             Our Impact
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Transforming Lives Through Education
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Over the years, we've been committed to providing quality education that creates meaningful impact in students' lives and careers
-          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12 md:gap-24">
           {impactStats.map((stat, index) => (
-            <Card key={index} className="p-6 text-center hover:shadow-lg transition-all duration-300 bg-card/80 backdrop-blur-sm border border-border/50">
-              <div className="flex justify-center mb-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <stat.icon className="w-6 h-6 text-primary" />
-                </div>
-              </div>
-              <div className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            <div key={index} className="flex flex-col items-center md:items-start text-center md:text-left">
+              <div className="text-5xl md:text-6xl font-bold font-serif mb-2">
                 {stat.number}
               </div>
-              <div className="text-sm font-medium text-foreground mb-2">
-                {stat.label}
-              </div>
-              <div className="text-xs text-muted-foreground">
+              <p className="text-lg text-gray-400 max-w-sm">
                 {stat.description}
-              </div>
-            </Card>
+              </p>
+            </div>
           ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of successful graduates who have transformed their careers with our world-class online education programs.
-          </p>
         </div>
       </div>
     </section>
