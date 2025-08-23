@@ -37,7 +37,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 w-3/4 z-50 bg-background/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[85%] z-50 bg-background/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg">
       <div className="px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
