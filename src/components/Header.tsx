@@ -43,7 +43,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/src/assets/muj_logo-removebg-preview.png" 
+              src="src/assets/muj_logo-removebg-preview.png" 
               alt="Manipal University Jaipur" 
               className="h-14 w-auto"
             />

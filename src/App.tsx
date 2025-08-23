@@ -11,6 +11,9 @@ import MCOM from "./pages/MCOM";
 import BBA from "./pages/BBA";
 import BCA from "./pages/BCA";
 import BCOM from "./pages/BCOM";
+import MUJ from "./pages/MUJ";
+import MAHE from "./pages/MAHE";
+import SMU from "./pages/SMU";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +31,9 @@ const App = () => (
           <Route path="/bba" element={<BBA />} />
           <Route path="/bca" element={<BCA />} />
           <Route path="/bcom" element={<BCOM />} />
+          <Route path="/muj" element={<MUJ />} />
+          <Route path="/mahe" element={<MAHE />} />
+          <Route path="/smu" element={<SMU />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
