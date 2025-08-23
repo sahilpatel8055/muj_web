@@ -24,15 +24,15 @@ const OurImpact = () => {
   return (
     <section className="py-16 bg-gray-900 text-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 md:text-left">
+        <div className="text-center mb-12 lg:text-left">
           <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
             Our Impact
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12 md:gap-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-24">
           {impactStats.map((stat, index) => (
-            <div key={index} className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div key={index} className="flex flex-col items-center lg:items-start text-center lg:text-left">
               <div className="text-5xl md:text-6xl font-bold font-serif mb-2">
                 {stat.number}
               </div>
