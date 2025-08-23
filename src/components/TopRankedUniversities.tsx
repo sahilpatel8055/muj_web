@@ -47,63 +47,75 @@ const TopRankedUniversities = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Manipal University Jaipur card - spans two rows */}
-          <div className="relative overflow-hidden rounded-xl h-full row-span-2">
-            <div
-              className="p-6 h-full flex flex-col justify-end bg-cover bg-center"
-              style={{ backgroundImage: `url(${universities[0].image})` }}
-            >
-              <h3 className="text-2xl font-bold text-white mb-1">{universities[0].name}</h3>
-              <a href={universities[0].link} className="flex items-center text-white hover:underline font-medium">
-                View all Courses →
-              </a>
+          <div className="relative rounded-2xl h-[450px] md:row-span-2 p-1 group">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden">
+                <div
+                    className="p-6 h-full flex flex-col justify-end bg-cover bg-center"
+                    style={{ backgroundImage: `url(${universities[0].image})` }}
+                >
+                    <h3 className="text-2xl font-bold text-white mb-1">{universities[0].name}</h3>
+                    <a href={universities[0].link} className="flex items-center text-white hover:underline font-medium">
+                        View all Courses →
+                    </a>
+                </div>
+                {/* Custom Ranking Badge */}
+                <div className="absolute top-0 left-4">
+                    <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
+                        <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
+                        {universities[0].ranking}
+                    </span>
+                </div>
             </div>
-            {/* Custom Ranking Badge */}
-            <div className="absolute top-0 left-4">
-              <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
-                <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
-                {universities[0].ranking}
-              </span>
-            </div>
+            {/* Gradient Border */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
 
           {/* Manipal Academy of Higher Education card - top right */}
-          <div className="relative overflow-hidden rounded-xl h-full">
-            <div
-              className="p-6 h-full flex flex-col justify-end bg-cover bg-center"
-              style={{ backgroundImage: `url(${universities[1].image})` }}
-            >
-              <h3 className="text-xl font-bold text-white mb-1">{universities[1].name}</h3>
-              <a href={universities[1].link} className="flex items-center text-white hover:underline font-medium">
-                View all Courses →
-              </a>
+          <div className="relative rounded-2xl h-[210px] p-1 group">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden">
+                <div
+                    className="p-6 h-full flex flex-col justify-end bg-cover bg-center"
+                    style={{ backgroundImage: `url(${universities[1].image})` }}
+                >
+                    <h3 className="text-xl font-bold text-white mb-1">{universities[1].name}</h3>
+                    <a href={universities[1].link} className="flex items-center text-white hover:underline font-medium">
+                        View all Courses →
+                    </a>
+                </div>
+                {/* Custom Ranking Badge */}
+                <div className="absolute top-0 left-4">
+                    <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
+                        <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
+                        {universities[1].ranking}
+                    </span>
+                </div>
             </div>
-            {/* Custom Ranking Badge */}
-            <div className="absolute top-0 left-4">
-              <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
-                <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
-                {universities[1].ranking}
-              </span>
-            </div>
+            {/* Gradient Border */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
 
           {/* Sikkim Manipal University card - bottom right */}
-          <div className="relative overflow-hidden rounded-xl h-full">
-            <div
-              className="p-6 h-full flex flex-col justify-end bg-cover bg-center"
-              style={{ backgroundImage: `url(${universities[2].image})` }}
-            >
-              <h3 className="text-xl font-bold text-white mb-1">{universities[2].name}</h3>
-              <a href={universities[2].link} className="flex items-center text-white hover:underline font-medium">
-                View all Courses →
-              </a>
+          <div className="relative rounded-2xl h-[210px] p-1 group">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden">
+                <div
+                    className="p-6 h-full flex flex-col justify-end bg-cover bg-center"
+                    style={{ backgroundImage: `url(${universities[2].image})` }}
+                >
+                    <h3 className="text-xl font-bold text-white mb-1">{universities[2].name}</h3>
+                    <a href={universities[2].link} className="flex items-center text-white hover:underline font-medium">
+                        View all Courses →
+                    </a>
+                </div>
+                {/* Custom Ranking Badge */}
+                <div className="absolute top-0 left-4">
+                    <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
+                        <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
+                        {universities[2].ranking}
+                    </span>
+                </div>
             </div>
-            {/* Custom Ranking Badge */}
-            <div className="absolute top-0 left-4">
-              <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
-                <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
-                {universities[2].ranking}
-              </span>
-            </div>
+            {/* Gradient Border */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
         </div>
       </div>
