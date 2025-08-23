@@ -37,15 +37,15 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4">
+    <header className="fixed top-4 left-4 right-4 z-50 bg-background/90 backdrop-blur-lg border border-border rounded-2xl shadow-lg">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="src/assets/muj_logo-removebg-preview.png" 
+              src="/src/assets/muj_logo-removebg-preview.png" 
               alt="Manipal University Jaipur" 
-              className="h-14 w-auto"
+              className="h-16 w-auto"
             />
           </div>
 
