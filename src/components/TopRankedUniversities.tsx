@@ -52,8 +52,8 @@ const TopRankedUniversities = () => {
               className="p-6 h-full flex flex-col justify-end bg-cover bg-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/40"
               style={{ backgroundImage: `url(${universities[0].image})` }}
             >
-              <h3 className="text-2xl font-bold text-white mb-1">{universities[0].name}</h3>
-              <a href={universities[0].link} className="flex items-center text-white hover:underline font-medium">
+              <h3 className="text-xl font-bold text-black mb-1">{universities[0].name}</h3>
+              <a href={universities[0].link} className="flex items-center text-black hover:underline font-medium">
                 View all Courses →
               </a>
             </div>
@@ -72,8 +72,8 @@ const TopRankedUniversities = () => {
               className="p-6 h-full flex flex-col justify-end bg-cover bg-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/40"
               style={{ backgroundImage: `url(${universities[1].image})` }}
             >
-              <h3 className="text-xl font-bold text-white mb-1">{universities[1].name}</h3>
-              <a href={universities[1].link} className="flex items-center text-white hover:underline font-medium">
+              <h3 className="text-base font-bold text-black mb-1">{universities[1].name}</h3>
+              <a href={universities[1].link} className="flex items-center text-black hover:underline font-medium">
                 View all Courses →
               </a>
             </div>
@@ -92,8 +92,8 @@ const TopRankedUniversities = () => {
               className="p-6 h-full flex flex-col justify-end bg-cover bg-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/40"
               style={{ backgroundImage: `url(${universities[2].image})` }}
             >
-              <h3 className="text-xl font-bold text-white mb-1">{universities[2].name}</h3>
-              <a href={universities[2].link} className="flex items-center text-white hover:underline font-medium">
+              <h3 className="text-base font-bold text-black mb-1">{universities[2].name}</h3>
+              <a href={universities[2].link} className="flex items-center text-black hover:underline font-medium">
                 View all Courses →
               </a>
             </div>
