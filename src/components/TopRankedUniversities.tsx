@@ -3,29 +3,32 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, BookOpen, Award } from "lucide-react";
 
+// Redefine the university data to match the new design
 const universities = [
   {
     id: 1,
     name: "Manipal University Jaipur",
     ranking: "#1 Private University",
-    accreditation: "NAAC A+ Grade",
-    students: "25,000+",
-    courses: "100+",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=400&h=300&fit=crop&crop=center",
-    features: ["UGC Entitled", "AICTE Approved", "Industry Aligned Curriculum"]
+    image: "/src/assets/campus/manipal-jaipur.jpg",
+    backgroundColor: "bg-[#e5d8ff]", // A light purple color
+    link: "/muj"
+  },
+  {
+    id: 3, // New university added
+    name: "Manipal Academy of Higher Education",
+    ranking: "Ranks 4th amongst all Universities",
+    image: "/src/assets/campus/mahe.jpg", // Using the provided path
+    backgroundColor: "bg-[#b1e1ff]", // A light blue color
+    link: "/mahe"
   },
   {
     id: 2,
     name: "Sikkim Manipal University",
     ranking: "#2 Distance Education",
-    accreditation: "UGC-DEB Approved",
-    students: "50,000+",
-    courses: "80+",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?w=400&h=300&fit=crop&crop=center",
-    features: ["WES Recognized", "Global Recognition", "Flexible Learning"]
-  }
+    image: "/src/assets/campus/sikkim-manipal.jpg",
+    backgroundColor: "bg-[#c6f3ff]", // A light cyan color
+    link: "/smu"
+  },
 ];
 
 const TopRankedUniversities = () => {
@@ -42,58 +45,71 @@ const TopRankedUniversities = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {universities.map((university) => (
-            <Card key={university.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 border border-border/50">
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={university.image}
-                  alt={university.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-                <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
-                  {university.ranking}
-                </Badge>
-              </div>
-              
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-bold text-foreground">{university.name}</h3>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-medium">{university.rating}</span>
-                  </div>
-                </div>
-                
-                <Badge variant="secondary" className="mb-4">
-                  {university.accreditation}
-                </Badge>
-                
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-primary" />
-                    <span className="text-sm text-muted-foreground">{university.students} Students</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-primary" />
-                    <span className="text-sm text-muted-foreground">{university.courses} Courses</span>
-                  </div>
-                </div>
-                
-                <div className="space-y-2 mb-6">
-                  {university.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-success" />
-                      <span className="text-sm text-foreground">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                  Explore Programs
-                </Button>
-              </div>
-            </Card>
-          ))}
+          {/* Manipal University Jaipur card - spans two rows */}
+          <div className="relative overflow-hidden rounded-xl h-full row-span-2">
+            <div className={`p-6 ${universities[0].backgroundColor} h-full flex flex-col justify-end`}>
+              <h3 className="text-2xl font-bold text-foreground mb-1">{universities[0].name}</h3>
+              <a href={universities[0].link} className="flex items-center text-primary hover:underline font-medium">
+                View all Courses →
+              </a>
+              <img
+                src={universities[0].image}
+                alt={universities[0].name}
+                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+              />
+            </div>
+            {/* Custom Ranking Badge */}
+            <div className="absolute top-0 left-4">
+              <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
+                <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
+                {universities[0].ranking}
+              </span>
+            </div>
+          </div>
+
+          {/* Manipal Academy of Higher Education card - top right */}
+          <div className="relative overflow-hidden rounded-xl h-full">
+            <div className={`p-6 ${universities[1].backgroundColor} h-full flex flex-col justify-end`}>
+              <h3 className="text-xl font-bold text-foreground mb-1">{universities[1].name}</h3>
+              <a href={universities[1].link} className="flex items-center text-primary hover:underline font-medium">
+                View all Courses →
+              </a>
+              <img
+                src={universities[1].image}
+                alt={universities[1].name}
+                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+              />
+            </div>
+            {/* Custom Ranking Badge */}
+            <div className="absolute top-0 left-4">
+              <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
+                <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
+                {universities[1].ranking}
+              </span>
+            </div>
+          </div>
+
+          {/* Sikkim Manipal University card - bottom right */}
+          <div className="relative overflow-hidden rounded-xl h-full">
+            <div className={`p-6 ${universities[2].backgroundColor} h-full flex flex-col justify-end`}>
+              <h3 className="text-xl font-bold text-foreground mb-1">{universities[2].name}</h3>
+              <a href={universities[2].link} className="flex items-center text-primary hover:underline font-medium">
+                View all Courses →
+              </a>
+              <img
+                src={universities[2].image}
+                alt={universities[2].name}
+                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+              />
+            </div>
+            {/* Custom Ranking Badge */}
+            <div className="absolute top-0 left-4">
+              <span className="relative inline-block py-2 px-6 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
+                <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-700 transform rotate-45"></span>
+                {universities[2].ranking}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
