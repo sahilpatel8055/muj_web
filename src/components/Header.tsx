@@ -37,7 +37,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg">
+    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 w-3/4 z-50 bg-background/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg">
       <div className="px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -49,8 +49,9 @@ const Header = () => {
             />
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Center & Right side combined */}
+          <div className="hidden lg:flex items-center space-x-8">
+            {/* Navigation Items */}
             {navigationItems.map((item) => (
               <div
                 key={item.title}
@@ -88,15 +89,10 @@ const Header = () => {
                 )}
               </div>
             ))}
-          </nav>
-
-          {/* Right side - Search and CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
+            
+            {/* Apply Now Button */}
             <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
               Apply Now
-            </Button>
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
-              <Search className="w-4 h-4" />
             </Button>
           </div>
 

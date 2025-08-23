@@ -29,31 +29,31 @@ const CounselingForm = () => {
   };
 
   return (
-    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm">
-      <div className="text-center mb-4">
-        <h3 className="text-base font-bold text-foreground mb-2">
+    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-3 shadow-lg w-full max-w-xs">
+      <div className="text-center mb-3">
+        <h3 className="text-sm font-bold text-foreground mb-1">
           Join <span className="text-primary">50,000+</span> Learners Across India
         </h3>
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center">
-              <Calendar className="w-3 h-3 text-primary" />
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+            <div className="w-4 h-4 bg-primary/20 rounded-full flex items-center justify-center">
+              <Calendar className="w-2 h-2 text-primary" />
             </div>
-            Easy financing options
+            Easy financing
           </div>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <div className="w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center">
-              <Users className="w-3 h-3 text-primary" />
+          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+            <div className="w-4 h-4 bg-primary/20 rounded-full flex items-center justify-center">
+              <Users className="w-2 h-2 text-primary" />
             </div>
-            Attractive scholarships
+            Scholarships
           </div>
         </div>
-        <p className="text-sm text-card-foreground font-medium">
+        <p className="text-xs text-card-foreground font-medium">
           Submit your details and we'll contact you soon!
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-3">
         <Input
           type="text"
           placeholder="Enter your full name"
@@ -113,20 +113,20 @@ const CounselingForm = () => {
 
         <Button 
           type="submit" 
-          className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-sm py-3"
+          className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs py-2"
           disabled={!formData.consent}
         >
           Enroll Now
         </Button>
       </form>
 
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Calendar className="w-4 h-4" />
-          Last Date for Admission: <span className="text-primary font-medium">23 Aug</span>
+      <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+          <Calendar className="w-3 h-3" />
+          Last Date: <span className="text-primary font-medium">23 Aug</span>
         </div>
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <Users className="w-4 h-4" />
+        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+          <Users className="w-3 h-3" />
           <span className="text-primary font-medium">Limited Seats</span>
         </div>
       </div>

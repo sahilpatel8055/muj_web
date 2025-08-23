@@ -81,14 +81,6 @@ const MCA = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Breadcrumb */}
-      <div className="bg-muted/30 py-4">
-        <div className="container mx-auto px-4">
-          <nav className="text-sm text-muted-foreground">
-            <span>Home</span> / <span>All Courses</span> / <span>Masters Degrees</span> / <span className="text-foreground">Online MCA MUJ</span>
-          </nav>
-        </div>
-      </div>
 
       {/* Hero Section */}
       <section className="py-16" style={{ backgroundColor: '#E6E0FF' }}>

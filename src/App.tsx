@@ -14,6 +14,13 @@ import BCOM from "./pages/BCOM";
 import MUJ from "./pages/MUJ";
 import MAHE from "./pages/MAHE";
 import SMU from "./pages/SMU";
+import AllCourses from './pages/AllCourses';
+import MBA_SMU from './pages/MBA_SMU';
+import MCA_SMU from './pages/MCA_SMU';
+import BA_SMU from './pages/BA_SMU';
+import MA_SMU from './pages/MA_SMU';
+import BCOM_SMU from './pages/BCOM_SMU';
+import MCOM_SMU from './pages/MCOM_SMU';
 
 const queryClient = new QueryClient();
 
@@ -34,6 +41,13 @@ const App = () => (
           <Route path="/muj" element={<MUJ />} />
           <Route path="/mahe" element={<MAHE />} />
           <Route path="/smu" element={<SMU />} />
+          <Route path="/all-courses" element={<AllCourses />} />
+          <Route path="/mba-smu" element={<MBA_SMU />} />
+          <Route path="/mca-smu" element={<MCA_SMU />} />
+          <Route path="/ba-smu" element={<BA_SMU />} />
+          <Route path="/ma-smu" element={<MA_SMU />} />
+          <Route path="/bcom-smu" element={<BCOM_SMU />} />
+          <Route path="/mcom-smu" element={<MCOM_SMU />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
