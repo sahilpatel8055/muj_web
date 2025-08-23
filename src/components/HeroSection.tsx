@@ -28,7 +28,7 @@ const AnimatedNumber = ({ endValue, duration = 2000 }) => {
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[85vh] flex hero-pattern overflow-hidden pt-24 pb-8">
+    <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-24 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Left Content */}
@@ -131,8 +131,10 @@ const HeroSection = () => {
           </div>
 
           {/* Right Counseling Form */}
-          <div className="lg:col-span-3 flex justify-center items-start">
-            <CounselingForm />
+          <div className="lg:col-span-3 flex justify-end items-start">
+            <div className="w-full max-w-xs">
+              <CounselingForm />
+            </div>
           </div>
         </div>
       </div>

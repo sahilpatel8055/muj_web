@@ -29,9 +29,9 @@ const CounselingForm = () => {
   };
 
   return (
-    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-6 shadow-lg w-full max-w-md">
-      <div className="text-center mb-6">
-        <h3 className="text-lg font-bold text-foreground mb-2">
+    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm">
+      <div className="text-center mb-4">
+        <h3 className="text-base font-bold text-foreground mb-2">
           Join <span className="text-primary">50,000+</span> Learners Across India
         </h3>
         <div className="flex items-center justify-center gap-4 mb-4">
@@ -113,7 +113,7 @@ const CounselingForm = () => {
 
         <Button 
           type="submit" 
-          className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-lg py-6"
+          className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-sm py-3"
           disabled={!formData.consent}
         >
           Enroll Now

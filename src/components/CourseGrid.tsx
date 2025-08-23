@@ -6,6 +6,7 @@ import courseMCA from '@/assets/course-mca.jpg';
 import courseBBA from '@/assets/course-bba.jpg';
 import courseBCA from '@/assets/course-bca.jpg';
 import courseBCom from '@/assets/course-bcom.jpg';
+import mujLogo from '@/assets/muj_logo-removebg-preview.png';
 
 const CourseGrid = () => {
   const courses = [
@@ -93,8 +94,9 @@ const CourseGrid = () => {
                     className="w-full h-48 object-cover rounded-t-lg"
                   />
                   {course.popular && (
-                    <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
-                      Popular
+                   <Badge className="absolute top-3 left-3 bg-blue-600 text-white flex items-center gap-1 text-xs">
+                      <img src={mujLogo} alt="" className="w-3 h-3 object-contain" />
+                      Manipal University Jaipur
                     </Badge>
                   )}
                   <div className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm rounded-full p-2">
@@ -138,7 +140,7 @@ const CourseGrid = () => {
         {/* View All Button */}
         <div className="text-center mt-12">
           <a
-            href="/courses"
+            href="/all-courses"
             className="inline-flex items-center space-x-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:opacity-90 transition-smooth font-medium"
           >
             <span>View All Courses</span>

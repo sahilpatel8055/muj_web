@@ -37,15 +37,15 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-4 left-4 right-4 z-50 bg-background/90 backdrop-blur-lg border border-border rounded-2xl shadow-lg">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg">
+      <div className="px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
             <img 
               src="/src/assets/muj_logo-removebg-preview.png" 
               alt="Manipal University Jaipur" 
-              className="h-20 w-auto"
+              className="h-16 w-auto"
             />
           </div>
 
@@ -92,11 +92,11 @@ const Header = () => {
 
           {/* Right side - Search and CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
-              <Search className="w-4 h-4" />
-            </Button>
             <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
               Apply Now
+            </Button>
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+              <Search className="w-4 h-4" />
             </Button>
           </div>
 
