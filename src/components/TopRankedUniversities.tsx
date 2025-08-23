@@ -9,24 +9,24 @@ const universities = [
     id: 1,
     name: "Manipal University Jaipur",
     ranking: "#1 Private University",
-    image: "/src/assets/campus/manipal-jaipur.jpg",
-    backgroundColor: "bg-[#e5d8ff]", // A light purple color
+    image: "/src/assets/campus/muj1.png", // Corrected image path
+    backgroundColor: "bg-[#e5d8ff]",
     link: "/muj"
   },
   {
-    id: 3, // New university added
+    id: 3,
     name: "Manipal Academy of Higher Education",
     ranking: "Ranks 4th amongst all Universities",
-    image: "/src/assets/campus/mahe.jpg", // Using the provided path
-    backgroundColor: "bg-[#b1e1ff]", // A light blue color
+    image: "/src/assets/campus/mahe.png", // Corrected image path
+    backgroundColor: "bg-[#b1e1ff]",
     link: "/mahe"
   },
   {
     id: 2,
     name: "Sikkim Manipal University",
     ranking: "#2 Distance Education",
-    image: "/src/assets/campus/sikkim-manipal.jpg",
-    backgroundColor: "bg-[#c6f3ff]", // A light cyan color
+    image: "/src/assets/campus/smu.png", // Corrected image path
+    backgroundColor: "bg-[#c6f3ff]",
     link: "/smu"
   },
 ];
