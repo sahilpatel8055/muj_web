@@ -3,30 +3,34 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, BookOpen, Award } from "lucide-react";
 
-// Redefine the university data to match the new design
+// Import your campus images here
+import mujImage from '@/assets/campus/muj1.png';
+import smuImage from '@/assets/campus/smu.png';
+import maheImage from '@/assets/campus/mahe.png';
+
 const universities = [
   {
     id: 1,
     name: "Manipal University Jaipur",
     ranking: "#1 Private University",
-    image: "/src/assets/campus/muj1.png", // Corrected image path
-    backgroundColor: "bg-[#e5d8ff]",
+    image: mujImage,
+    backgroundColor: "bg-[#e5d8ff]", // A light purple color
     link: "/muj"
   },
   {
     id: 3,
     name: "Manipal Academy of Higher Education",
     ranking: "Ranks 4th amongst all Universities",
-    image: "/src/assets/campus/mahe.png", // Corrected image path
-    backgroundColor: "bg-[#b1e1ff]",
+    image: maheImage,
+    backgroundColor: "bg-[#b1e1ff]", // A light blue color
     link: "/mahe"
   },
   {
     id: 2,
     name: "Sikkim Manipal University",
     ranking: "#2 Distance Education",
-    image: "/src/assets/campus/smu.png", // Corrected image path
-    backgroundColor: "bg-[#c6f3ff]",
+    image: smuImage,
+    backgroundColor: "bg-[#c6f3ff]", // A light cyan color
     link: "/smu"
   },
 ];
