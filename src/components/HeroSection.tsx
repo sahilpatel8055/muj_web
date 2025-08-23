@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Award } from 'lucide-react'; // Play icon removed as button is removed
+import { Award, Play } from 'lucide-react';
 import heroImage from '@/assets/ChatGPT_Image_Aug_22__2025__02_36_01_PM-removebg-preview.png';
 import ugcIcon from '@/assets/icons/ugc.png';
 import React, { useState, useEffect } from 'react';
@@ -28,7 +28,7 @@ const AnimatedNumber = ({ endValue, duration = 2000 }) => {
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-16 sm:pt-24 lg:pt-24"> {/* Adjusted pt for mobile */}
+    <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-24 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Left Content */}
@@ -78,7 +78,14 @@ const HeroSection = () => {
               >
                 Apply Now
               </Button>
-              {/* "Watch Video" button removed */}
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth text-lg px-8 py-6"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Watch Video
+              </Button>
             </div>
 
             {/* Stats with Animation */}
@@ -104,13 +111,13 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Center Image (Hero Man) */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-start items-center"> {/* Changed col-span to 5, added lg:justify-start */}
+          {/* Center Image */}
+          <div className="lg:col-span-4 relative flex justify-center items-center"> 
             <div className="relative w-full flex items-center justify-center">
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-auto object-contain rounded-2xl lg:h-[400px] lg:w-auto"
+                className="w-full h-auto object-contain rounded-2xl lg:h-[400px] lg:w-auto" 
               />
               
               {/* Floating Badge */}
@@ -124,9 +131,9 @@ const HeroSection = () => {
           </div>
 
           {/* Right Counseling Form */}
-          <div className="lg:col-span-2 flex justify-end items-start mt-8 lg:mt-0"> {/* Changed col-span to 2, adjusted mt for mobile */}
-            <div className="w-full max-w-sm lg:w-[120%]"> {/* Increased width for laptop/tablet */}
-              <CounselingForm className="lg:py-4" /> {/* Decreased height for laptop/tablet */}
+          <div className="lg:col-span-3 flex justify-end items-start">
+            <div className="w-full max-w-sm">
+              <CounselingForm />
             </div>
           </div>
         </div>
