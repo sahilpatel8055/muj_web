@@ -28,11 +28,11 @@ const AnimatedNumber = ({ endValue, duration = 2000 }) => {
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-24 pb-8">
+    <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-28 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Left Content */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="lg:col-span-5 space-y-4">
             {/* UGC Badge */}
             <div className="flex items-center space-x-2">
               <img src={ugcIcon} alt="UGC Entitled" className="w-5 h-5" />
@@ -42,7 +42,7 @@ const HeroSection = () => {
             </div>
 
             {/* Main Headline */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Education That
                 <br />
