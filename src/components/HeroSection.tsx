@@ -70,21 +70,13 @@ const HeroSection = () => {
               </p>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* CTA Button */}
+            <div className="flex justify-start">
               <Button 
                 size="lg" 
                 className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary text-lg px-8 py-6"
               >
                 Apply Now
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth text-lg px-8 py-6"
-              >
-                <Play className="w-5 h-5 mr-2" />
-                Watch Video
               </Button>
             </div>
 
@@ -120,11 +112,11 @@ const HeroSection = () => {
                 className="w-full h-auto object-contain rounded-2xl lg:h-[400px] lg:w-auto" 
               />
               
-              {/* Floating Badge */}
-              <div className="absolute top-8 left-8 bg-primary text-primary-foreground rounded-full p-3 shadow-primary">
+              {/* Floating Badge - Smaller and repositioned */}
+              <div className="absolute top-4 right-4 bg-primary text-primary-foreground rounded-full p-2 shadow-primary">
                 <div className="text-center">
-                  <div className="text-lg font-bold">360°</div>
-                  <div className="text-xs">DEGREE OF SUCCESS</div>
+                  <div className="text-sm font-bold">360°</div>
+                  <div className="text-xs">SUCCESS</div>
                 </div>
               </div>
             </div>
@@ -132,7 +124,7 @@ const HeroSection = () => {
 
           {/* Right Counseling Form */}
           <div className="lg:col-span-3 flex justify-end items-start">
-            <div className="w-full max-w-sm">
+            <div className="w-full max-w-md lg:max-w-lg">
               <CounselingForm />
             </div>
           </div>

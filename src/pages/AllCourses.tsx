@@ -18,6 +18,7 @@ import smuLogo from '@/assets/smulogo.jpg';
 
 const AllCourses = () => {
   const [activeTab, setActiveTab] = useState('UG');
+  const [activeUniversity, setActiveUniversity] = useState('All');
 
   const ugCourses = [
     {
@@ -146,7 +147,14 @@ const AllCourses = () => {
     }
   ];
 
-  const displayCourses = activeTab === 'UG' ? ugCourses : pgCourses;
+  const currentCourses = activeTab === 'UG' ? ugCourses : pgCourses;
+  const displayCourses = activeUniversity === 'All' 
+    ? currentCourses 
+    : currentCourses.filter(course => 
+        activeUniversity === 'MUJ' 
+          ? course.institution.includes('Manipal University Jaipur')
+          : course.institution.includes('Sikkim Manipal University')
+      );
 
   return (
     <div className="min-h-screen bg-background">
@@ -168,21 +176,49 @@ const AllCourses = () => {
         {/* Course Filter */}
         <section className="py-8 border-b">
           <div className="container mx-auto px-4">
-            <div className="flex justify-center gap-4">
-              <Button
-                variant={activeTab === 'UG' ? 'default' : 'outline'}
-                onClick={() => setActiveTab('UG')}
-                className={activeTab === 'UG' ? 'bg-gradient-primary' : ''}
-              >
-                Undergraduate (UG)
-              </Button>
-              <Button
-                variant={activeTab === 'PG' ? 'default' : 'outline'}
-                onClick={() => setActiveTab('PG')}
-                className={activeTab === 'PG' ? 'bg-gradient-primary' : ''}
-              >
-                Postgraduate (PG)
-              </Button>
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-center gap-4">
+                <Button
+                  variant={activeTab === 'UG' ? 'default' : 'outline'}
+                  onClick={() => setActiveTab('UG')}
+                  className={activeTab === 'UG' ? 'bg-gradient-primary' : ''}
+                >
+                  Undergraduate (UG)
+                </Button>
+                <Button
+                  variant={activeTab === 'PG' ? 'default' : 'outline'}
+                  onClick={() => setActiveTab('PG')}
+                  className={activeTab === 'PG' ? 'bg-gradient-primary' : ''}
+                >
+                  Postgraduate (PG)
+                </Button>
+              </div>
+              <div className="flex justify-center gap-2">
+                <Button
+                  variant={activeUniversity === 'All' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setActiveUniversity('All')}
+                  className={activeUniversity === 'All' ? 'bg-gradient-primary' : ''}
+                >
+                  All Universities
+                </Button>
+                <Button
+                  variant={activeUniversity === 'MUJ' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setActiveUniversity('MUJ')}
+                  className={activeUniversity === 'MUJ' ? 'bg-gradient-primary' : ''}
+                >
+                  MUJ
+                </Button>
+                <Button
+                  variant={activeUniversity === 'SMU' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setActiveUniversity('SMU')}
+                  className={activeUniversity === 'SMU' ? 'bg-gradient-primary' : ''}
+                >
+                  SMU
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -199,21 +235,41 @@ const AllCourses = () => {
               </Badge>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {displayCourses.map((course, index) => (
-                <CourseCard
-                  key={index}
-                  title={course.title}
-                  institution={course.institution}
-                  duration={course.duration}
-                  rating={course.rating}
-                  students={course.students}
-                  imageUrl={course.imageUrl}
-                  institutionLogo={course.institutionLogo}
-                  institutionBadgeColor={course.institutionBadgeColor}
-                  href={course.href}
-                />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-x-auto">
+              <div className="flex gap-8 md:grid md:grid-cols-1 md:gap-8">
+                {displayCourses.slice(0, Math.ceil(displayCourses.length / 2)).map((course, index) => (
+                  <div key={index} className="min-w-[300px] md:min-w-0">
+                    <CourseCard
+                      title={course.title}
+                      institution={course.institution}
+                      duration={course.duration}
+                      rating={course.rating}
+                      students={course.students}
+                      imageUrl={course.imageUrl}
+                      institutionLogo={course.institutionLogo}
+                      institutionBadgeColor={course.institutionBadgeColor}
+                      href={course.href}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-8 md:grid md:grid-cols-1 md:gap-8">
+                {displayCourses.slice(Math.ceil(displayCourses.length / 2)).map((course, index) => (
+                  <div key={index + Math.ceil(displayCourses.length / 2)} className="min-w-[300px] md:min-w-0">
+                    <CourseCard
+                      title={course.title}
+                      institution={course.institution}
+                      duration={course.duration}
+                      rating={course.rating}
+                      students={course.students}
+                      imageUrl={course.imageUrl}
+                      institutionLogo={course.institutionLogo}
+                      institutionBadgeColor={course.institutionBadgeColor}
+                      href={course.href}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

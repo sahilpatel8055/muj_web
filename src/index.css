@@ -149,11 +149,11 @@ All colors MUST be HSL. Inspired by modern educational excellence.
   
   /* Responsive spacing utilities */
   .section-spacing {
-    @apply py-8 md:py-12 lg:py-16;
+    @apply py-6 md:py-8 lg:py-12;
   }
   
   .section-spacing-small {
-    @apply py-6 md:py-8 lg:py-10;
+    @apply py-4 md:py-6 lg:py-8;
   }
   
   .font-inter {

@@ -52,7 +52,7 @@ const Header = () => {
               <img 
                 src={mujLogo} 
                 alt="Online Manipal - Education Platform" 
-                className="h-16 w-auto object-contain"
+                className="h-22 w-auto object-contain"
               />
             </Link>
           </div>
@@ -105,34 +105,6 @@ const Header = () => {
 
           {/* Mobile navigation (visible on mobile) */}
           <div className="flex items-center space-x-4 lg:hidden">
-            {navigationItems.filter(item => item.hasDropdown).map(item => (
-              <div key={item.title} className="relative">
-                <button
-                  onClick={() => handleMobileDropdownToggle(item.title)}
-                  className="flex items-center space-x-1 text-foreground hover:text-primary transition-smooth font-medium"
-                >
-                  <span>{item.title.split(' ')[0]}</span>
-                  <ChevronDown className={cn(
-                    "w-4 h-4 transition-transform",
-                    openDropdown === item.title && "rotate-180"
-                  )} />
-                </button>
-                 {openDropdown === item.title && (
-                   <div className="absolute top-full right-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-lg p-2 z-50 backdrop-blur-sm">
-                     {item.items?.map((subItem) => (
-                       <a
-                         key={subItem.name}
-                         href={subItem.href}
-                         className="block px-4 py-2 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth"
-                       >
-                         {subItem.name}
-                       </a>
-                     ))}
-                   </div>
-                 )}
-              </div>
-            ))}
-            
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -147,9 +119,26 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border">
             <nav className="space-y-4">
+              {/* Dropdown items under three dots */}
+              {navigationItems.filter(item => item.hasDropdown).map(item => (
+                <div key={item.title} className="space-y-2">
+                  <div className="font-medium text-foreground px-2">{item.title}</div>
+                  <div className="pl-4 space-y-1">
+                    {item.items?.map((subItem) => (
+                      <a
+                        key={subItem.name}
+                        href={subItem.href}
+                        className="block px-2 py-1 text-sm text-muted-foreground hover:text-primary transition-smooth"
+                      >
+                        {subItem.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
               <a
                 href={navigationItems.find(item => !item.hasDropdown)?.href}
-                className="block text-foreground hover:text-primary transition-smooth font-medium"
+                className="block text-foreground hover:text-primary transition-smooth font-medium px-2"
               >
                 {navigationItems.find(item => !item.hasDropdown)?.title}
               </a>

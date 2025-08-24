@@ -63,25 +63,8 @@ const BA_SMU = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Floating Navigation Dots */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 space-y-3">
-        {navigationDots.map((dot) => (
-          <button
-            key={dot.id}
-            onClick={() => scrollToSection(dot.id)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 relative group ${
-              activeSection === dot.id ? 'bg-primary scale-125' : 'bg-muted-foreground/30 hover:bg-primary/60'
-            }`}
-            title={dot.label}
-          >
-            <span className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-              {dot.label}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <main className="pt-20">
+      
+      <main className="pt-24">
         {/* Hero Section */}
         <section 
           id="overview" 

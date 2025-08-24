@@ -29,7 +29,7 @@ const CounselingForm = () => {
   };
 
   return (
-    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-3 shadow-lg w-full max-w-xs">
+    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm lg:max-w-md lg:h-[400px]">
       <div className="text-center mb-3">
         <h3 className="text-sm font-bold text-foreground mb-1">
           Join <span className="text-primary">50,000+</span> Learners Across India
