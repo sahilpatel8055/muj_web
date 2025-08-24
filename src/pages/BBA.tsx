@@ -83,7 +83,7 @@ const BBA = () => {
       
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16" style={{ backgroundColor: '#E6E0FF' }}>
+      <section className="pt-16 pb-16 mt-8" style={{ backgroundColor: '#E6E0FF' }}>
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

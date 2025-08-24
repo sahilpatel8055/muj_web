@@ -52,7 +52,7 @@ const Header = () => {
               <img 
                 src={mujLogo} 
                 alt="Online Manipal - Education Platform" 
-                className="h-22 w-auto object-contain"
+                className="h-16 w-auto object-contain max-w-[280px]"
               />
             </Link>
           </div>

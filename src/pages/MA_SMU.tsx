@@ -64,12 +64,12 @@ const MA_SMU = () => {
       <Header />
       
       
-      <main className="pt-24">
+      <main className="pt-16">
         {/* Hero Section */}
         <section 
           id="overview" 
           ref={(el) => sectionsRef.current.overview = el}
-          className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-800/20"
+          className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-800/20 mt-8"
         >
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">

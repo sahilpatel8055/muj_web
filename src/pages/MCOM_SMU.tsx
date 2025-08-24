@@ -29,8 +29,8 @@ const MCOM_SMU = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-24">
-        <section className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-800/20">
+      <main className="pt-16">
+        <section className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-800/20 mt-8">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
