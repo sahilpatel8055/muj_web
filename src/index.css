@@ -144,6 +144,16 @@ All colors MUST be HSL. Inspired by modern educational excellence.
 
   body {
     @apply bg-background text-foreground font-queen antialiased;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  /* Responsive spacing utilities */
+  .section-spacing {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+  
+  .section-spacing-small {
+    @apply py-6 md:py-8 lg:py-10;
   }
   
   .font-inter {
@@ -170,5 +180,23 @@ All colors MUST be HSL. Inspired by modern educational excellence.
     background-image: 
       radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.05) 0%, transparent 50%);
+  }
+  
+  /* Fix container max-width for better mobile experience */
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+  
+  /* Responsive container padding */
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 }

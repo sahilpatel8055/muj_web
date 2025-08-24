@@ -13,6 +13,7 @@ const SMU = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
+      <main className="pt-28">
 
       {/* Hero Section */}
       <section className="py-20" style={{ backgroundColor: '#F0E6FF' }}>
@@ -193,37 +194,37 @@ const SMU = () => {
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
               <h3 className="text-xl font-semibold mb-2">Master of Business Administration (MBA)</h3>
               <p className="text-muted-foreground mb-4">2 Years | Management Excellence</p>
-              <Button className="w-full">Explore MBA</Button>
+              <Button className="w-full" onClick={() => window.location.href='/mba-smu'}>Explore MBA</Button>
             </Card>
             
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
               <h3 className="text-xl font-semibold mb-2">Master of Computer Applications (MCA)</h3>
               <p className="text-muted-foreground mb-4">2 Years | IT Leadership</p>
-              <Button className="w-full">Explore MCA</Button>
+              <Button className="w-full" onClick={() => window.location.href='/mca-smu'}>Explore MCA</Button>
             </Card>
             
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
               <h3 className="text-xl font-semibold mb-2">Bachelor of Business Administration (BBA)</h3>
               <p className="text-muted-foreground mb-4">3 Years | Business Skills</p>
-              <Button className="w-full">Explore BBA</Button>
+              <Button className="w-full" onClick={() => window.location.href='/ba-smu'}>Explore BBA</Button>
             </Card>
             
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
               <h3 className="text-xl font-semibold mb-2">Bachelor of Computer Applications (BCA)</h3>
               <p className="text-muted-foreground mb-4">3 Years | Tech Foundation</p>
-              <Button className="w-full">Explore BCA</Button>
+              <Button className="w-full" onClick={() => window.location.href='/bca'}>Explore BCA</Button>
             </Card>
             
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
               <h3 className="text-xl font-semibold mb-2">Bachelor of Commerce (BCom)</h3>
               <p className="text-muted-foreground mb-4">3 Years | Commerce Knowledge</p>
-              <Button className="w-full">Explore BCom</Button>
+              <Button className="w-full" onClick={() => window.location.href='/bcom-smu'}>Explore BCom</Button>
             </Card>
             
             <Card className="p-6 hover:shadow-lg transition-all duration-300">
               <h3 className="text-xl font-semibold mb-2">Master of Commerce (MCom)</h3>
               <p className="text-muted-foreground mb-4">2 Years | Advanced Commerce</p>
-              <Button className="w-full">Explore MCom</Button>
+              <Button className="w-full" onClick={() => window.location.href='/mcom-smu'}>Explore MCom</Button>
             </Card>
           </div>
         </div>
@@ -286,6 +287,8 @@ const SMU = () => {
           </div>
         </div>
       </section>
+
+       </main>
 
       <Footer />
     </div>

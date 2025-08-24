@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronDown, Menu, X, Search, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import mujLogo from '@/assets/muj_logo-removebg-preview.png';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,11 +48,13 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src={mujLogo} 
-              alt="Manipal University Jaipur" 
-              className="h-12 w-auto"
-            />
+            <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <img 
+                src={mujLogo} 
+                alt="Online Manipal - Education Platform" 
+                className="h-16 w-auto object-contain"
+              />
+            </Link>
           </div>
 
           {/* Desktop & Tablet Navigation */}
@@ -69,19 +72,19 @@ const Header = () => {
                       <span>{item.title}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
-                    {openDropdown === item.title && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-card border border-border rounded-lg shadow-lg p-2">
-                        {item.items?.map((subItem) => (
-                          <a
-                            key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-3 text-card-foreground hover:bg-accent rounded-md transition-smooth"
-                          >
-                            {subItem.name}
-                          </a>
-                        ))}
-                      </div>
-                    )}
+                     {openDropdown === item.title && (
+                       <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg p-2 z-50 backdrop-blur-sm">
+                         {item.items?.map((subItem) => (
+                           <a
+                             key={subItem.name}
+                             href={subItem.href}
+                             className="block px-4 py-3 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth"
+                           >
+                             {subItem.name}
+                           </a>
+                         ))}
+                       </div>
+                     )}
                   </>
                 ) : (
                   <a
@@ -114,19 +117,19 @@ const Header = () => {
                     openDropdown === item.title && "rotate-180"
                   )} />
                 </button>
-                {openDropdown === item.title && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg p-2 z-50">
-                    {item.items?.map((subItem) => (
-                      <a
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-4 py-2 text-card-foreground hover:bg-accent rounded-md transition-smooth"
-                      >
-                        {subItem.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
+                 {openDropdown === item.title && (
+                   <div className="absolute top-full right-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-lg p-2 z-50 backdrop-blur-sm">
+                     {item.items?.map((subItem) => (
+                       <a
+                         key={subItem.name}
+                         href={subItem.href}
+                         className="block px-4 py-2 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth"
+                       >
+                         {subItem.name}
+                       </a>
+                     ))}
+                   </div>
+                 )}
               </div>
             ))}
             
