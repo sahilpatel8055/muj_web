@@ -160,9 +160,9 @@ const AllCourses = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-16">
+      <main className="pt-24">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary/10 to-primary/5 py-16 mt-8">
+        <section className="bg-gradient-to-r from-primary/10 to-primary/5 py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               All Online Courses
@@ -180,14 +180,20 @@ const AllCourses = () => {
               <div className="flex justify-center gap-4">
                 <Button
                   variant={activeTab === 'UG' ? 'default' : 'outline'}
-                  onClick={() => setActiveTab('UG')}
+                  onClick={() => {
+                    setActiveTab('UG');
+                    setActiveUniversity('All');
+                  }}
                   className={activeTab === 'UG' ? 'bg-gradient-primary' : ''}
                 >
                   Undergraduate (UG)
                 </Button>
                 <Button
                   variant={activeTab === 'PG' ? 'default' : 'outline'}
-                  onClick={() => setActiveTab('PG')}
+                  onClick={() => {
+                    setActiveTab('PG');
+                    setActiveUniversity('All');
+                  }}
                   className={activeTab === 'PG' ? 'bg-gradient-primary' : ''}
                 >
                   Postgraduate (PG)
@@ -223,8 +229,41 @@ const AllCourses = () => {
           </div>
         </section>
 
+        {/* Filtered Courses Display */}
+        <section className="py-8 bg-gradient-to-r from-primary/10 to-primary/5">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">
+                {activeTab === 'UG' ? 'Undergraduate' : 'Postgraduate'} Programs
+                {activeUniversity !== 'All' && ` - ${activeUniversity === 'MUJ' ? 'Manipal University Jaipur' : 'Sikkim Manipal University'}`}
+              </h2>
+              <Badge variant="secondary" className="text-sm">
+                {displayCourses.length} Course{displayCourses.length !== 1 ? 's' : ''} Available
+              </Badge>
+            </div>
+            
+            <div className="flex overflow-x-auto gap-4 pb-4">
+              {displayCourses.map((course, index) => (
+                <div key={index} className="min-w-[320px] flex-shrink-0">
+                  <CourseCard
+                    title={course.title}
+                    institution={course.institution}
+                    duration={course.duration}
+                    rating={course.rating}
+                    students={course.students}
+                    imageUrl={course.imageUrl}
+                    institutionLogo={course.institutionLogo}
+                    institutionBadgeColor={course.institutionBadgeColor}
+                    href={course.href}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Postgraduate Programs Section */}
-        <section className="py-12 bg-gradient-to-r from-primary/10 to-primary/5">
+        <section className="py-8">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold">Postgraduate Programs</h2>
@@ -233,47 +272,28 @@ const AllCourses = () => {
               </Badge>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-x-auto">
-              <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                {pgCourses.slice(0, Math.ceil(pgCourses.length / 2)).map((course, index) => (
-                  <div key={index} className="min-w-[320px] md:min-w-0">
-                    <CourseCard
-                      title={course.title}
-                      institution={course.institution}
-                      duration={course.duration}
-                      rating={course.rating}
-                      students={course.students}
-                      imageUrl={course.imageUrl}
-                      institutionLogo={course.institutionLogo}
-                      institutionBadgeColor={course.institutionBadgeColor}
-                      href={course.href}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                {pgCourses.slice(Math.ceil(pgCourses.length / 2)).map((course, index) => (
-                  <div key={index + Math.ceil(pgCourses.length / 2)} className="min-w-[320px] md:min-w-0">
-                    <CourseCard
-                      title={course.title}
-                      institution={course.institution}
-                      duration={course.duration}
-                      rating={course.rating}
-                      students={course.students}
-                      imageUrl={course.imageUrl}
-                      institutionLogo={course.institutionLogo}
-                      institutionBadgeColor={course.institutionBadgeColor}
-                      href={course.href}
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="flex overflow-x-auto gap-4 pb-4">
+              {pgCourses.map((course, index) => (
+                <div key={index} className="min-w-[320px] flex-shrink-0">
+                  <CourseCard
+                    title={course.title}
+                    institution={course.institution}
+                    duration={course.duration}
+                    rating={course.rating}
+                    students={course.students}
+                    imageUrl={course.imageUrl}
+                    institutionLogo={course.institutionLogo}
+                    institutionBadgeColor={course.institutionBadgeColor}
+                    href={course.href}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Undergraduate Programs Section */}
-        <section className="py-12">
+        <section className="py-8 bg-muted/20">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold">Undergraduate Programs</h2>
@@ -282,52 +302,33 @@ const AllCourses = () => {
               </Badge>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-x-auto">
-              <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                {ugCourses.slice(0, Math.ceil(ugCourses.length / 2)).map((course, index) => (
-                  <div key={index} className="min-w-[320px] md:min-w-0">
-                    <CourseCard
-                      title={course.title}
-                      institution={course.institution}
-                      duration={course.duration}
-                      rating={course.rating}
-                      students={course.students}
-                      imageUrl={course.imageUrl}
-                      institutionLogo={course.institutionLogo}
-                      institutionBadgeColor={course.institutionBadgeColor}
-                      href={course.href}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                {ugCourses.slice(Math.ceil(ugCourses.length / 2)).map((course, index) => (
-                  <div key={index + Math.ceil(ugCourses.length / 2)} className="min-w-[320px] md:min-w-0">
-                    <CourseCard
-                      title={course.title}
-                      institution={course.institution}
-                      duration={course.duration}
-                      rating={course.rating}
-                      students={course.students}
-                      imageUrl={course.imageUrl}
-                      institutionLogo={course.institutionLogo}
-                      institutionBadgeColor={course.institutionBadgeColor}
-                      href={course.href}
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="flex overflow-x-auto gap-4 pb-4">
+              {ugCourses.map((course, index) => (
+                <div key={index} className="min-w-[320px] flex-shrink-0">
+                  <CourseCard
+                    title={course.title}
+                    institution={course.institution}
+                    duration={course.duration}
+                    rating={course.rating}
+                    students={course.students}
+                    imageUrl={course.imageUrl}
+                    institutionLogo={course.institutionLogo}
+                    institutionBadgeColor={course.institutionBadgeColor}
+                    href={course.href}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* University-wise Courses */}
-        <section className="py-12 bg-muted/20">
+        <section className="py-8">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">University-wise Programs</h2>
             
             {/* Manipal University Jaipur */}
-            <div className="mb-16">
+            <div className="mb-12">
               <div className="flex items-center justify-center mb-8">
                 <img src={mujLogo} alt="Manipal University Jaipur" className="h-12 w-auto mr-4" />
                 <h3 className="text-2xl font-bold">Manipal University Jaipur</h3>
@@ -335,60 +336,42 @@ const AllCourses = () => {
               
               <div className="mb-8">
                 <h4 className="text-xl font-semibold mb-4">Postgraduate Programs</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-x-auto">
-                  <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                    {pgCourses.filter(course => course.institution.includes('Manipal University Jaipur')).slice(0, 1).map((course, index) => (
-                      <div key={index} className="min-w-[320px] md:min-w-0">
-                        <CourseCard
-                          title={course.title}
-                          institution={course.institution}
-                          duration={course.duration}
-                          rating={course.rating}
-                          students={course.students}
-                          imageUrl={course.imageUrl}
-                          institutionLogo={course.institutionLogo}
-                          institutionBadgeColor={course.institutionBadgeColor}
-                          href={course.href}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                    {pgCourses.filter(course => course.institution.includes('Manipal University Jaipur')).slice(1).map((course, index) => (
-                      <div key={index + 1} className="min-w-[320px] md:min-w-0">
-                        <CourseCard
-                          title={course.title}
-                          institution={course.institution}
-                          duration={course.duration}
-                          rating={course.rating}
-                          students={course.students}
-                          imageUrl={course.imageUrl}
-                          institutionLogo={course.institutionLogo}
-                          institutionBadgeColor={course.institutionBadgeColor}
-                          href={course.href}
-                        />
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex overflow-x-auto gap-4 pb-4">
+                  {pgCourses.filter(course => course.institution.includes('Manipal University Jaipur')).map((course, index) => (
+                    <div key={index} className="min-w-[320px] flex-shrink-0">
+                      <CourseCard
+                        title={course.title}
+                        institution={course.institution}
+                        duration={course.duration}
+                        rating={course.rating}
+                        students={course.students}
+                        imageUrl={course.imageUrl}
+                        institutionLogo={course.institutionLogo}
+                        institutionBadgeColor={course.institutionBadgeColor}
+                        href={course.href}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               
               <div>
                 <h4 className="text-xl font-semibold mb-4">Undergraduate Programs</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex overflow-x-auto gap-4 pb-4">
                   {ugCourses.filter(course => course.institution.includes('Manipal University Jaipur')).map((course, index) => (
-                    <CourseCard
-                      key={index}
-                      title={course.title}
-                      institution={course.institution}
-                      duration={course.duration}
-                      rating={course.rating}
-                      students={course.students}
-                      imageUrl={course.imageUrl}
-                      institutionLogo={course.institutionLogo}
-                      institutionBadgeColor={course.institutionBadgeColor}
-                      href={course.href}
-                    />
+                    <div key={index} className="min-w-[320px] flex-shrink-0">
+                      <CourseCard
+                        title={course.title}
+                        institution={course.institution}
+                        duration={course.duration}
+                        rating={course.rating}
+                        students={course.students}
+                        imageUrl={course.imageUrl}
+                        institutionLogo={course.institutionLogo}
+                        institutionBadgeColor={course.institutionBadgeColor}
+                        href={course.href}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -403,60 +386,42 @@ const AllCourses = () => {
               
               <div className="mb-8">
                 <h4 className="text-xl font-semibold mb-4">Postgraduate Programs</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-x-auto">
-                  <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                    {pgCourses.filter(course => course.institution.includes('Sikkim Manipal University')).slice(0, 2).map((course, index) => (
-                      <div key={index} className="min-w-[320px] md:min-w-0">
-                        <CourseCard
-                          title={course.title}
-                          institution={course.institution}
-                          duration={course.duration}
-                          rating={course.rating}
-                          students={course.students}
-                          imageUrl={course.imageUrl}
-                          institutionLogo={course.institutionLogo}
-                          institutionBadgeColor={course.institutionBadgeColor}
-                          href={course.href}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex gap-6 md:grid md:grid-cols-1 md:gap-6">
-                    {pgCourses.filter(course => course.institution.includes('Sikkim Manipal University')).slice(2).map((course, index) => (
-                      <div key={index + 2} className="min-w-[320px] md:min-w-0">
-                        <CourseCard
-                          title={course.title}
-                          institution={course.institution}
-                          duration={course.duration}
-                          rating={course.rating}
-                          students={course.students}
-                          imageUrl={course.imageUrl}
-                          institutionLogo={course.institutionLogo}
-                          institutionBadgeColor={course.institutionBadgeColor}
-                          href={course.href}
-                        />
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex overflow-x-auto gap-4 pb-4">
+                  {pgCourses.filter(course => course.institution.includes('Sikkim Manipal University')).map((course, index) => (
+                    <div key={index} className="min-w-[320px] flex-shrink-0">
+                      <CourseCard
+                        title={course.title}
+                        institution={course.institution}
+                        duration={course.duration}
+                        rating={course.rating}
+                        students={course.students}
+                        imageUrl={course.imageUrl}
+                        institutionLogo={course.institutionLogo}
+                        institutionBadgeColor={course.institutionBadgeColor}
+                        href={course.href}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
               
               <div>
                 <h4 className="text-xl font-semibold mb-4">Undergraduate Programs</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex overflow-x-auto gap-4 pb-4">
                   {ugCourses.filter(course => course.institution.includes('Sikkim Manipal University')).map((course, index) => (
-                    <CourseCard
-                      key={index}
-                      title={course.title}
-                      institution={course.institution}
-                      duration={course.duration}
-                      rating={course.rating}
-                      students={course.students}
-                      imageUrl={course.imageUrl}
-                      institutionLogo={course.institutionLogo}
-                      institutionBadgeColor={course.institutionBadgeColor}
-                      href={course.href}
-                    />
+                    <div key={index} className="min-w-[320px] flex-shrink-0">
+                      <CourseCard
+                        title={course.title}
+                        institution={course.institution}
+                        duration={course.duration}
+                        rating={course.rating}
+                        students={course.students}
+                        imageUrl={course.imageUrl}
+                        institutionLogo={course.institutionLogo}
+                        institutionBadgeColor={course.institutionBadgeColor}
+                        href={course.href}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>

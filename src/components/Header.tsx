@@ -52,7 +52,7 @@ const Header = () => {
               <img 
                 src={mujLogo} 
                 alt="Online Manipal - Education Platform" 
-                className="h-16 w-auto object-contain max-w-[280px]"
+                className="h-16 w-auto object-contain max-w-[320px]"
               />
             </Link>
           </div>
@@ -110,7 +110,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-foreground hover:text-primary transition-smooth"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <MoreVertical className="w-6 h-6" />}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
