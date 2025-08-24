@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Menu, X, Search, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import mujLogo from '@/assets/muj_logo-removebg-preview.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +48,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/src/assets/muj_logo-removebg-preview.png" 
+              src={mujLogo} 
               alt="Manipal University Jaipur" 
               className="h-12 w-auto"
             />
