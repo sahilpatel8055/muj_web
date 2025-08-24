@@ -31,8 +31,8 @@ const HeroSection = () => {
     <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-28 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
-          {/* Left Content */}
-          <div className="lg:col-span-5 space-y-3">
+          {/* Left Content - Now spans 6 columns */}
+          <div className="lg:col-span-6 space-y-3">
             {/* UGC Badge */}
             <div className="flex items-center space-x-2">
               <img src={ugcIcon} alt="UGC Entitled" className="w-5 h-5" />
@@ -49,15 +49,15 @@ const HeroSection = () => {
                 Powers Your{' '}
                 <span className="relative">
                   <span className="text-gradient">Ambition</span>
-                  <svg 
-                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/30" 
-                    viewBox="0 0 100 10" 
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/30"
+                    viewBox="0 0 100 10"
                     preserveAspectRatio="none"
                   >
-                    <path 
-                      d="M0,8 Q25,2 50,6 T100,4" 
-                      stroke="currentColor" 
-                      strokeWidth="2" 
+                    <path
+                      d="M0,8 Q25,2 50,6 T100,4"
+                      stroke="currentColor"
+                      strokeWidth="2"
                       fill="none"
                       className="animate-pulse"
                     />
@@ -72,8 +72,8 @@ const HeroSection = () => {
 
             {/* CTA Button */}
             <div className="flex justify-start">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary text-lg px-8 py-6"
               >
                 Apply Now
@@ -103,15 +103,15 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Center Image */}
-          <div className="lg:col-span-4 relative flex justify-center items-center"> 
-            <div className="relative w-full flex items-center justify-center">
+          {/* Center Image - Adjusted position */}
+          <div className="lg:col-span-4 relative flex justify-center lg:justify-start items-center">
+            <div className="relative w-full flex items-center justify-center lg:ml-[-10%]">
               <img
                 src={heroImage}
                 alt="Successful student giving thumbs up"
-                className="w-full h-auto object-contain rounded-2xl lg:h-[400px] lg:w-auto" 
+                className="w-full h-auto object-contain rounded-2xl lg:h-[400px] lg:w-auto"
               />
-              
+
               {/* Floating Badge - Smaller and repositioned */}
               <div className="absolute top-4 right-4 bg-primary text-primary-foreground rounded-full p-2 shadow-primary">
                 <div className="text-center">
@@ -122,8 +122,8 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Counseling Form */}
-          <div className="lg:col-span-3 flex justify-end items-start">
+          {/* Right Counseling Form - Now spans 2 columns */}
+          <div className="lg:col-span-2 flex justify-end items-start">
             <div className="w-full max-w-md lg:max-w-lg">
               <CounselingForm />
             </div>
