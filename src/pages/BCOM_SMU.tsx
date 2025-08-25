@@ -4,6 +4,7 @@ import RankingsAccreditations from '@/components/RankingsAccreditations';
 import OnlineAdvantagesSection from '@/components/OnlineAdvantagesSection';
 import CourseCurriculumSection from '@/components/CourseCurriculumSection';
 import CourseFeesSection from '@/components/CourseFeesSection';
+import ManipalSampleDegreeSection from '@/components/ManipalSampleDegreeSection';
 import SpecializationCard from '@/components/SpecializationCard';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -64,12 +65,12 @@ const BCOM_SMU = () => {
       <Header />
       
       
-      <main className="pt-16">
+      <main className="pt-0">
         {/* Hero Section */}
         <section 
           id="overview" 
           ref={(el) => sectionsRef.current.overview = el}
-          className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-800/20 mt-8"
+          className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/20 dark:to-emerald-800/20 pt-28"
         >
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -144,21 +145,13 @@ const BCOM_SMU = () => {
         </section>
 
         {/* Specializations Section */}
-        <section 
-          id="specializations" 
-          ref={(el) => sectionsRef.current.specializations = el}
-          className="py-20"
-        >
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Commerce & Business Specializations
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Build expertise in commerce and business management with our comprehensive specialization options.
-              </p>
             </div>
-
             <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory">
               {specializations.map((spec, index) => (
                 <SpecializationCard
@@ -171,32 +164,20 @@ const BCOM_SMU = () => {
           </div>
         </section>
 
-        {/* Curriculum Section */}
-        <section 
-          id="curriculum" 
-          ref={(el) => sectionsRef.current.curriculum = el}
-        >
-          <CourseCurriculumSection />
-        </section>
-
-        {/* Fees Section */}
-        <section 
-          id="fees" 
-          ref={(el) => sectionsRef.current.fees = el}
-        >
-          <CourseFeesSection />
-        </section>
-
-        {/* Advantages Section */}
-        <section 
-          id="advantages" 
-          ref={(el) => sectionsRef.current.advantages = el}
-        >
-          <OnlineAdvantagesSection />
-        </section>
-
         {/* Rankings and Accreditations */}
         <RankingsAccreditations />
+
+        {/* Advantages Section */}
+        <OnlineAdvantagesSection />
+
+        {/* Curriculum Section */}
+        <CourseCurriculumSection />
+
+        {/* Sample Degree Section */}
+        <ManipalSampleDegreeSection />
+
+        {/* Fees Section */}
+        <CourseFeesSection />
       </main>
       
       <Footer />

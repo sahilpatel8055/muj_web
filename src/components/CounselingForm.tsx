@@ -29,7 +29,7 @@ const CounselingForm = () => {
   };
 
   return (
-    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm lg:max-w-md lg:h-[400px]">
+    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm lg:max-w-md xl:max-w-lg lg:h-[340px] xl:h-[380px]">
       <div className="text-center mb-3">
         <h3 className="text-sm font-bold text-foreground mb-1">
           Join <span className="text-primary">50,000+</span> Learners Across India
@@ -99,14 +99,14 @@ const CounselingForm = () => {
           </SelectContent>
         </Select>
 
-        <div className="flex items-start space-x-3">
+        <div className="flex items-start space-x-2">
           <Checkbox 
             id="consent"
             checked={formData.consent}
             onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
-            className="mt-1"
+            className="mt-0.5 flex-shrink-0"
           />
-          <label htmlFor="consent" className="text-xs text-muted-foreground leading-relaxed">
+          <label htmlFor="consent" className="text-xs text-muted-foreground leading-tight">
             I authorize Online Manipal and its associates to contact me with updates notifications via email, SMS, WhatsApp, and voice call. This consent will override any registration for DNC / NDNC.
           </label>
         </div>

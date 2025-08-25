@@ -87,18 +87,16 @@ const CourseGrid = () => {
             <a href={course.href} key={course.id}>
               <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer border-border/50 hover:border-primary/20">
               <CardContent className="p-0">
-                <div className="relative">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-48 object-cover rounded-t-lg"
-                  />
-                  {course.popular && (
+                 <div className="relative">
                    <Badge className="absolute top-3 left-3 bg-blue-600 text-white flex items-center gap-1 text-xs">
-                      <img src={mujLogo} alt="" className="w-3 h-3 object-contain" />
-                      Manipal University Jaipur
-                    </Badge>
-                  )}
+                     <img src={mujLogo} alt="" className="w-3 h-3 object-contain" />
+                     Manipal University Jaipur
+                   </Badge>
+                   <img
+                     src={course.image}
+                     alt={course.title}
+                     className="w-full h-48 object-cover rounded-t-lg"
+                   />
                   <div className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm rounded-full p-2">
                     <div className="flex items-center space-x-1 text-sm">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
