@@ -16,7 +16,7 @@ const SMU = () => {
       <main className="pt-28">
 
       {/* Hero Section */}
-      <section className="py-20" style={{ backgroundColor: '#F0E6FF' }}>
+      <section className="py-20" style={{ backgroundColor: '#b2f6f7' }}>
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
