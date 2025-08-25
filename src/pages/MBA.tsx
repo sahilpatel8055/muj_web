@@ -140,7 +140,7 @@ const MBA = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-10">
-            <h2 className="text-3xl font-bold text-foreground">
+            <h2 className="text-3xl font-bold text-foreground text-left">
               Specializations Offered
             </h2>
             <div className="flex space-x-2">
@@ -213,7 +213,7 @@ const MBA = () => {
       {/* Key Features */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">
+          <h2 className="text-3xl font-bold text-left text-foreground mb-12">
             Program Highlights
           </h2>
           

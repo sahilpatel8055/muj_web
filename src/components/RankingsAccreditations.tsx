@@ -70,8 +70,8 @@ const RankingsAccreditations = () => {
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-left">
             Rankings & Accreditations
           </h2>
         </div>
@@ -108,13 +108,28 @@ const RankingsAccreditations = () => {
             <CarouselNext className="hidden md:flex -right-12" />
           </Carousel>
           
-          {/* Navigation dots */}
-          <div className="flex justify-center mt-6">
-            <img 
-              src="/src/assets/scroll-dots.png" 
-              alt="Navigation dots" 
-              className="h-4 w-auto opacity-60"
-            />
+          {/* Enhanced Navigation */}
+          <div className="flex justify-center items-center mt-6 gap-4">
+            <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <div className="flex gap-2">
+              {[1, 2, 3, 4].map((dot) => (
+                <div
+                  key={dot}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    dot === 1 ? 'bg-primary' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+            <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

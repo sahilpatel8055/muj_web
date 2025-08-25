@@ -29,7 +29,7 @@ const CounselingForm = () => {
   };
 
   return (
-    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm lg:max-w-md xl:max-w-lg lg:h-[340px] xl:h-[380px]">
+    <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm lg:max-w-sm xl:max-w-md overflow-hidden">{/* Fixed width and added overflow-hidden */}
       <div className="text-center mb-3">
         <h3 className="text-sm font-bold text-foreground mb-1">
           Join <span className="text-primary">50,000+</span> Learners Across India
@@ -53,13 +53,13 @@ const CounselingForm = () => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-2 text-xs">{/* Reduced spacing and smaller text */}
         <Input
           type="text"
           placeholder="Enter your full name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="bg-background border-border focus:border-primary"
+          className="bg-background border-border focus:border-primary text-xs h-8"
           required
         />
 
@@ -68,26 +68,26 @@ const CounselingForm = () => {
           placeholder="Enter your email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="bg-background border-border focus:border-primary"
+          className="bg-background border-border focus:border-primary text-xs h-8"
           required
         />
 
         <div className="flex">
-          <div className="flex items-center bg-background border border-r-0 border-border rounded-l-md px-3">
-            <span className="text-sm text-muted-foreground">🇮🇳 +91</span>
+          <div className="flex items-center bg-background border border-r-0 border-border rounded-l-md px-2 h-8">
+            <span className="text-xs text-muted-foreground">🇮🇳 +91</span>
           </div>
           <Input
             type="tel"
             placeholder="Enter your mobile number"
             value={formData.mobile}
             onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-            className="bg-background border-border focus:border-primary rounded-l-none"
+            className="bg-background border-border focus:border-primary rounded-l-none text-xs h-8"
             required
           />
         </div>
 
         <Select value={formData.course} onValueChange={(value) => setFormData({ ...formData, course: value })}>
-          <SelectTrigger className="bg-background border-border focus:border-primary">
+          <SelectTrigger className="bg-background border-border focus:border-primary text-xs h-8">
             <SelectValue placeholder="Select course*" />
           </SelectTrigger>
           <SelectContent>
@@ -113,7 +113,7 @@ const CounselingForm = () => {
 
         <Button 
           type="submit" 
-          className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs py-2"
+          className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8"
           disabled={!formData.consent}
         >
           Enroll Now

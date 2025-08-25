@@ -123,8 +123,8 @@ const HeroSection = () => {
           </div>
 
           {/* Right Counseling Form */}
-          <div className="lg:col-span-3 flex justify-end items-start">
-            <div className="w-full max-w-md lg:max-w-xl xl:max-w-2xl">
+          <div className="lg:col-span-3 flex justify-center lg:justify-end items-start">
+            <div className="w-full max-w-sm lg:max-w-sm xl:max-w-md">
               <CounselingForm />
             </div>
           </div>
