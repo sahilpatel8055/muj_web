@@ -102,7 +102,7 @@ const WhyChooseUs = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {features.map((feature, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-[55%] lg:basis-[35%] xl:basis-[28%]">
                   <Card className="p-6 h-full bg-gray-50 border border-gray-200 shadow-lg">
                     <div className="flex flex-col items-center text-center h-full">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
