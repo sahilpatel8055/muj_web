@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from "@/components/ui/carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import all accreditation images
 import ACU from "@/assets/icons/ACU-3.jpg";
@@ -67,13 +69,54 @@ const accreditations = [
 ];
 
 const RankingsAccreditations = () => {
+  const [carouselApi, setCarouselApi] = useState();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    const updateCurrent = () => {
+      setCurrent(carouselApi.selectedScrollSnap());
+    };
+
+    carouselApi.on("select", updateCurrent);
+
+    return () => {
+      carouselApi.off("select", updateCurrent);
+    };
+  }, [carouselApi]);
+
+  const handleDotClick = (index) => {
+    if (carouselApi) {
+      carouselApi.scrollTo(index);
+    }
+  };
+
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-left">
+        
+        {/* Heading and Navigation Buttons */}
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-left">
             Rankings & Accreditations
           </h2>
+          <div className="flex gap-4">
+            <button
+              onClick={() => carouselApi?.scrollPrev()}
+              className="p-3 rounded-full border-2 border-gray-200 bg-white shadow-md text-gray-500 hover:bg-gray-100 transition-colors"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => carouselApi?.scrollNext()}
+              className="p-3 rounded-full border-2 border-gray-200 bg-white shadow-md text-gray-500 hover:bg-gray-100 transition-colors"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
         <div className="relative">
@@ -82,13 +125,14 @@ const RankingsAccreditations = () => {
               align: "start",
               loop: true,
             }}
+            setApi={setCarouselApi}
             className="w-full"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {accreditations.map((accreditation, index) => {
                 return (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-[45.5%] md:basis-[23%] lg:basis-[17.5%]">
-                    <Card 
+                    <Card
                       className="h-[14rem] md:h-[20rem] flex flex-col items-center justify-center p-4 shadow-lg border bg-gray-50 text-black border-gray-200"
                     >
                       <img
@@ -104,32 +148,19 @@ const RankingsAccreditations = () => {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12" />
-            <CarouselNext className="hidden md:flex -right-12" />
           </Carousel>
           
-          {/* Enhanced Navigation */}
-          <div className="flex justify-center items-center mt-6 gap-4">
-            <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <div className="flex gap-2">
-              {[1, 2, 3, 4].map((dot) => (
-                <div
-                  key={dot}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    dot === 1 ? 'bg-primary' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
-            <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+          {/* Navigation dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {accreditations.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === current ? "bg-primary w-4 h-4 transform rotate-45" : "bg-gray-400"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
