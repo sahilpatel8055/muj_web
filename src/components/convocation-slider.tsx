@@ -65,7 +65,7 @@ const ConvocationSlider = () => {
   return (
     <section className="bg-background py-12 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
+        <div className="text-center mb-14">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Glimpses of <span className="text-orange-600">the Convocation Ceremony</span>
           </h2>
