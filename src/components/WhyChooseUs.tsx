@@ -106,7 +106,7 @@ const WhyChooseUs = () => {
                   <Card className="p-6 h-full bg-gray-50 border border-gray-200 shadow-lg">
                     <div className="flex flex-col items-center text-center h-full">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
-                        <img src={feature.icon} alt="" className="w-12 h-12" />
+                        <img src={feature.icon} alt="" className="w-16 h-16" />
                       </div>
                       <h3 className="text-lg font-semibold text-foreground mb-3">
                         {feature.title}
