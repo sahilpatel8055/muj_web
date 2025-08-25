@@ -6,6 +6,7 @@ import CourseGrid from '@/components/CourseGrid';
 import OurImpact from '@/components/OurImpact';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Footer from '@/components/Footer';
+import ConvocationSlider from '@/components/convocation-slider'; // Import the component
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
         <CourseGrid />
         <OurImpact />
         <WhyChooseUs />
+        <ConvocationSlider /> {/* Added the component here */}
       </main>
       <Footer />
     </div>
