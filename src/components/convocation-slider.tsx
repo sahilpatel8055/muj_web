@@ -67,7 +67,7 @@ const ConvocationSlider = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Glimpses of <span className="text-red-600">the Convocation Ceremony</span>
+            Glimpses of <span className="text-orange-600">the Convocation Ceremony</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Celebrate graduation during the Convocation event at our campus, interact with fellow graduates, meet faculty, and foster professional connections for career growth.
