@@ -69,7 +69,7 @@ const CareerAssistance = () => {
           {/* Right side with cards - Unified View */}
           <div className="grid grid-cols-2 gap-6 md:gap-8">
             {assistanceFeatures.map((feature, index) => (
-              <Card key={index} className="p-4 md:p-6 transition-colors duration-300 hover:bg-orange-600 hover:text-white group flex flex-col items-start text-left">
+              <Card key={index} className="p-4 md:p-6 transition-colors duration-300 hover:bg-orange-100 hover:text-white group flex flex-col items-start text-left">
                 <CardContent className="flex flex-col gap-2 p-0 items-start">
                   <div className="w-12 h-12 flex-shrink-0">
                     <img src={feature.icon} alt={feature.title} className="w-full h-full object-contain" />
