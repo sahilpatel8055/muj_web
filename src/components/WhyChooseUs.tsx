@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, useCarousel } from "@/components/ui/carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 // Import SVG icons
 import TopRankedIcon from "@/assets/svg_icons/top-ranked.svg";
@@ -38,27 +40,64 @@ const features = [
 ];
 
 const WhyChooseUs = () => {
+  const [carouselApi, setCarouselApi] = useState();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    const updateCurrent = () => {
+      setCurrent(carouselApi.selectedScrollSnap());
+    };
+
+    carouselApi.on("select", updateCurrent);
+
+    return () => {
+      carouselApi.off("select", updateCurrent);
+    };
+  }, [carouselApi]);
+
+  const handleDotClick = (index) => {
+    if (carouselApi) {
+      carouselApi.scrollTo(index);
+    }
+  };
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-success/10 text-success border-success/20">
-            Why Choose Us
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Students Choose Manipal for Online Education
+        
+        {/* Heading and Navigation */}
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-left">
+            Why Students Choose Online Manipal
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Experience excellence in online education with our unique blend of academic rigor, industry relevance, and student-centric approach
-          </p>
+          <div className="flex gap-4">
+            <button
+              onClick={() => carouselApi?.scrollPrev()}
+              className="p-3 rounded-full border-2 border-gray-200 bg-white shadow-md text-gray-500 hover:bg-gray-100 transition-colors"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => carouselApi?.scrollNext()}
+              className="p-3 rounded-full border-2 border-gray-200 bg-white shadow-md text-gray-500 hover:bg-gray-100 transition-colors"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
+        {/* Carousel */}
         <div className="relative">
           <Carousel
             opts={{
               align: "start",
               loop: false,
             }}
+            setApi={setCarouselApi}
             className="w-full"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
@@ -67,7 +106,7 @@ const WhyChooseUs = () => {
                   <Card className="p-6 h-full bg-gray-50 border border-gray-200 shadow-lg">
                     <div className="flex flex-col items-center text-center h-full">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
-                        <img src={feature.icon} alt="" className="w-8 h-8" />
+                        <img src={feature.icon} alt="" className="w-12 h-12" />
                       </div>
                       <h3 className="text-lg font-semibold text-foreground mb-3">
                         {feature.title}
@@ -80,17 +119,19 @@ const WhyChooseUs = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12" />
-            <CarouselNext className="hidden md:flex -right-12" />
           </Carousel>
           
           {/* Navigation dots */}
-          <div className="flex justify-center mt-6">
-            <img 
-              src="/src/assets/scroll-dots.png" 
-              alt="Navigation dots" 
-              className="h-4 w-auto opacity-60"
-            />
+          <div className="flex justify-center mt-6 space-x-2">
+            {features.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === current ? "bg-primary w-4 h-4 transform rotate-45" : "bg-gray-400"
+                }`}
+              />
+            ))}
           </div>
         </div>
 
