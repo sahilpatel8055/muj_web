@@ -46,8 +46,6 @@ const assistanceFeatures = [
 ];
 
 const CareerAssistance = () => {
-  // All carousel-related state and functions have been removed
-  
   return (
     <section className="bg-white py-12 md:py-16">
       <div className="container mx-auto px-4">
@@ -69,17 +67,17 @@ const CareerAssistance = () => {
           </div>
 
           {/* Right side with cards - Unified View */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6 md:gap-8">
             {assistanceFeatures.map((feature, index) => (
-              <Card key={index} className="p-6 transition-colors duration-300 hover:bg-orange-400 hover:text-white group">
-                <CardContent className="flex flex-col gap-4 p-0">
-                  <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 flex-shrink-0">
-                      <img src={feature.icon} alt={feature.title} className="w-full h-full object-contain" />
-                    </div>
-                    <h3 className="text-xl font-semibold">{feature.title}</h3>
+              <Card key={index} className="p-4 md:p-6 transition-colors duration-300 hover:bg-orange-600 hover:text-white group flex flex-col items-start text-left">
+                <CardContent className="flex flex-col gap-2 p-0 items-start">
+                  <div className="w-12 h-12 flex-shrink-0">
+                    <img src={feature.icon} alt={feature.title} className="w-full h-full object-contain" />
                   </div>
-                  <p className="text-sm text-muted-foreground group-hover:text-white">
+                  <h3 className="text-base md:text-xl font-bold mt-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-muted-foreground group-hover:text-white">
                     {feature.description}
                   </p>
                 </CardContent>
