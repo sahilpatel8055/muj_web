@@ -134,14 +134,14 @@ const CourseGrid = () => {
               <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer border-border/50 hover:border-primary/20">
                 <CardContent className="p-0">
                   <div className="relative">
-                    <Badge className="absolute top-3 left-3 bg-blue-600 text-white flex items-center gap-1 text-xs">
+                    <Badge className="absolute top-3 left-3 bg-blue-600 text-white flex items-center gap-1 text-xs z-10">
                       <img src={mujLogo} alt="" className="w-3 h-3 object-contain" />
                       Manipal University Jaipur
                     </Badge>
                     <img
                       src={course.image}
                       alt={course.title}
-                      className="w-full h-48 object-cover rounded-t-lg"
+                      className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm rounded-full p-2">
                       <div className="flex items-center space-x-1 text-sm">
@@ -163,8 +163,8 @@ const CourseGrid = () => {
                         <span>{course.duration}</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <Users className="w-4 h-4" />
-                        <span>{course.students}</span>
+                        <span className="text-lg">₹</span>
+                        <span>₹99,000</span>
                       </div>
                     </div>
                     <div className="flex items-center justify-between pt-2">
@@ -204,14 +204,14 @@ const CourseGrid = () => {
                 <Card className="group h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer border-border/50 hover:border-primary/20">
                   <CardContent className="p-0">
                     <div className="relative">
-                      <Badge className="absolute top-3 left-3 bg-blue-600 text-white flex items-center gap-1 text-xs">
+                      <Badge className="absolute top-3 left-3 bg-blue-600 text-white flex items-center gap-1 text-xs z-10">
                         <img src={mujLogo} alt="" className="w-3 h-3 object-contain" />
                         Manipal University Jaipur
                       </Badge>
                       <img
                         src={course.image}
                         alt={course.title}
-                        className="w-full h-48 object-cover rounded-t-lg"
+                        className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-3 right-3 bg-card/90 backdrop-blur-sm rounded-full p-2">
                         <div className="flex items-center space-x-1 text-sm">
@@ -233,8 +233,8 @@ const CourseGrid = () => {
                           <span>{course.duration}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <Users className="w-4 h-4" />
-                          <span>{course.students}</span>
+                          <span className="text-lg">₹</span>
+                          <span>₹99,000</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between pt-2">

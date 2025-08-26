@@ -3,6 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CounselingFormPopup from "./components/CounselingFormPopup";
+import BellNotification from "./components/BellNotification";
+import { useCounselingPopup } from "./hooks/useCounselingPopup";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MBA from "./pages/MBA";
@@ -24,33 +27,55 @@ import MCOM_SMU from './pages/MCOM_SMU';
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  const { showPopup, hidePopup, triggerPopup } = useCounselingPopup();
+
+  const handleBellApplyNow = () => {
+    triggerPopup();
+  };
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/mba" element={<MBA />} />
+        <Route path="/mca" element={<MCA />} />
+        <Route path="/mcom" element={<MCOM />} />
+        <Route path="/bba" element={<BBA />} />
+        <Route path="/bca" element={<BCA />} />
+        <Route path="/bcom" element={<BCOM />} />
+        <Route path="/muj" element={<MUJ />} />
+        <Route path="/mahe" element={<MAHE />} />
+        <Route path="/smu" element={<SMU />} />
+        <Route path="/all-courses" element={<AllCourses />} />
+        <Route path="/mba-smu" element={<MBA_SMU />} />
+        <Route path="/mca-smu" element={<MCA_SMU />} />
+        <Route path="/ba-smu" element={<BA_SMU />} />
+        <Route path="/ma-smu" element={<MA_SMU />} />
+        <Route path="/bcom-smu" element={<BCOM_SMU />} />
+        <Route path="/mcom-smu" element={<MCOM_SMU />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      
+      {/* Global Popup and Bell Notification */}
+      <CounselingFormPopup 
+        isOpen={showPopup} 
+        onClose={hidePopup} 
+        trigger="auto" 
+      />
+      <BellNotification onApplyNowClick={handleBellApplyNow} />
+    </>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/mba" element={<MBA />} />
-          <Route path="/mca" element={<MCA />} />
-          <Route path="/mcom" element={<MCOM />} />
-          <Route path="/bba" element={<BBA />} />
-          <Route path="/bca" element={<BCA />} />
-          <Route path="/bcom" element={<BCOM />} />
-          <Route path="/muj" element={<MUJ />} />
-          <Route path="/mahe" element={<MAHE />} />
-          <Route path="/smu" element={<SMU />} />
-          <Route path="/all-courses" element={<AllCourses />} />
-          <Route path="/mba-smu" element={<MBA_SMU />} />
-          <Route path="/mca-smu" element={<MCA_SMU />} />
-          <Route path="/ba-smu" element={<BA_SMU />} />
-          <Route path="/ma-smu" element={<MA_SMU />} />
-          <Route path="/bcom-smu" element={<BCOM_SMU />} />
-          <Route path="/mcom-smu" element={<MCOM_SMU />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

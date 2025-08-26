@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, useCarousel } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, useCarousel, type CarouselApi } from "@/components/ui/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import all accreditation images
@@ -69,7 +69,7 @@ const accreditations = [
 ];
 
 const RankingsAccreditations = () => {
-  const [carouselApi, setCarouselApi] = useState();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const RankingsAccreditations = () => {
     };
   }, [carouselApi]);
 
-  const handleDotClick = (index) => {
+  const handleDotClick = (index: number) => {
     if (carouselApi) {
       carouselApi.scrollTo(index);
     }

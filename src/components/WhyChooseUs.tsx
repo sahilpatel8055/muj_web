@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Carousel, CarouselContent, CarouselItem, useCarousel } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, useCarousel, type CarouselApi } from "@/components/ui/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
@@ -40,7 +40,7 @@ const features = [
 ];
 
 const WhyChooseUs = () => {
-  const [carouselApi, setCarouselApi] = useState();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
     };
   }, [carouselApi]);
 
-  const handleDotClick = (index) => {
+  const handleDotClick = (index: number) => {
     if (carouselApi) {
       carouselApi.scrollTo(index);
     }
