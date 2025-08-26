@@ -9,7 +9,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 interface CounselingFormPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  trigger?: string; // 'auto', 'cta', 'bell' - Note: 'bell' is no longer directly used in the component's UI
+  trigger?: string; // 'auto', 'cta', 'bell'
 }
 
 const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClose, trigger = 'cta' }) => {
@@ -23,7 +23,7 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
 
   const courses = [
     'Online MBA',
-    'Online MCA',
+    'Online MCA', 
     'Online BBA',
     'Online BCA',
     'Online BCom',
@@ -35,24 +35,18 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-
+    
     // Set session storage to remember form submission
     sessionStorage.setItem('counselingFormSubmitted', 'true');
     sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
-
+    
     onClose();
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="
-        max-w-md mx-auto p-0 gap-0 bg-background border-border
-        /* Tablet & Laptop Styles: Decrease width by 15%, Increase height by 10% (relative to default max-w-md and implicit height) */
-        md:w-[85%] md:max-w-[700px] md:h-[600px] md:my-auto md:p-8
-        /* Mobile Styles: Left & right side padding/gap */
-        sm:mx-4
-      ">
-        <div className="relative bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg h-full flex flex-col justify-between">
+      <DialogContent className="max-w-md mx-auto p-0 gap-0 bg-background border-border">
+        <div className="relative bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg">
           {/* Close Button */}
           <Button
             variant="ghost"
@@ -86,34 +80,24 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-2 text-xs flex-grow flex flex-col justify-center">
-            {/* Name Input with Horizontal Label */}
-            <div className="flex items-center space-x-2">
-              <label htmlFor="name" className="text-xs font-medium text-muted-foreground w-16 shrink-0">Name :</label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Enter your full name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-background border-border focus:border-primary text-xs h-8 flex-grow"
-                required
-              />
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-2 text-xs">
+            <Input
+              type="text"
+              placeholder="Enter your full name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="bg-background border-border focus:border-primary text-xs h-8"
+              required
+            />
 
-            {/* Email Input with Horizontal Label */}
-            <div className="flex items-center space-x-2">
-              <label htmlFor="email" className="text-xs font-medium text-muted-foreground w-16 shrink-0">EMAIL :</label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-background border-border focus:border-primary text-xs h-8 flex-grow"
-                required
-              />
-            </div>
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="bg-background border-border focus:border-primary text-xs h-8"
+              required
+            />
 
             <div className="flex">
               <div className="flex items-center bg-background border border-r-0 border-border rounded-l-md px-2 h-8">
@@ -143,7 +127,7 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
             </Select>
 
             <div className="flex items-start space-x-2">
-              <Checkbox
+              <Checkbox 
                 id="consent"
                 checked={formData.consent}
                 onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
@@ -154,9 +138,9 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
               </label>
             </div>
 
-            <Button
-              type="submit"
-              className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8 mt-auto"
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8"
               disabled={!formData.consent}
             >
               Enroll Now

@@ -1,183 +1,137 @@
 import React, { useState, useEffect } from 'react';
+import { Bell, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Calendar, Users, X } from 'lucide-react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
 
-interface CounselingFormPopupProps {
-  isOpen: boolean;
-  onClose: () => void;
-  trigger?: string; // 'auto', 'cta', 'bell'
+interface BellNotificationProps {
+  onApplyNowClick: () => void;
 }
 
-const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClose, trigger = 'cta' }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    course: '',
-    consent: true // Default to true as requested
-  });
+const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [countdown, setCountdown] = useState(20);
+  const [hasScrolledEnough, setHasScrolledEnough] = useState(false);
 
-  const courses = [
-    'Online MBA',
-    'Online MCA',
-    'Online BBA',
-    'Online BCA',
-    'Online BCom',
-    'Online MCom',
-    'Online BA',
-    'Online MA'
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-
-    // Set session storage to remember form submission
-    sessionStorage.setItem('counselingFormSubmitted', 'true');
-    sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
-
-    onClose();
+  // Check if in cooling period (30 minutes)
+  const isInCoolingPeriod = () => {
+    const lastAction = localStorage.getItem('bellLastAction');
+    if (!lastAction) return false;
+    
+    const thirtyMinutes = 30 * 60 * 1000;
+    return Date.now() - parseInt(lastAction) < thirtyMinutes;
   };
 
+  // Handle scroll detection (30%)
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollPercent = scrollTop / (documentHeight - windowHeight);
+
+      if (scrollPercent >= 0.3 && !hasScrolledEnough && !isInCoolingPeriod()) {
+        setHasScrolledEnough(true);
+        setIsVisible(true);
+        setIsMessageOpen(true);
+        setCountdown(20);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasScrolledEnough]);
+
+  // Auto-close message after 20 seconds
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isMessageOpen && countdown > 0) {
+      timer = setTimeout(() => {
+        setCountdown(countdown - 1);
+      }, 1000);
+    } else if (countdown === 0) {
+      setIsMessageOpen(false);
+    }
+    return () => clearTimeout(timer);
+  }, [isMessageOpen, countdown]);
+
+  // Reset on page change
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      setHasScrolledEnough(false);
+      setIsVisible(false);
+      setIsMessageOpen(false);
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, []);
+
+  const handleBellClick = () => {
+    setIsMessageOpen(!isMessageOpen);
+    if (!isMessageOpen) {
+      setCountdown(20);
+    }
+  };
+
+  const handleApplyNow = () => {
+    localStorage.setItem('bellLastAction', Date.now().toString());
+    setIsMessageOpen(false);
+    onApplyNowClick();
+  };
+
+  const handleCloseMessage = () => {
+    setIsMessageOpen(false);
+  };
+
+  if (!isVisible) return null;
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="
-        max-w-md mx-auto p-0 gap-0 bg-background border-border
-        /* Tablet & Laptop Styles: Decrease width by 15%, Increase height by 10% (relative to default max-w-md and implicit height) */
-        md:w-[85%] md:max-w-[700px] md:h-[600px] md:my-auto md:p-8
-        /* Mobile Styles: Left & right side padding/gap */
-        sm:mx-4
-      ">
-        <div className="relative bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg h-full flex flex-col justify-between">
-          {/* Close Button */}
+    <div className="fixed bottom-4 right-4 z-50">
+      {/* Message Popup */}
+      {isMessageOpen && (
+        <div className="absolute bottom-16 right-0 bg-card border border-border rounded-lg shadow-lg p-4 w-72 mb-2 animate-in slide-in-from-bottom-2">
           <Button
             variant="ghost"
             size="icon"
-            onClick={onClose}
-            className="absolute top-2 right-2 h-6 w-6 rounded-full hover:bg-destructive hover:text-destructive-foreground"
+            onClick={handleCloseMessage}
+            className="absolute top-1 right-1 h-6 w-6 rounded-full hover:bg-destructive hover:text-destructive-foreground"
           >
-            <X className="h-4 w-4" />
+            <X className="h-3 w-3" />
           </Button>
-
-          <div className="text-center mb-3">
-            <h3 className="text-sm font-bold text-foreground mb-1">
-              Join <span className="text-primary">50,000+</span> Learners Across India
-            </h3>
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <div className="w-4 h-4 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Calendar className="w-2 h-2 text-primary" />
-                </div>
-                Easy financing
-              </div>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <div className="w-4 h-4 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Users className="w-2 h-2 text-primary" />
-                </div>
-                Scholarships
-              </div>
-            </div>
-            <p className="text-xs text-card-foreground font-medium">
-              Submit your details and we'll contact you soon!
+          
+          <div className="pr-6">
+            <h4 className="font-semibold text-sm text-foreground mb-1">
+              🎯 Early Bird Discount!
+            </h4>
+            <p className="text-xs text-muted-foreground mb-3">
+              Avail early bird discount on program fee
             </p>
-          </div>
-
-          {/* Form container with reduced spacing */}
-          <form onSubmit={handleSubmit} className="space-y-1.5 text-xs flex-grow flex flex-col justify-center">
-            {/* Name Input with Horizontal Label */}
-            <div className="flex items-center space-x-2">
-              <label htmlFor="name" className="text-xs font-medium text-muted-foreground w-16 shrink-0">Name :</label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Enter your full name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-background border-border focus:border-primary text-xs h-8 flex-grow"
-                required
-              />
-            </div>
-
-            {/* Email Input with Horizontal Label */}
-            <div className="flex items-center space-x-2">
-              <label htmlFor="email" className="text-xs font-medium text-muted-foreground w-16 shrink-0">EMAIL :</label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-background border-border focus:border-primary text-xs h-8 flex-grow"
-                required
-              />
-            </div>
-
-            <div className="flex">
-              <div className="flex items-center bg-background border border-r-0 border-border rounded-l-md px-2 h-8">
-                <span className="text-xs text-muted-foreground">🇮🇳 +91</span>
-              </div>
-              <Input
-                type="tel"
-                placeholder="Enter your mobile number"
-                value={formData.mobile}
-                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                className="bg-background border-border focus:border-primary rounded-l-none text-xs h-8"
-                required
-              />
-            </div>
-
-            <Select value={formData.course} onValueChange={(value) => setFormData({ ...formData, course: value })}>
-              <SelectTrigger className="bg-background border-border focus:border-primary text-xs h-8">
-                <SelectValue placeholder="Select course*" />
-              </SelectTrigger>
-              <SelectContent>
-                {courses.map((course) => (
-                  <SelectItem key={course} value={course}>
-                    {course}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <div className="flex items-start space-x-2">
-              <Checkbox
-                id="consent"
-                checked={formData.consent}
-                onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
-                className="mt-0.5 flex-shrink-0"
-              />
-              <label htmlFor="consent" className="text-xs text-muted-foreground leading-tight">
-                I authorize Online Manipal and its associates to contact me with updates notifications via email, SMS, WhatsApp, and voice call. This consent will override any registration for DNC / NDNC.
-              </label>
-            </div>
-
-            <Button
-              type="submit"
-              className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8 mt-auto"
-              disabled={!formData.consent}
-            >
-              Enroll Now
-            </Button>
-          </form>
-
-          <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Calendar className="w-3 h-3" />
-              Last Date: <span className="text-primary font-medium">23 Aug</span>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Users className="w-3 h-3" />
-              <span className="text-primary font-medium">Limited Seats</span>
+            
+            <div className="flex items-center justify-between">
+              <Button
+                onClick={handleApplyNow}
+                className="bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-7 px-3"
+              >
+                Apply Now
+              </Button>
+              <span className="text-xs text-muted-foreground">
+                Auto-close in {countdown}s
+              </span>
             </div>
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+      )}
+
+      {/* Bell Icon */}
+      <Button
+        onClick={handleBellClick}
+        className="w-12 h-12 rounded-full bg-gradient-primary hover:opacity-90 transition-smooth shadow-lg"
+        size="icon"
+      >
+        <Bell className="h-6 w-6 text-white" />
+      </Button>
+    </div>
   );
 };
 
-export default CounselingFormPopup;
+export default BellNotification;
