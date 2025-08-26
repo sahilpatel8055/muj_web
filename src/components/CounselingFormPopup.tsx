@@ -9,7 +9,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 interface CounselingFormPopupProps {
   isOpen: boolean;
   onClose: () => void;
-  trigger?: string; // 'auto', 'cta', 'bell'
+  trigger?: string; // 'auto', 'cta', 'bell' - Note: 'bell' is no longer directly used in the component's UI
 }
 
 const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClose, trigger = 'cta' }) => {
@@ -47,12 +47,9 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="
         max-w-md mx-auto p-0 gap-0 bg-background border-border
-        /* Desktop/Tablet Styles */
-        md:w-[85%] lg:w-[85%]
-        md:max-w-[700px]
-        md:h-[600px]
-        md:my-auto md:p-8
-        /* Mobile Styles */
+        /* Tablet & Laptop Styles: Decrease width by 15%, Increase height by 10% (relative to default max-w-md and implicit height) */
+        md:w-[85%] md:max-w-[700px] md:h-[600px] md:my-auto md:p-8
+        /* Mobile Styles: Left & right side padding/gap */
         sm:mx-4
       ">
         <div className="relative bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg h-full flex flex-col justify-between">
@@ -90,27 +87,30 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-2 text-xs flex-grow flex flex-col justify-center">
-            <div>
-              <label htmlFor="name" className="text-xs font-medium text-muted-foreground mb-1 block">Name :</label>
+            {/* Name Input with Horizontal Label */}
+            <div className="flex items-center space-x-2">
+              <label htmlFor="name" className="text-xs font-medium text-muted-foreground w-16 shrink-0">Name :</label>
               <Input
                 id="name"
                 type="text"
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-background border-border focus:border-primary text-xs h-8"
+                className="bg-background border-border focus:border-primary text-xs h-8 flex-grow"
                 required
               />
             </div>
-            <div>
-              <label htmlFor="email" className="text-xs font-medium text-muted-foreground mb-1 block">EMAIL :</label>
+
+            {/* Email Input with Horizontal Label */}
+            <div className="flex items-center space-x-2">
+              <label htmlFor="email" className="text-xs font-medium text-muted-foreground w-16 shrink-0">EMAIL :</label>
               <Input
                 id="email"
                 type="email"
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-background border-border focus:border-primary text-xs h-8"
+                className="bg-background border-border focus:border-primary text-xs h-8 flex-grow"
                 required
               />
             </div>
