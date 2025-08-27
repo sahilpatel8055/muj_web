@@ -4,6 +4,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Calendar, Users } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 const CounselingForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,7 @@ const CounselingForm = () => {
     course: '',
     consent: false
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const courses = [
     'Online MBA',
@@ -23,9 +26,42 @@ const CounselingForm = () => {
     'Online MCom'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('submit-to-sheets', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.mobile,
+          course: formData.course,
+          trigger: 'counseling-form'
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast.success('Thank you! Your details have been submitted successfully. We will contact you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        mobile: '',
+        course: '',
+        consent: false
+      });
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('There was an error submitting your details. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -114,9 +150,9 @@ const CounselingForm = () => {
         <Button 
           type="submit" 
           className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8"
-          disabled={!formData.consent}
+          disabled={!formData.consent || isSubmitting}
         >
-          Enroll Now
+          {isSubmitting ? 'Submitting...' : 'Enroll Now'}
         </Button>
       </form>
 
