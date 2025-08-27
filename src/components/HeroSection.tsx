@@ -5,6 +5,7 @@ import heroImage from '@/assets/ChatGPT_Image_Aug_22__2025__02_36_01_PM-removebg
 import ugcIcon from '@/assets/icons/ugc.png';
 import React, { useState, useEffect } from 'react';
 import CounselingForm from './CounselingForm';
+import CounselingFormPopup from './CounselingFormPopup';
 
 // New component for the counting animation
 const AnimatedNumber = ({ endValue, duration = 2000 }) => {
@@ -27,6 +28,7 @@ const AnimatedNumber = ({ endValue, duration = 2000 }) => {
 };
 
 const HeroSection = () => {
+  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
   return (
     <section className="relative min-h-[70vh] flex hero-pattern overflow-hidden pt-28 pb-8">
       <div className="container mx-auto px-4">
@@ -75,6 +77,7 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary text-lg px-8 py-6"
+                onClick={() => setIsCounselingPopupOpen(true)}
               >
                 Apply Now
               </Button>
@@ -134,6 +137,12 @@ const HeroSection = () => {
       {/* Background Elements */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 left-20 w-24 h-24 bg-primary/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      
+      <CounselingFormPopup 
+        isOpen={isCounselingPopupOpen}
+        onClose={() => setIsCounselingPopupOpen(false)}
+        trigger="hero-apply-now"
+      />
     </section>
   );
 };

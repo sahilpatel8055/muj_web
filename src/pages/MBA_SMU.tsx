@@ -12,8 +12,11 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Clock, Users, Calendar, Award, BookOpen, TrendingUp, DollarSign, Briefcase } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import smuLogo from '@/assets/smulogo.jpg';
+import CounselingFormPopup from '@/components/CounselingFormPopup';
 
 const MBA_SMU = () => {
+  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
+  
   const specializations = [
     { icon: TrendingUp, title: 'Marketing Management' },
     { icon: DollarSign, title: 'Financial Management' },
@@ -66,7 +69,12 @@ const MBA_SMU = () => {
                   <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
                     Download Brochure
                   </Button>
-                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="border-primary text-primary hover:bg-primary hover:text-white"
+                    onClick={() => setIsCounselingPopupOpen(true)}
+                  >
                     Apply Now
                   </Button>
                 </div>
@@ -153,6 +161,12 @@ const MBA_SMU = () => {
       </main>
       
       <Footer />
+      
+      <CounselingFormPopup 
+        isOpen={isCounselingPopupOpen}
+        onClose={() => setIsCounselingPopupOpen(false)}
+        trigger="mba-smu-course-page"
+      />
     </div>
   );
 };

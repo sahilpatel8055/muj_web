@@ -13,6 +13,7 @@ import CourseraBenefitsSection from "@/components/CourseraBenefitsSection";
 import CourseCurriculumSection from "@/components/CourseCurriculumSection";
 import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection";
 import CourseFeesSection from "@/components/CourseFeesSection";
+import CounselingFormPopup from "@/components/CounselingFormPopup";
 
 const bcomSpecializations = [
   { icon: Calculator, title: "Financial Accounting" },
@@ -30,6 +31,7 @@ const bcomSpecializations = [
 const BCOM = () => {
   const scrollContainerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
 
   const totalCards = bcomSpecializations.length;
   const cardsPerView = 5; 
@@ -115,7 +117,11 @@ const BCOM = () => {
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90"
+                  onClick={() => setIsCounselingPopupOpen(true)}
+                >
                   Apply Now
                 </Button>
                 <Button variant="outline" size="lg">
@@ -266,10 +272,19 @@ const BCOM = () => {
             Start your career in commerce and finance with our comprehensive BCom program
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" variant="secondary">
+            <Button 
+              size="lg" 
+              variant="secondary"
+              onClick={() => setIsCounselingPopupOpen(true)}
+            >
               Apply Now
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              onClick={() => setIsCounselingPopupOpen(true)}
+            >
               Request Callback
             </Button>
           </div>
@@ -277,6 +292,12 @@ const BCOM = () => {
       </section>
 
       <Footer />
+      
+      <CounselingFormPopup 
+        isOpen={isCounselingPopupOpen}
+        onClose={() => setIsCounselingPopupOpen(false)}
+        trigger="bcom-course-page"
+      />
     </div>
   );
 };

@@ -12,10 +12,12 @@ import { Card } from '@/components/ui/card';
 import { Clock, Users, Calendar, Award, BookOpen, TrendingUp, DollarSign, Briefcase, Globe, FileText } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import smuLogo from '@/assets/smulogo.jpg';
+import CounselingFormPopup from '@/components/CounselingFormPopup';
 
 const BA_SMU = () => {
   const [activeSection, setActiveSection] = useState('overview');
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
+  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
 
   const navigationDots = [
     { id: 'overview', label: 'Overview' },
@@ -108,7 +110,12 @@ const BA_SMU = () => {
                   <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
                     Download Brochure
                   </Button>
-                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="border-primary text-primary hover:bg-primary hover:text-white"
+                    onClick={() => setIsCounselingPopupOpen(true)}
+                  >
                     Apply Now
                   </Button>
                 </div>
@@ -181,6 +188,12 @@ const BA_SMU = () => {
       </main>
       
       <Footer />
+      
+      <CounselingFormPopup 
+        isOpen={isCounselingPopupOpen}
+        onClose={() => setIsCounselingPopupOpen(false)}
+        trigger="ba-smu-course-page"
+      />
     </div>
   );
 };

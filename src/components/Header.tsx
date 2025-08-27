@@ -4,10 +4,12 @@ import { ChevronDown, Menu, X, Search, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import mujLogo from '@/assets/muj_logo-removebg-preview.png';
 import { Link } from 'react-router-dom';
+import CounselingFormPopup from './CounselingFormPopup';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
 
   const navigationItems = [
     {
@@ -98,7 +100,11 @@ const Header = () => {
             ))}
             
             {/* Apply Now Button */}
-            <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
+            <Button 
+              size="sm" 
+              className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary"
+              onClick={() => setIsCounselingPopupOpen(true)}
+            >
               Apply Now
             </Button>
           </div>
@@ -147,7 +153,10 @@ const Header = () => {
                   <Search className="w-4 h-4 mr-2" />
                   Search Courses
                 </Button>
-                <Button className="w-full bg-gradient-primary hover:opacity-90 transition-smooth">
+                <Button 
+                  className="w-full bg-gradient-primary hover:opacity-90 transition-smooth"
+                  onClick={() => setIsCounselingPopupOpen(true)}
+                >
                   Apply Now
                 </Button>
               </div>
@@ -155,6 +164,12 @@ const Header = () => {
           </div>
         )}
       </div>
+      
+      <CounselingFormPopup 
+        isOpen={isCounselingPopupOpen}
+        onClose={() => setIsCounselingPopupOpen(false)}
+        trigger="header-apply-now"
+      />
     </header>
   );
 };
