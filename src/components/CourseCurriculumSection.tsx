@@ -91,7 +91,7 @@ const CourseCurriculumSection = () => {
               </button>
             </div>
             <Button variant="outline" className="bg-white text-gray-900 hover:bg-gray-100">
-              Download MBA Brochure Now
+              Download MBA Brochure
             </Button>
           </div>
         </div>
@@ -121,7 +121,7 @@ const CourseCurriculumSection = () => {
 
         {/* Mobile View (sm and below) */}
         <div className="md:hidden">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
             {contentToDisplay.map((semester, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-700">
                 <AccordionTrigger className={`w-full py-4 px-6 text-left font-semibold text-white ${semester.color} rounded-t-lg transition-colors`}>
