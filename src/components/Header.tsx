@@ -10,7 +10,7 @@ const Header = () => {
   // Using local state for the popup, as per your reference code
   const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
   // If you want to use the global hook again, uncomment the line below and remove local state
-  // const { triggerPopup } = useCounselingPopup(); 
+  const { triggerPopup } = useCounselingPopup(); 
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
