@@ -4,9 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Calendar, Users, X } from 'lucide-react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { supabase } from '@/integrations/supabase/client';
-import { toast } from 'sonner';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 
 interface CounselingFormPopupProps {
   isOpen: boolean;
@@ -22,11 +20,10 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
     course: '',
     consent: true // Default to true as requested
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const courses = [
     'Online MBA',
-    'Online MCA', 
+    'Online MCA',
     'Online BBA',
     'Online BCA',
     'Online BCom',
@@ -35,56 +32,32 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
     'Online MA'
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    console.log('Form submitted:', formData);
 
-    try {
-      const { data, error } = await supabase.functions.invoke('submit-to-sheets', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          mobile: formData.mobile,
-          course: formData.course,
-          trigger: trigger
-        }
-      });
+    // Set session storage to remember form submission
+    sessionStorage.setItem('counselingFormSubmitted', 'true');
+    sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
 
-      if (error) {
-        throw error;
-      }
-
-      toast.success('Thank you! Your details have been submitted successfully. We will contact you soon.');
-      
-      // Set session storage to remember form submission
-      sessionStorage.setItem('counselingFormSubmitted', 'true');
-      sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
-      
-      onClose();
-      
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('There was an error submitting your details. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    onClose();
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md mx-auto p-0 gap-0 bg-background border-border">
-        <div className="relative bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg">
-          {/* Close Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onClose}
-            className="absolute top-2 right-2 h-6 w-6 rounded-full hover:bg-destructive hover:text-destructive-foreground"
-          >
-            <X className="h-4 w-4" />
-          </Button>
+      <DialogContent className="max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md xl:max-w-md mx-auto p-4 gap-0 bg-card/95 backdrop-blur-md border-border rounded-2xl shadow-lg min-h-[440px] md:min-h-[387px] lg:min-h-[423px]">
+        <DialogTitle className="sr-only">Counseling Form</DialogTitle>
+        {/* Close Button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onClose}
+          className="absolute top-2 right-2 h-6 w-6 rounded-full hover:bg-destructive hover:text-destructive-foreground z-50"
+        >
+          <X className="h-4 w-4" />
+        </Button>
 
-          <div className="text-center mb-3">
+        <div className="text-center mb-3">
             <h3 className="text-sm font-bold text-foreground mb-1">
               Join <span className="text-primary">50,000+</span> Learners Across India
             </h3>
@@ -102,59 +75,68 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
                 Scholarships
               </div>
             </div>
-            <p className="text-xs text-card-foreground font-medium">
+            <p className="text-xs text-card-foreground font-medium mb-1">
               Submit your details and we'll contact you soon!
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-2 text-xs">
-            <Input
-              type="text"
-              placeholder="Enter your full name"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="bg-background border-border focus:border-primary text-xs h-8"
-              required
-            />
-
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="bg-background border-border focus:border-primary text-xs h-8"
-              required
-            />
-
-            <div className="flex">
-              <div className="flex items-center bg-background border border-r-0 border-border rounded-l-md px-2 h-8">
-                <span className="text-xs text-muted-foreground">🇮🇳 +91</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <label className="text-xs font-medium text-foreground w-12 flex-shrink-0">NAME :</label>
               <Input
-                type="tel"
-                placeholder="Enter your mobile number"
-                value={formData.mobile}
-                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                className="bg-background border-border focus:border-primary rounded-l-none text-xs h-8"
+                type="text"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="bg-background border border-black-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-xs h-8 flex-1"
                 required
               />
             </div>
 
+            <div className="flex items-center gap-2">
+              <label className="text-xs font-medium text-foreground w-12 flex-shrink-0">EMAIL :</label>
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="bg-background border border-black-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-xs h-8 flex-1"
+                required
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="text-xs font-medium text-foreground whitespace-nowrap min-w-fit">Mobile No. :</label>
+              <div className="flex flex-1">
+                <div className="flex items-center bg-background border border-r-0 border-gray-200 rounded-l-md px-2 h-8">
+                  <span className="text-xs text-muted-foreground">+91</span>
+                </div>
+                <Input
+                  type="tel"
+                  placeholder="Enter your mobile number"
+                  value={formData.mobile}
+                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                  className="bg-background border border-black-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent rounded-l-none text-xs h-8"
+                  required
+                />
+              </div>
+            </div>
+
             <Select value={formData.course} onValueChange={(value) => setFormData({ ...formData, course: value })}>
-              <SelectTrigger className="bg-background border-border focus:border-primary text-xs h-8">
+              <SelectTrigger className="bg-background border border-black-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-xs h-8">
                 <SelectValue placeholder="Select course*" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-popover border-black-300 shadow-lg z-50">
                 {courses.map((course) => (
-                  <SelectItem key={course} value={course}>
+                  <SelectItem key={course} value={course} className="text-xs">
                     {course}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
 
-            <div className="flex items-start space-x-2">
-              <Checkbox 
+            <div className="flex items-start space-x-2 mt-1">
+              <Checkbox
                 id="consent"
                 checked={formData.consent}
                 onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
@@ -165,12 +147,12 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
               </label>
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8"
-              disabled={!formData.consent || isSubmitting}
+            <Button
+              type="submit"
+              className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8 mt-1"
+              disabled={!formData.consent}
             >
-              {isSubmitting ? 'Submitting...' : 'Enroll Now'}
+              Enroll Now
             </Button>
           </form>
 
@@ -184,7 +166,6 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
               <span className="text-primary font-medium">Limited Seats</span>
             </div>
           </div>
-        </div>
       </DialogContent>
     </Dialog>
   );
