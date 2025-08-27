@@ -8,13 +8,9 @@ import CounselingFormPopup from './CounselingFormPopup';
 // import { useCounselingPopup } from '@/hooks/useCounselingPopup'; // We'll use local state for now
 
 const Header = () => {
-  // Using local state for the popup, as per your reference code
-  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
-  // If you want to use the global hook again, uncomment the line below and remove local state
-  //const { triggerPopup } = useCounselingPopup(); 
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
   const [institutionsSubDropdown, setInstitutionsSubDropdown] = useState<string>('Manipal University Jaipur');
 
   const navigationItems = [
@@ -187,8 +183,8 @@ const Header = () => {
             {/* Apply Now Button - Desktop */}
             <Button 
               size="sm" 
-              className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary" 
-              onClick={() => setIsCounselingPopupOpen(true)} // Using local state setter
+              className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary"
+              onClick={() => setIsCounselingPopupOpen(true)}
             >
               Apply Now
             </Button>
@@ -278,11 +274,8 @@ const Header = () => {
                 </Button>
                 {/* Apply Now Button - Mobile */}
                 <Button 
-                  className="w-full bg-gradient-primary hover:opacity-90 transition-smooth" 
-                  onClick={() => {
-                    setIsCounselingPopupOpen(true); // Using local state setter
-                    setIsMenuOpen(false); // Close mobile menu when popup opens
-                  }}
+                  className="w-full bg-gradient-primary hover:opacity-90 transition-smooth"
+                  onClick={() => setIsCounselingPopupOpen(true)}
                 >
                   Apply Now
                 </Button>
@@ -316,6 +309,12 @@ const Header = () => {
           </div>
         </div>
       )}
+      
+      <CounselingFormPopup 
+        isOpen={isCounselingPopupOpen}
+        onClose={() => setIsCounselingPopupOpen(false)}
+        trigger="header-apply-now"
+      />
     </header>
   );
 };
