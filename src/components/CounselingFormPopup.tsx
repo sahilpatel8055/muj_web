@@ -4,7 +4,9 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Calendar, Users, X } from 'lucide-react';
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface CounselingFormPopupProps {
   isOpen: boolean;
@@ -20,6 +22,7 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
     course: '',
     consent: true // Default to true as requested
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const courses = [
     'Online MBA',
@@ -32,21 +35,55 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
     'Online MA'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
 
-    // Set session storage to remember form submission
-    sessionStorage.setItem('counselingFormSubmitted', 'true');
-    sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
+    try {
+      const { data, error } = await supabase.functions.invoke('submit-to-sheets', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.mobile,
+          course: formData.course,
+          trigger: trigger || 'popup'
+        }
+      });
 
-    onClose();
+      if (error) {
+        throw error;
+      }
+
+      toast.success('Thank you! Your details have been submitted successfully. We will contact you soon.');
+      
+      // Set session storage to remember form submission
+      sessionStorage.setItem('counselingFormSubmitted', 'true');
+      sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        mobile: '',
+        course: '',
+        consent: true
+      });
+      
+      onClose();
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('There was an error submitting your details. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md xl:max-w-md mx-auto p-4 gap-0 bg-card/95 backdrop-blur-md border-border rounded-2xl shadow-lg min-h-[440px] md:min-h-[387px] lg:min-h-[423px]">
         <DialogTitle className="sr-only">Counseling Form</DialogTitle>
+        <DialogDescription className="sr-only">Submit your details for counseling and we'll contact you soon</DialogDescription>
         {/* Close Button */}
         <Button
           variant="ghost"
@@ -150,9 +187,9 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
             <Button
               type="submit"
               className="w-full bg-gradient-primary hover:opacity-90 transition-smooth text-xs h-8 mt-1"
-              disabled={!formData.consent}
+              disabled={!formData.consent || isSubmitting}
             >
-              Enroll Now
+              {isSubmitting ? 'Submitting...' : 'Enroll Now'}
             </Button>
           </form>
 

@@ -7,9 +7,14 @@ import OurImpact from '@/components/OurImpact';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Footer from '@/components/Footer';
 import ConvocationSlider from '@/components/convocation-slider';
-import CareerAssistance from '@/components/career-assistance'; // Import the CareerAssistance component
+import CareerAssistance from '@/components/career-assistance';
+import BellNotification from '@/components/BellNotification';
+import CounselingFormPopup from '@/components/CounselingFormPopup';
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const Index = () => {
+  const { showPopup, hidePopup, triggerPopup } = useCounselingPopup();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -21,9 +26,19 @@ const Index = () => {
         <OurImpact />
         <WhyChooseUs />
         <ConvocationSlider />
-        <CareerAssistance /> {/* Add the CareerAssistance component here */}
+        <CareerAssistance />
       </main>
       <Footer />
+      
+      {/* Bell Notification */}
+      <BellNotification onApplyNowClick={triggerPopup} />
+      
+      {/* Counseling Form Popup */}
+      <CounselingFormPopup 
+        isOpen={showPopup} 
+        onClose={hidePopup}
+        trigger="auto"
+      />
     </div>
   );
 };
