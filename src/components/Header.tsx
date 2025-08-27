@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Menu, X, Search } from 'lucide-react'; // Removed MoreVertical as it's not used
-import { cn } from '@/lib/utils'; // cn is not directly used in the provided snippet
+import { ChevronDown, Menu, X, Search, MoreVertical } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import mujLogo from '@/assets/muj_logo-removebg-preview.png';
 import { Link } from 'react-router-dom';
-import CounselingFormPopup from './CounselingFormPopup';
-// import { useCounselingPopup } from '@/hooks/useCounselingPopup'; // We'll use local state for now
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const Header = () => {
+  const { triggerPopup } = useCounselingPopup();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
   const [institutionsSubDropdown, setInstitutionsSubDropdown] = useState<string>('Manipal University Jaipur');
 
   const navigationItems = [
@@ -102,7 +101,7 @@ const Header = () => {
                       <span>{item.title}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
-                    {openDropdown === item.title && (
+                     {openDropdown === item.title && (
                         <div 
                           className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-3 z-50 backdrop-blur-sm"
                           onMouseEnter={() => setOpenDropdown(item.title)}
@@ -180,14 +179,10 @@ const Header = () => {
               </div>
             ))}
             
-            {/* Apply Now Button - Desktop */}
-            <Button 
-              size="sm" 
-              className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary"
-              onClick={() => setIsCounselingPopupOpen(true)}
-            >
-              Apply Now
-            </Button>
+            {/* Apply Now Button */}
+             <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary" onClick={triggerPopup}>
+               Apply Now
+             </Button>
           </div>
 
           {/* Mobile navigation (visible on mobile) */}
@@ -272,49 +267,14 @@ const Header = () => {
                   <Search className="w-4 h-4 mr-2" />
                   Search Courses
                 </Button>
-                {/* Apply Now Button - Mobile */}
-                <Button 
-                  className="w-full bg-gradient-primary hover:opacity-90 transition-smooth"
-                  onClick={() => setIsCounselingPopupOpen(true)}
-                >
-                  Apply Now
-                </Button>
+                 <Button className="w-full bg-gradient-primary hover:opacity-90 transition-smooth" onClick={triggerPopup}>
+                   Apply Now
+                 </Button>
               </div>
             </nav>
           </div>
         )}
       </div>
-
-      {/* Basic local popup component for testing */}
-      {isCounselingPopupOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full relative">
-            <button 
-              onClick={() => setIsCounselingPopupOpen(false)} 
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <h3 className="text-2xl font-bold mb-4 text-gray-900">Get Free Counseling</h3>
-            <p className="text-gray-700 mb-6">This is a placeholder for your counseling form.</p>
-            {/* You would replace this with your actual form */}
-            <div className="space-y-4">
-              <input type="text" placeholder="Your Name" className="w-full p-2 border border-gray-300 rounded-md" />
-              <input type="email" placeholder="Your Email" className="w-full p-2 border border-gray-300 rounded-md" />
-              <input type="tel" placeholder="Your Phone Number" className="w-full p-2 border border-gray-300 rounded-md" />
-              <Button onClick={() => setIsCounselingPopupOpen(false)} className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                Submit
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      <CounselingFormPopup 
-        isOpen={isCounselingPopupOpen}
-        onClose={() => setIsCounselingPopupOpen(false)}
-        trigger="header-apply-now"
-      />
     </header>
   );
 };
