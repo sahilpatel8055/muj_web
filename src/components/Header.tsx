@@ -4,13 +4,14 @@ import { ChevronDown, Menu, X, Search } from 'lucide-react'; // Removed MoreVert
 import { cn } from '@/lib/utils'; // cn is not directly used in the provided snippet
 import mujLogo from '@/assets/muj_logo-removebg-preview.png';
 import { Link } from 'react-router-dom';
+import CounselingFormPopup from './CounselingFormPopup';
 // import { useCounselingPopup } from '@/hooks/useCounselingPopup'; // We'll use local state for now
 
 const Header = () => {
   // Using local state for the popup, as per your reference code
   const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
   // If you want to use the global hook again, uncomment the line below and remove local state
-  const { triggerPopup } = useCounselingPopup(); 
+  //const { triggerPopup } = useCounselingPopup(); 
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
