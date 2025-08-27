@@ -14,6 +14,7 @@ import CourseCurriculumSection from "@/components/CourseCurriculumSection";
 import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection";
 import CourseFeesSection from "@/components/CourseFeesSection";
 import CounselingFormPopup from "@/components/CounselingFormPopup";
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const bcomSpecializations = [
   { icon: Calculator, title: "Financial Accounting" },
@@ -29,6 +30,7 @@ const bcomSpecializations = [
 ];
 
 const BCOM = () => {
+  const { triggerPopup } = useCounselingPopup();
   const scrollContainerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
@@ -124,7 +126,7 @@ const BCOM = () => {
                 >
                   Apply Now
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" onClick={triggerPopup}>
                   Download Brochure
                 </Button>
               </div>

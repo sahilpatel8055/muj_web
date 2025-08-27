@@ -13,8 +13,10 @@ import { Clock, Users, Calendar, Award, BookOpen, TrendingUp, DollarSign, Briefc
 import { useState, useRef, useEffect } from 'react';
 import smuLogo from '@/assets/smulogo.jpg';
 import CounselingFormPopup from '@/components/CounselingFormPopup';
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const BA_SMU = () => {
+  const { triggerPopup } = useCounselingPopup();
   const [activeSection, setActiveSection] = useState('overview');
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
@@ -107,7 +109,7 @@ const BA_SMU = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
+                  <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary" onClick={triggerPopup}>
                     Download Brochure
                   </Button>
                   <Button 

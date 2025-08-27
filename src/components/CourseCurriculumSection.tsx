@@ -90,7 +90,12 @@ const CourseCurriculumSection = () => {
                 Year 2
               </button>
             </div>
-            <Button variant="outline" className="bg-white text-gray-900 hover:bg-gray-100">
+            <Button variant="outline" className="bg-white text-gray-900 hover:bg-gray-100" onClick={() => {
+              // This is a generic Download Brochure button, we'll trigger the counseling popup
+              if (typeof window !== 'undefined' && window.parent) {
+                window.parent.postMessage({ type: 'TRIGGER_COUNSELING_POPUP' }, '*');
+              }
+            }}>
               Download MBA Brochure
             </Button>
           </div>

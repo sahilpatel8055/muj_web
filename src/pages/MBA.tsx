@@ -16,6 +16,7 @@ import CourseCurriculumSection from "@/components/CourseCurriculumSection";
 import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection";
 import CourseFeesSection from "@/components/CourseFeesSection"; // New import
 import CounselingFormPopup from "@/components/CounselingFormPopup";
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const mbaSpecializations = [
   // ... (existing specialization data)
@@ -32,6 +33,7 @@ const mbaSpecializations = [
 ];
 
 const MBA = () => {
+  const { triggerPopup } = useCounselingPopup();
   const scrollContainerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
@@ -125,7 +127,7 @@ const MBA = () => {
                 >
                   Apply Now
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" onClick={triggerPopup}>
                   Download Brochure
                 </Button>
               </div>

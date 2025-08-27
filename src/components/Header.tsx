@@ -93,7 +93,7 @@ const Header = () => {
                 key={item.title}
                 className="relative"
                 onMouseEnter={() => item.hasDropdown && setOpenDropdown(item.title)}
-                onMouseLeave={() => item.hasDropdown && setTimeout(() => setOpenDropdown(null), 200)}
+                onMouseLeave={() => item.hasDropdown && setTimeout(() => setOpenDropdown(null), 300)}
               >
                 {item.hasDropdown ? (
                   <>
@@ -105,7 +105,7 @@ const Header = () => {
                         <div 
                           className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-3 z-50 backdrop-blur-sm"
                           onMouseEnter={() => setOpenDropdown(item.title)}
-                          onMouseLeave={() => setTimeout(() => setOpenDropdown(null), 200)}
+                          onMouseLeave={() => setTimeout(() => setOpenDropdown(null), 300)}
                         >
                           {item.title === 'Institutions' ? (
                             // Special layout for institutions with sub-courses
@@ -204,18 +204,56 @@ const Header = () => {
               {/* Dropdown items under three dots */}
               {navigationItems.filter(item => item.hasDropdown).map(item => (
                 <div key={item.title} className="space-y-2">
-                  <div className="font-medium text-foreground px-2">{item.title}</div>
-                  <div className="pl-4 space-y-1">
-                    {item.items?.map((subItem) => (
-                      <a
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-2 py-1 text-sm text-muted-foreground hover:text-primary transition-smooth"
-                      >
-                        {subItem.name}
-                      </a>
-                    ))}
-                  </div>
+                  <button 
+                    className="font-medium text-foreground px-2 flex items-center justify-between w-full"
+                    onClick={() => handleMobileDropdownToggle(item.title)}
+                  >
+                    {item.title}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${
+                      openDropdown === item.title ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                  {openDropdown === item.title && (
+                    <div className="pl-4 space-y-1">
+                      {item.title === 'Institutions' ? (
+                        // Special handling for institutions with courses
+                        item.items?.map((subItem) => (
+                          <div key={subItem.name} className="space-y-1">
+                            <a
+                              href={subItem.href}
+                              className="block px-2 py-1 text-sm text-muted-foreground hover:text-primary transition-smooth font-medium border-b border-border/30 pb-1"
+                            >
+                              {subItem.name}
+                            </a>
+                            {subItem.courses && subItem.courses.length > 0 && (
+                              <div className="pl-3 space-y-0.5">
+                                {subItem.courses.map((course) => (
+                                  <a
+                                    key={course.name}
+                                    href={course.href}
+                                    className="block px-2 py-0.5 text-xs text-muted-foreground hover:text-primary transition-smooth"
+                                  >
+                                    {course.name}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))
+                      ) : (
+                        // Regular dropdown for courses
+                        item.items?.map((subItem) => (
+                          <a
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block px-2 py-1 text-sm text-muted-foreground hover:text-primary transition-smooth"
+                          >
+                            {subItem.name}
+                          </a>
+                        ))
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
               <a

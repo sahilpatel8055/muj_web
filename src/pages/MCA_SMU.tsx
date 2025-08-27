@@ -12,8 +12,11 @@ import { Card } from '@/components/ui/card';
 import { Clock, Users, Calendar, Award, BookOpen, TrendingUp, DollarSign, Briefcase, Code, Database } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import smuLogo from '@/assets/smulogo.jpg';
+import CounselingFormPopup from '@/components/CounselingFormPopup';
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const MCA_SMU = () => {
+  const { triggerPopup } = useCounselingPopup();
   const [activeSection, setActiveSection] = useState('overview');
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({});
 
@@ -104,7 +107,7 @@ const MCA_SMU = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary">
+                  <Button size="lg" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary" onClick={triggerPopup}>
                     Download Brochure
                   </Button>
                   <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
