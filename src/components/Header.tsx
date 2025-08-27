@@ -4,12 +4,13 @@ import { ChevronDown, Menu, X, Search, MoreVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import mujLogo from '@/assets/muj_logo-removebg-preview.png';
 import { Link } from 'react-router-dom';
-import CounselingFormPopup from './CounselingFormPopup';
+import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const Header = () => {
+  const { triggerPopup } = useCounselingPopup();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
+  const [institutionsSubDropdown, setInstitutionsSubDropdown] = useState<string>('Manipal University Jaipur');
 
   const navigationItems = [
     {
@@ -28,9 +29,35 @@ const Header = () => {
       title: 'Institutions',
       hasDropdown: true,
       items: [
-        { name: 'Manipal University Jaipur', href: '/muj' },
-        { name: 'Manipal Academy of Higher Education', href: '/mahe' },
-        { name: 'Sikkim Manipal University', href: '/smu' },
+        { 
+          name: 'Manipal University Jaipur', 
+          href: '/muj',
+          isUniversity: true,
+          courses: [
+            { name: 'Online MBA', href: '/mba' },
+            { name: 'Online MCA', href: '/mca' },
+            { name: 'Online BBA', href: '/bba' },
+            { name: 'Online BCA', href: '/bca' },
+            { name: 'Online BCom', href: '/bcom' },
+          ]
+        },
+        { 
+          name: 'Manipal Academy of Higher Education', 
+          href: '/mahe',
+          isUniversity: true,
+          courses: []
+        },
+        { 
+          name: 'Sikkim Manipal University', 
+          href: '/smu',
+          isUniversity: true,
+          courses: [
+            { name: 'Online BA', href: '/ba-smu' },
+            { name: 'Online MA', href: '/ma-smu' },
+            { name: 'Online BCom', href: '/bcom-smu' },
+            { name: 'Online MCom', href: '/mcom-smu' },
+          ]
+        },
       ]
     },
     {
@@ -66,7 +93,7 @@ const Header = () => {
                 key={item.title}
                 className="relative"
                 onMouseEnter={() => item.hasDropdown && setOpenDropdown(item.title)}
-                onMouseLeave={() => setOpenDropdown(null)}
+                onMouseLeave={() => item.hasDropdown && setTimeout(() => setOpenDropdown(null), 200)}
               >
                 {item.hasDropdown ? (
                   <>
@@ -75,18 +102,71 @@ const Header = () => {
                       <ChevronDown className="w-4 h-4" />
                     </button>
                      {openDropdown === item.title && (
-                       <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg p-2 z-50 backdrop-blur-sm">
-                         {item.items?.map((subItem) => (
-                           <a
-                             key={subItem.name}
-                             href={subItem.href}
-                             className="block px-4 py-3 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth"
-                           >
-                             {subItem.name}
-                           </a>
-                         ))}
-                       </div>
-                     )}
+                        <div 
+                          className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-3 z-50 backdrop-blur-sm"
+                          onMouseEnter={() => setOpenDropdown(item.title)}
+                          onMouseLeave={() => setTimeout(() => setOpenDropdown(null), 200)}
+                        >
+                          {item.title === 'Institutions' ? (
+                            // Special layout for institutions with sub-courses
+                            <div className="space-y-4">
+                              {item.items?.map((subItem) => (
+                                <div key={subItem.name} className="space-y-2">
+                                  <div 
+                                    className="flex items-center justify-between cursor-pointer"
+                                    onClick={() => setInstitutionsSubDropdown(
+                                      institutionsSubDropdown === subItem.name ? '' : subItem.name
+                                    )}
+                                  >
+                                    <a
+                                      href={subItem.href}
+                                      className="block px-3 py-2 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth font-medium border-b border-border pb-2 flex-1"
+                                      onClick={(e) => e.stopPropagation()}
+                                    >
+                                      {subItem.name}
+                                    </a>
+                                    <button className="p-1 hover:bg-accent rounded">
+                                      <ChevronDown className={`w-4 h-4 transition-transform ${
+                                        institutionsSubDropdown === subItem.name ? 'rotate-180' : ''
+                                      }`} />
+                                    </button>
+                                  </div>
+                                  {subItem.courses && subItem.courses.length > 0 && institutionsSubDropdown === subItem.name && (
+                                    <div className="pl-4 space-y-1">
+                                      {subItem.courses.map((course) => (
+                                        <a
+                                          key={course.name}
+                                          href={course.href}
+                                          className="block px-3 py-1 text-sm text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-smooth"
+                                        >
+                                          {course.name}
+                                        </a>
+                                      ))}
+                                      <a
+                                        href={subItem.href}
+                                        className="block px-3 py-1 text-sm text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-md transition-smooth font-medium mt-2"
+                                      >
+                                        View All Courses →
+                                      </a>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            // Regular dropdown for other items
+                            item.items?.map((subItem) => (
+                              <a
+                                key={subItem.name}
+                                href={subItem.href}
+                                className="block px-4 py-3 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth"
+                              >
+                                {subItem.name}
+                              </a>
+                            ))
+                          )}
+                        </div>
+                      )}
                   </>
                 ) : (
                   <a
@@ -100,13 +180,9 @@ const Header = () => {
             ))}
             
             {/* Apply Now Button */}
-            <Button 
-              size="sm" 
-              className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary"
-              onClick={() => setIsCounselingPopupOpen(true)}
-            >
-              Apply Now
-            </Button>
+             <Button size="sm" className="bg-gradient-primary hover:opacity-90 transition-smooth shadow-primary" onClick={triggerPopup}>
+               Apply Now
+             </Button>
           </div>
 
           {/* Mobile navigation (visible on mobile) */}
@@ -153,23 +229,14 @@ const Header = () => {
                   <Search className="w-4 h-4 mr-2" />
                   Search Courses
                 </Button>
-                <Button 
-                  className="w-full bg-gradient-primary hover:opacity-90 transition-smooth"
-                  onClick={() => setIsCounselingPopupOpen(true)}
-                >
-                  Apply Now
-                </Button>
+                 <Button className="w-full bg-gradient-primary hover:opacity-90 transition-smooth" onClick={triggerPopup}>
+                   Apply Now
+                 </Button>
               </div>
             </nav>
           </div>
         )}
       </div>
-      
-      <CounselingFormPopup 
-        isOpen={isCounselingPopupOpen}
-        onClose={() => setIsCounselingPopupOpen(false)}
-        trigger="header-apply-now"
-      />
     </header>
   );
 };
