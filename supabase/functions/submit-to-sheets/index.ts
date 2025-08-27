@@ -104,9 +104,9 @@ serve(async (req: Request) => {
 
     const rowData = [timestamp, name, email, mobile, course, trigger || 'form'];
 
-    // You'll need to replace SPREADSHEET_ID with your actual Google Sheet ID
-    const SPREADSHEET_ID = '1YOUR_SPREADSHEET_ID_HERE'; // Replace with your sheet ID
-    const RANGE = 'Sheet1!A:F'; // Adjust range as needed
+    // Google Sheet configuration
+    const SPREADSHEET_ID = '1_kdzz44E2w4AV5Sr2i00XTpRtQ9jDlzdml8Bg5hOvnM';
+    const RANGE = 'MUJ!A:F'; // Using your sheet name "MUJ"
 
     // Append data to Google Sheets
     const sheetsResponse = await fetch(
