@@ -24,6 +24,11 @@ import BA_SMU from './pages/BA_SMU';
 import MA_SMU from './pages/MA_SMU';
 import BCOM_SMU from './pages/BCOM_SMU';
 import MCOM_SMU from './pages/MCOM_SMU';
+import ManipalAdvantagePage from './pages/ManipalAdvantagePage';
+import Disclaimer from './pages/Disclaimer';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import WhatsAppButton from './components/WhatsAppButton';
 
 const queryClient = new QueryClient();
 
@@ -54,6 +59,10 @@ const AppContent = () => {
         <Route path="/ma-smu" element={<MA_SMU />} />
         <Route path="/bcom-smu" element={<BCOM_SMU />} />
         <Route path="/mcom-smu" element={<MCOM_SMU />} />
+        <Route path="/manipal-advantage" element={<ManipalAdvantagePage />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -65,6 +74,7 @@ const AppContent = () => {
         trigger="auto" 
       />
       <BellNotification onApplyNowClick={handleBellApplyNow} />
+      <WhatsAppButton />
     </>
   );
 };

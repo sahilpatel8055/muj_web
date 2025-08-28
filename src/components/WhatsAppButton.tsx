@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react'; // Changed FaWhatsapp to MessageCircle, added X for dismiss button
+import { X } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const WhatsAppButton = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -42,7 +43,7 @@ const WhatsAppButton = () => {
   }, [hasScrolled]); // Re-run if hasScrolled state changes
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex items-end flex-col space-y-2">
+    <div className="fixed bottom-4 left-4 z-[90] flex items-end flex-col space-y-2">
       <AnimatePresence>
         {showPopup && (
           <motion.div
@@ -74,7 +75,7 @@ const WhatsAppButton = () => {
           className="relative bg-[#25D366] text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110 active:scale-95"
           aria-label="Contact us on WhatsApp"
         >
-          <MessageCircle className="w-8 h-8" /> {/* Lucide MessageCircle icon */}
+          <FaWhatsapp className="w-8 h-8" />
           <span className="absolute -top-1 -right-1 flex h-4 w-4">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-4 w-4 bg-[#25D366] border-2 border-white"></span>

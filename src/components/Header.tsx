@@ -69,7 +69,7 @@ const Header = () => {
     {
       title: 'The Manipal Advantage',
       hasDropdown: false,
-      href: '/advantage'
+      href: '/manipal-advantage'
     }
   ];
 

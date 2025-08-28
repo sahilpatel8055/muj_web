@@ -11,6 +11,7 @@ import CareerAssistance from '@/components/career-assistance';
 import BellNotification from '@/components/BellNotification';
 import CounselingFormPopup from '@/components/CounselingFormPopup';
 import Faq from '@/components/Faq'; // Import the new Faq component
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { useCounselingPopup } from '@/hooks/useCounselingPopup';
 
 const Index = () => {
@@ -34,6 +35,7 @@ const Index = () => {
       
       {/* Bell Notification */}
       <BellNotification onApplyNowClick={triggerPopup} />
+      <WhatsAppButton />
       
       {/* Counseling Form Popup */}
       <CounselingFormPopup 

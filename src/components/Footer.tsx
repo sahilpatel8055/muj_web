@@ -154,14 +154,14 @@ const Footer = () => {
               © 2024 Online Manipal. All rights reserved. UGC Approved Programs.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="/privacy" className="text-muted-foreground hover:text-primary transition-smooth">
+              <a href="/disclaimer" className="text-muted-foreground hover:text-primary transition-smooth">
+                Disclaimer
+              </a>
+              <a href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-smooth">
                 Privacy Policy
               </a>
-              <a href="/terms" className="text-muted-foreground hover:text-primary transition-smooth">
+              <a href="/terms-of-service" className="text-muted-foreground hover:text-primary transition-smooth">
                 Terms of Service
-              </a>
-              <a href="/cookies" className="text-muted-foreground hover:text-primary transition-smooth">
-                Cookie Policy
               </a>
             </div>
           </div>
