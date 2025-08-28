@@ -130,7 +130,7 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
               ⏰ Admission is Closing Soon For July Batch!
             </h4>
             <p className="text-xs text-muted-foreground mb-3">
-              <span className="text-orange-1000 text-shine">Avail early bird discount on program fee</span>
+              <span className="text-orange-900 text-shine">Avail early bird discount on program fee</span>
             </p>
             
             <div className="flex items-center justify-between">
