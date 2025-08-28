@@ -101,7 +101,7 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
           
           <div className="pr-6">
             <h4 className="font-semibold text-sm text-foreground mb-1">
-              🎯 Early Bird Discount!
+              ⏰ Admission is Closing Soon For July Batch!
             </h4>
             <p className="text-xs text-muted-foreground mb-3">
               Avail early bird discount on program fee
