@@ -43,7 +43,7 @@ const WhatsAppButton = () => {
   }, [hasScrolled]); // Re-run if hasScrolled state changes
 
   return (
-    <div className="fixed right-0 z-[90] flex items-end flex-col space-y-2" style={{ top: 'calc(40% - 20px)' }}>
+    <div className="fixed right-0 z-[90] flex items-end flex-col space-y-2" style={{ top: 'calc(30% - 20px)' }}>
       <AnimatePresence>
         {showPopup && (
           <motion.div
@@ -84,15 +84,15 @@ const WhatsAppButton = () => {
           </span>
         </div>
         
-        {/* Mobile View - Same design as desktop but without text */}
+        {/* Mobile View - Smaller and higher positioned */}
         <div 
-          className="md:hidden bg-[#25D366] text-white rounded-tl-2xl rounded-bl-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center py-3 px-3"
+          className="md:hidden bg-[#25D366] text-white rounded-tl-2xl rounded-bl-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center py-2 px-2"
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-5 h-5" />
-          <span className="absolute -top-1 -left-1 flex h-3 w-3">
+          <FaWhatsapp className="w-4 h-4" />
+          <span className="absolute -top-1 -left-1 flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00E676]"></span>
           </span>
         </div>
       </a>
