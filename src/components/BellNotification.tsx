@@ -93,6 +93,25 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
+      {/* Custom CSS for the shining effect */}
+      <style>{`
+        @keyframes shine {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+        .text-shine {
+          background: linear-gradient(to right, #fed7aa 0%, #fb923c 20%, #fed7aa 40%, #fb923c 60%, #fed7aa 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-size: 200% auto;
+          animation: shine 3s linear infinite;
+        }
+      `}</style>
+
       {/* Message Popup */}
       {isMessageOpen && (
         <div className="absolute bottom-16 right-0 bg-card border border-border rounded-lg shadow-lg p-3 w-60 md:w-64 mb-2 animate-in slide-in-from-bottom-2">
@@ -111,7 +130,7 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
               ⏰ Admission is Closing Soon For July Batch!
             </h4>
             <p className="text-xs text-muted-foreground mb-3">
-              Avail early bird discount on program fee
+              Avail <span className="text-orange-500 text-shine">early bird discount on program fee</span>
             </p>
             
             <div className="flex items-center justify-between">
