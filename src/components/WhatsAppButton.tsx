@@ -43,7 +43,7 @@ const WhatsAppButton = () => {
   }, [hasScrolled]); // Re-run if hasScrolled state changes
 
   return (
-    <div className="fixed right-0 z-[90] flex items-end flex-col space-y-2" style={{ top: 'calc(50% - 20px)' }}>
+    <div className="fixed right-0 z-[90] flex items-end flex-col space-y-2" style={{ top: 'calc(40% - 20px)' }}>
       <AnimatePresence>
         {showPopup && (
           <motion.div
@@ -51,7 +51,7 @@ const WhatsAppButton = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ type: 'spring', stiffness: 100 }}
-            className="bg-primary text-primary-foreground p-3 rounded-lg shadow-xl max-w-xs text-sm flex items-start gap-2"
+            className="bg-primary text-primary-foreground p-3 md:p-3 p-2 rounded-lg shadow-xl max-w-xs md:max-w-xs max-w-[200px] text-sm md:text-sm text-xs flex items-start gap-2"
           >
             <p className="flex-1">
               Want to know more? We are here to help!
@@ -60,7 +60,7 @@ const WhatsAppButton = () => {
                 onClick={() => setShowPopup(false)}
                 className="text-primary-foreground/70 hover:text-primary-foreground transition-colors p-1 rounded-full"
             >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4 md:w-4 md:h-4 w-3 h-3" />
             </button>
           </motion.div>
         )}
@@ -84,17 +84,13 @@ const WhatsAppButton = () => {
           </span>
         </div>
         
-        {/* Mobile View - Flag/Badge design */}
+        {/* Mobile View - Same design as desktop but without text */}
         <div 
-          className="md:hidden bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center w-14 h-10 relative"
-          style={{ 
-            clipPath: 'polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%)',
-            borderRadius: '4px 0 0 4px'
-          }}
+          className="md:hidden bg-[#25D366] text-white rounded-tl-2xl rounded-bl-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center py-3 px-3"
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-5 h-5 ml-1" />
-          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <FaWhatsapp className="w-5 h-5" />
+          <span className="absolute -top-1 -left-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
           </span>
