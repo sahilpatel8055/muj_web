@@ -129,26 +129,26 @@ export const mbaCourseData = {
 export const bbaCourseData = {
   fees: {
     indian: {
-      fullFee: "1,20,000",
-      semesterFee: "20,000",
-      emi: "5,000",
+      fullFee: "1,35,000",
+      semesterFee: "25,500",
+      emi: "3,750",
     },
     nri: {
-      fullFee: "3,000",
-      semesterFee: "500",
-      emi: "150",
+      fullFee: "2,046",
+      semesterFee: "341",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "2,500",
-      semesterFee: "420",
-      emi: "125",
+      fullFee: "2,388",
+      semesterFee: "398",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "2,000",
-      semesterFee: "330",
-      emi: "100",
+      fullFee: "1,800",
+      semesterFee: "300",
+      emi: "NA",
       currency: "$"
     }
   },
@@ -158,12 +158,13 @@ export const bbaCourseData = {
         semester: "Semester 1",
         color: "bg-blue-200",
         subjects: [
-          "Principles of Management",
-          "Business Communication",
-          "Fundamentals of Accounting",
-          "Business Mathematics",
+          "Business and Management Functions",
+          "Financial Accounting",
           "Microeconomics",
-          "Computer Applications in Business"
+          "Entrepreneurship and Innovation Management",
+          "Microeconomics",
+          "Office Automation Tools",
+          "Universal Human Values"
         ]
       },
       {
@@ -171,11 +172,11 @@ export const bbaCourseData = {
         color: "bg-green-200",
         subjects: [
           "Organizational Behavior",
-          "Marketing Management",
-          "Financial Accounting",
+          "Introduction to Python",
+          "Financial Management",
           "Business Statistics",
           "Macroeconomics",
-          "Business Environment"
+          "Business Communication"
         ]
       }
     ],
@@ -187,8 +188,8 @@ export const bbaCourseData = {
           "Human Resource Management",
           "Operations Management",
           "Cost Accounting",
-          "Research Methodology",
-          "International Business",
+          "Marketing Management",
+          "Business and Corporate Laws",
           "Entrepreneurship Development"
         ]
       },
@@ -196,19 +197,19 @@ export const bbaCourseData = {
         semester: "Semester 4",
         color: "bg-green-200",
         subjects: [
-          "Strategic Management",
-          "Financial Management",
-          "Business Ethics",
-          "Project Management",
+          "Indian Financial System",
+          "Business Research Methods",
+          "Supply Chain Management",
+          "E-Commerce",
           "Digital Marketing",
-          "Business Analytics"
+          "Technology Management"
         ]
       }
     ],
     duration: "36 months",
     hoursPerWeek: "12-15 Hours Per Week",
     totalSemesters: "6 Sem",
-    credits: "120 Credits"
+    credits: "126 Credits"
   }
 };
 
@@ -216,26 +217,26 @@ export const bbaCourseData = {
 export const bcaCourseData = {
   fees: {
     indian: {
-      fullFee: "90,000",
-      semesterFee: "15,000",
+      fullFee: "1,35,000",
+      semesterFee: "22,500",
       emi: "3,750",
     },
     nri: {
-      fullFee: "2,500",
-      semesterFee: "420",
-      emi: "125",
+      fullFee: "2,196",
+      semesterFee: "366",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "2,000",
-      semesterFee: "330",
-      emi: "100",
+      fullFee: "2,556",
+      semesterFee: "426",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "1,800",
-      semesterFee: "300",
-      emi: "90",
+      fullFee: "1,920",
+      semesterFee: "320",
+      emi: "NA",
       currency: "$"
     }
   },
@@ -245,24 +246,26 @@ export const bcaCourseData = {
         semester: "Semester 1",
         color: "bg-blue-200",
         subjects: [
-          "Programming Fundamentals",
-          "Computer Organization",
-          "Digital Electronics",
+          "Fundamentals of Mathematics",
+          "Technical Communication",
+          "C Programming",
           "Mathematics-I",
-          "Communication Skills",
-          "Environmental Studies"
+          "Introduction to Web Programming",
+          "C Programming Lab",
+          "Web Programming Lab",
+          "Environmental Science"
         ]
       },
       {
         semester: "Semester 2",
         color: "bg-green-200",
         subjects: [
-          "Object Oriented Programming",
+          "Basic Statistics and Probability",
           "Data Structures",
-          "Computer Networks",
+          "Principle of Programming Languages",
           "Mathematics-II",
-          "Database Management Systems",
-          "Web Development"
+          "Object-Oriented Programming using C++",
+          "Data Structures using C++ Lab"
         ]
       }
     ],
@@ -271,31 +274,31 @@ export const bcaCourseData = {
         semester: "Semester 3",
         color: "bg-blue-200",
         subjects: [
-          "Software Engineering",
           "Operating Systems",
-          "Computer Graphics",
-          "System Analysis & Design",
-          "Mobile Application Development",
-          "Project Work"
+          "Artificial Intelligence for Problem Solving",
+          "Data Communication & Protocols",
+          "Java Programming",
+          "Computer Organization and Architecture",
+          "Operating System Lab"
         ]
       },
       {
         semester: "Semester 4",
         color: "bg-green-200",
         subjects: [
-          "Artificial Intelligence",
-          "Cloud Computing",
-          "Cyber Security",
-          "Data Analytics",
-          "IoT & Embedded Systems",
-          "Final Project"
+          "Python Programming",
+          "Software Engineering",
+          "Data Mining & Visualization",
+          "Introduction to Network Security",
+          "Python Programming Lab",
+          "Data Mining and Visualization Lab"
         ]
       }
     ],
     duration: "36 months",
     hoursPerWeek: "15-18 Hours Per Week",
     totalSemesters: "6 Sem",
-    credits: "120 Credits"
+    credits: "127 Credits"
   }
 };
 
@@ -303,26 +306,26 @@ export const bcaCourseData = {
 export const bcomCourseData = {
   fees: {
     indian: {
-      fullFee: "75,000",
-      semesterFee: "12,500",
-      emi: "3,125",
+      fullFee: "99,000",
+      semesterFee: "16,500",
+      emi: "2,750",
     },
     nri: {
-      fullFee: "2,200",
-      semesterFee: "370",
-      emi: "110",
+      fullFee: "1,458",
+      semesterFee: "243",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "1,800",
-      semesterFee: "300",
-      emi: "90",
+      fullFee: "1,698",
+      semesterFee: "283",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "1,500",
-      semesterFee: "250",
-      emi: "75",
+      fullFee: "1,278",
+      semesterFee: "213",
+      emi: "NA",
       currency: "$"
     }
   },
@@ -333,23 +336,23 @@ export const bcomCourseData = {
         color: "bg-blue-200",
         subjects: [
           "Financial Accounting",
-          "Business Communication",
-          "Business Economics",
-          "Business Mathematics",
-          "Computer Applications",
-          "Environmental Studies"
+          "Principles of Business Management",
+          "Business Organization",
+          "Fundamentals of Accounting I",
+          "Economic Theory",
+          "General English"
         ]
       },
       {
         semester: "Semester 2",
         color: "bg-green-200",
         subjects: [
-          "Corporate Accounting",
-          "Cost Accounting",
-          "Business Statistics",
-          "Marketing Management",
+          "Fundamentals of Entrepreneurship and Innovation",
+          "Economic Environment in India",
           "Business Law",
-          "Principles of Management"
+          "Fundamentals of Accounting II",
+          "Marketing Management",
+          "Computer Awareness and Internet"
         ]
       }
     ],
@@ -358,23 +361,23 @@ export const bcomCourseData = {
         semester: "Semester 3",
         color: "bg-blue-200",
         subjects: [
-          "Income Tax",
-          "Auditing",
+          "Business Communication",
+          "Financial Management",
           "Banking & Insurance",
-          "International Trade",
-          "E-Commerce",
-          "Research Methodology"
+          "Cost Accounting",
+          "Business Statistics",
+          "Financial Statement Interpretation"
         ]
       },
       {
         semester: "Semester 4",
         color: "bg-green-200",
         subjects: [
-          "Financial Management",
+          "Financial Services",
           "Goods & Service Tax",
-          "Investment Analysis",
-          "Entrepreneurship",
-          "Project Management",
+          "Corporate Accounting",
+          "Financial Services",
+          "Human Resource Management",
           "Dissertation"
         ]
       }
@@ -382,7 +385,7 @@ export const bcomCourseData = {
     duration: "36 months",
     hoursPerWeek: "12-15 Hours Per Week",
     totalSemesters: "6 Sem",
-    credits: "120 Credits"
+    credits: "132 Credits"
   }
 };
 
@@ -478,26 +481,26 @@ export const mcaCourseData = {
 export const mcomCourseData = {
   fees: {
     indian: {
-      fullFee: "52,000",
-      semesterFee: "13,000",
-      emi: "2,167",
+      fullFee: "1,08,000",
+      semesterFee: "27,000",
+      emi: "4,500",
     },
     nri: {
-      fullFee: "1,800",
-      semesterFee: "450",
-      emi: "90",
+      fullFee: "1,620",
+      semesterFee: "405",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "1,500",
-      semesterFee: "375",
-      emi: "75",
+      fullFee: "1,892",
+      semesterFee: "473",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "1,200",
-      semesterFee: "300",
-      emi: "60",
+      fullFee: "1,420",
+      semesterFee: "355",
+      emi: "NA",
       currency: "$"
     }
   },
@@ -507,24 +510,24 @@ export const mcomCourseData = {
         semester: "Semester 1",
         color: "bg-blue-200",
         subjects: [
-          "Advanced Financial Accounting",
-          "Research Methodology",
-          "Advanced Business Statistics",
-          "Corporate Finance",
-          "International Business",
-          "Strategic Management"
+          "Management Concepts and Organizational Behavior",
+          "Managerial Economics",
+          "Financial Management",
+          "Cost Control & Analysis",
+          "Business & Economic Laws",
+          "Financial Accounting and Reporting"
         ]
       },
       {
         semester: "Semester 2",
         color: "bg-green-200",
         subjects: [
-          "Advanced Cost Accounting",
-          "Financial Management",
-          "Investment Analysis",
-          "Banking & Insurance",
-          "International Finance",
-          "Business Analytics"
+          "Research Methodology and Statistical Analysis",
+          "Management Accounting",
+          "Marketing Management",
+          "Business Environment",
+          "Project Planning, Appraisal and Control",
+          "Management of Financial Institutions, Market and Service"
         ]
       }
     ],
@@ -534,7 +537,7 @@ export const mcomCourseData = {
         color: "bg-blue-200",
         subjects: [
           "Advanced Taxation",
-          "Auditing & Assurance",
+          "International Business",
           "Portfolio Management",
           "Corporate Governance",
           "E-Commerce",
@@ -546,10 +549,10 @@ export const mcomCourseData = {
         color: "bg-green-200",
         subjects: [
           "Financial Markets",
-          "Risk Management",
-          "Project Finance",
+          "Audit and Insurance",
+          "Project Report",
           "Entrepreneurship",
-          "Business Ethics",
+          "Project Report",
           "Dissertation - II"
         ]
       }
@@ -557,7 +560,7 @@ export const mcomCourseData = {
     duration: "24 months",
     hoursPerWeek: "15-18 Hours Per Week",
     totalSemesters: "4 Sem",
-    credits: "90 Credits"
+    credits: "100 Credits"
   }
 };
 
@@ -565,26 +568,26 @@ export const mcomCourseData = {
 export const baSmaCourseData = {
   fees: {
     indian: {
-      fullFee: "36,000",
-      semesterFee: "6,000",
-      emi: "1,500",
+      fullFee: "75,000",
+      semesterFee: "12,500",
+      emi: "2,083",
     },
     nri: {
-      fullFee: "1,200",
-      semesterFee: "200",
-      emi: "60",
+      fullFee: "1,020",
+      semesterFee: "170",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "1,000",
+      fullFee: "1,020",
       semesterFee: "170",
-      emi: "50",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "800",
-      semesterFee: "135",
-      emi: "40",
+      fullFee: "1020",
+      semesterFee: "170",
+      emi: "NA",
       currency: "$"
     }
   },
@@ -652,26 +655,26 @@ export const baSmaCourseData = {
 export const mbaSmuCourseData = {
   fees: {
     indian: {
-      fullFee: "80,000",
-      semesterFee: "20,000",
-      emi: "3,333",
+      fullFee: "1,10,000",
+      semesterFee: "27,500",
+      emi: "4,583",
     },
     nri: {
-      fullFee: "2,500",
-      semesterFee: "625",
-      emi: "125",
+      fullFee: "1,375",
+      semesterFee: "344",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "2,000",
-      semesterFee: "500",
-      emi: "100",
+      fullFee: "1,375",
+      semesterFee: "344",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "1,800",
-      semesterFee: "450",
-      emi: "90",
+      fullFee: "1,375",
+      semesterFee: "344",
+      emi: "NA",
       currency: "$"
     }
   },
