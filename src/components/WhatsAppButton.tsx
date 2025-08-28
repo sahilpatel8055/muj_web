@@ -43,7 +43,7 @@ const WhatsAppButton = () => {
   }, [hasScrolled]); // Re-run if hasScrolled state changes
 
   return (
-    <div className="fixed top-1/2 right-0 -translate-y-1/2 z-[90] flex items-end flex-col space-y-2">
+    <div className="fixed right-0 z-[90] flex items-end flex-col space-y-2" style={{ top: 'calc(50% - 20px)' }}>
       <AnimatePresence>
         {showPopup && (
           <motion.div
@@ -71,28 +71,29 @@ const WhatsAppButton = () => {
         rel="noopener noreferrer"
         className="relative block"
       >
-        {/* Desktop/Laptop View - Vertical Design */}
+        {/* Desktop/Laptop/Tablet View - Horizontal smaller design */}
         <div 
-          className="hidden md:flex bg-[#25D366] text-white rounded-tl-3xl rounded-bl-3xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex-col items-center py-6 px-3 min-h-[120px]"
+          className="hidden md:flex bg-[#25D366] text-white rounded-tl-2xl rounded-bl-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex-row items-center py-3 px-3 gap-2"
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-7 h-7 mb-2" />
-          <div className="flex flex-col items-center">
-            {/* Vertical text for desktop */}
-            <span className="font-medium text-sm whitespace-nowrap transform -rotate-90 origin-center">Chat</span>
-          </div>
+          <FaWhatsapp className="w-5 h-5" />
+          <span className="font-medium text-sm whitespace-nowrap">Chat</span>
           <span className="absolute -top-1 -left-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
           </span>
         </div>
         
-        {/* Mobile View - Small Round Button */}
+        {/* Mobile View - Flag/Badge design */}
         <div 
-          className="md:hidden bg-[#25D366] text-white rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center w-12 h-12"
+          className="md:hidden bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center w-14 h-10 relative"
+          style={{ 
+            clipPath: 'polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%)',
+            borderRadius: '4px 0 0 4px'
+          }}
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-6 h-6" />
+          <FaWhatsapp className="w-5 h-5 ml-1" />
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
