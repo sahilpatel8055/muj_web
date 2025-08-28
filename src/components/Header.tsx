@@ -1,17 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Menu, X, Search } from 'lucide-react';
-// import { cn } from '@/lib/utils'; // cn is imported but not used in this snippet
+import { ChevronDown, Menu, X, Search } from 'lucide-react'; // MoreVertical removed as it's unused
+import { cn } from '@/lib/utils'; // cn is imported but not used in this snippet
 import mujLogo from '@/assets/muj_logo-removebg-preview.png';
-import { Link } from 'react-router-dom'; // Ensure Link is imported
+import { Link } from 'react-router-dom';
 import CounselingFormPopup from './CounselingFormPopup'; // Ensure this path is correct
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isCounselingPopupOpen, setIsCounselingPopupOpen] = useState(false);
-  // Set initial state to null so Manipal University Jaipur opens only when Institutions is first clicked
-  const [institutionsSubDropdown, setInstitutionsSubDropdown] = useState<string | null>(null); 
+  const [institutionsSubDropdown, setInstitutionsSubDropdown] = useState<string | null>('Manipal University Jaipur'); // Changed initial state to null or default university
 
   // Ref for managing desktop dropdown hover timeout
   const dropdownHoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -70,7 +69,7 @@ const Header = () => {
     {
       title: 'The Manipal Advantage',
       hasDropdown: false,
-      href: '/advantage' // This href will now be used by the Link component
+      href: '/advantage'
     }
   ];
 
@@ -91,11 +90,8 @@ const Header = () => {
   // Logic for mobile dropdown toggling
   const handleMobileDropdownToggle = (title: string) => {
     // If opening 'Institutions' for the first time or from closed state, default to Manipal University Jaipur
-    if (title === 'Institutions' && openDropdown !== 'Institutions') {
-      setInstitutionsSubDropdown('Manipal University Jaipur');
-    } else if (openDropdown === title) {
-      // If closing the current dropdown, reset sub-dropdown state
-      setInstitutionsSubDropdown(null);
+    if (title === 'Institutions' && (openDropdown !== 'Institutions')) {
+        setInstitutionsSubDropdown('Manipal University Jaipur');
     }
     setOpenDropdown(openDropdown === title ? null : title);
   };
@@ -138,24 +134,27 @@ const Header = () => {
                     {openDropdown === item.title && (
                         <div 
                           className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-3 z-50 backdrop-blur-sm"
-                          onMouseEnter={() => handleMouseEnterDropdown(item.title)}
-                          onMouseLeave={handleMouseLeaveDropdown}
+                          onMouseEnter={() => handleMouseEnterDropdown(item.title)} // Keep open when hovering over content
+                          onMouseLeave={handleMouseLeaveDropdown} // Close when leaving content
                         >
                           {item.title === 'Institutions' ? (
+                            // Special layout for institutions with sub-courses
                             <div className="space-y-4">
                               {item.items?.map((subItem) => (
                                 <div key={subItem.name} className="space-y-2">
                                   <div 
                                     className="flex items-center justify-between cursor-pointer"
-                                    onClick={() => handleInstitutionsSubDropdownToggle(subItem.name)} // Corrected to use toggle handler
+                                    onClick={() => setInstitutionsSubDropdown(
+                                      institutionsSubDropdown === subItem.name ? '' : subItem.name
+                                    )}
                                   >
-                                    <Link // Use Link for internal navigation for the institution name itself
-                                      to={subItem.href}
+                                    <a
+                                      href={subItem.href}
                                       className="block px-3 py-2 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth font-medium border-b border-border pb-2 flex-1"
-                                      onClick={(e) => e.stopPropagation()} // Prevent button's onClick from firing
+                                      onClick={(e) => e.stopPropagation()}
                                     >
                                       {subItem.name}
-                                    </Link>
+                                    </a>
                                     <button className="p-1 hover:bg-accent rounded">
                                       <ChevronDown className={`w-4 h-4 transition-transform ${
                                         institutionsSubDropdown === subItem.name ? 'rotate-180' : ''
@@ -165,21 +164,21 @@ const Header = () => {
                                   {subItem.courses && subItem.courses.length > 0 && institutionsSubDropdown === subItem.name && (
                                     <div className="pl-4 space-y-1">
                                       {subItem.courses.map((course) => (
-                                        <Link // Use Link for internal navigation
+                                        <a
                                           key={course.name}
-                                          to={course.href}
+                                          href={course.href}
                                           className="block px-3 py-1 text-sm text-muted-foreground hover:text-primary hover:bg-accent/50 rounded-md transition-smooth"
                                         >
                                           {course.name}
-                                        </Link>
+                                        </a>
                                       ))}
                                       {/* View All Courses link for desktop */}
-                                      <Link // Use Link for internal navigation
-                                        to={subItem.href}
+                                      <a
+                                        href={subItem.href}
                                         className="block px-3 py-1 text-sm text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-md transition-smooth font-medium mt-2"
                                       >
                                         View All Courses →
-                                      </Link>
+                                      </a>
                                     </div>
                                   )}
                                 </div>
@@ -188,25 +187,25 @@ const Header = () => {
                           ) : (
                             // Regular dropdown for other items
                             item.items?.map((subItem) => (
-                              <Link // Use Link for internal navigation
+                              <a
                                 key={subItem.name}
-                                to={subItem.href}
+                                href={subItem.href}
                                 className="block px-4 py-3 text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-smooth"
                               >
                                 {subItem.name}
-                              </Link>
+                              </a>
                             ))
                           )}
                         </div>
                       )}
                   </>
                 ) : (
-                  <Link // Use Link for internal navigation for non-dropdown items
-                    to={item.href}
+                  <a
+                    href={item.href}
                     className="text-foreground hover:text-primary transition-smooth font-medium"
                   >
                     {item.title}
-                  </Link>
+                  </a>
                 )}
               </div>
             ))}
@@ -252,19 +251,14 @@ const Header = () => {
                   {openDropdown === item.title && (
                     <div className="pl-4 space-y-1">
                       {item.title === 'Institutions' ? (
+                        // Special handling for institutions with courses
                         item.items?.map((subItem) => (
                           <div key={subItem.name} className="space-y-1">
                             <button
                               className="w-full flex items-center justify-between px-2 py-1 text-sm text-muted-foreground hover:text-primary transition-smooth font-medium border-b border-border/30 pb-1"
                               onClick={() => handleInstitutionsSubDropdownToggle(subItem.name)}
                             >
-                              <Link // Use Link for internal navigation for the institution name itself
-                                to={subItem.href}
-                                className="flex-1 text-left"
-                                onClick={(e) => e.stopPropagation()} // Prevent button's onClick from firing
-                              >
-                                {subItem.name}
-                              </Link>
+                              <span>{subItem.name}</span>
                               <ChevronDown className={`w-4 h-4 transition-transform ${
                                 institutionsSubDropdown === subItem.name ? 'rotate-180' : ''
                               }`} />
@@ -272,49 +266,47 @@ const Header = () => {
                             {subItem.courses && subItem.courses.length > 0 && institutionsSubDropdown === subItem.name && (
                               <div className="pl-3 space-y-0.5">
                                 {subItem.courses.map((course) => (
-                                  <Link // Use Link for internal navigation
+                                  <a
                                     key={course.name}
-                                    to={course.href}
+                                    href={course.href}
                                     className="block px-2 py-0.5 text-xs text-muted-foreground hover:text-primary transition-smooth"
                                   >
                                     {course.name}
-                                  </Link>
+                                  </a>
                                 ))}
                                 {/* View All Courses link for mobile */}
-                                <Link // Use Link for internal navigation
-                                  to={subItem.href}
+                                <a
+                                  href={subItem.href}
                                   className="block px-2 py-1 text-xs text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-md transition-smooth font-medium mt-2"
-                                  onClick={() => setIsMenuOpen(false)} // Close mobile menu on navigation
                                 >
                                   View All Courses →
-                                </Link>
+                                </a>
                               </div>
                             )}
                           </div>
                         ))
                       ) : (
+                        // Regular dropdown for courses
                         item.items?.map((subItem) => (
-                          <Link // Use Link for internal navigation
+                          <a
                             key={subItem.name}
-                            to={subItem.href}
+                            href={subItem.href}
                             className="block px-2 py-1 text-sm text-muted-foreground hover:text-primary transition-smooth"
-                            onClick={() => setIsMenuOpen(false)} // Close mobile menu on navigation
                           >
                             {subItem.name}
-                          </Link>
+                          </a>
                         ))
                       )}
                     </div>
                   )}
                 </div>
               ))}
-              <Link // Use Link for internal navigation for non-dropdown items
-                to={navigationItems.find(item => !item.hasDropdown)?.href || '#'} // Fallback to '#' if href is undefined
+              <a
+                href={navigationItems.find(item => !item.hasDropdown)?.href}
                 className="block text-foreground hover:text-primary transition-smooth font-medium px-2"
-                onClick={() => setIsMenuOpen(false)} // Close mobile menu on navigation
               >
                 {navigationItems.find(item => !item.hasDropdown)?.title}
-              </Link>
+              </a>
               <div className="pt-4 space-y-3">
                 <Button variant="outline" className="w-full">
                   <Search className="w-4 h-4 mr-2" />
