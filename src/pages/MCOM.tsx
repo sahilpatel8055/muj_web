@@ -15,6 +15,7 @@ import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"
 import CourseFeesSection from "@/components/CourseFeesSection";
 import CounselingFormPopup from "@/components/CounselingFormPopup";
 import { useCounselingPopup } from '@/hooks/useCounselingPopup';
+import { mcomCourseData } from '@/data/courseData';
 
 const mcomSpecializations = [
   { icon: Calculator, title: "Financial Management" },
@@ -209,13 +210,13 @@ const MCOM = () => {
       <CourseraBenefitsSection />
 
       {/* Course Curriculum Section */}
-      <CourseCurriculumSection />
+      <CourseCurriculumSection courseData={mcomCourseData} courseName="MCom" />
       
       {/* Sample Degree Section */}
       <ManipalSampleDegreeSection />
 
       {/* Course Fees Section */}
-      <CourseFeesSection />
+      <CourseFeesSection courseData={mcomCourseData} courseName="MCom" />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">

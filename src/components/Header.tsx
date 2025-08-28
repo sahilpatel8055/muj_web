@@ -39,6 +39,9 @@ const Header = () => {
             { name: 'Online BBA', href: '/bba' },
             { name: 'Online BCA', href: '/bca' },
             { name: 'Online BCom', href: '/bcom' },
+            { name: 'Online MCom', href: '/mcom-muj' },
+            { name: 'Online MA JMC', href: '/ma-jmc' },
+            { name: 'Online MA Economics', href: '/ma-economics' },
           ]
         },
         { 

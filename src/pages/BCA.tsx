@@ -15,6 +15,7 @@ import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"
 import CourseFeesSection from "@/components/CourseFeesSection";
 import CounselingFormPopup from "@/components/CounselingFormPopup";
 import { useCounselingPopup } from '@/hooks/useCounselingPopup';
+import { bcaCourseData } from '@/data/courseData';
 
 const bcaSpecializations = [
   { icon: Code, title: "Programming Languages" },
@@ -208,13 +209,13 @@ const BCA = () => {
       <CourseraBenefitsSection />
 
       {/* Course Curriculum Section */}
-      <CourseCurriculumSection />
+      <CourseCurriculumSection courseData={bcaCourseData} courseName="BCA" />
       
       {/* Sample Degree Section */}
       <ManipalSampleDegreeSection />
 
       {/* Course Fees Section */}
-      <CourseFeesSection />
+      <CourseFeesSection courseData={bcaCourseData} courseName="BCA" />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">

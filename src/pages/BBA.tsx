@@ -15,6 +15,7 @@ import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"
 import CourseFeesSection from "@/components/CourseFeesSection";
 import CounselingFormPopup from "@/components/CounselingFormPopup";
 import { useCounselingPopup } from '@/hooks/useCounselingPopup';
+import { bbaCourseData } from '@/data/courseData';
 
 const bbaSpecializations = [
   { icon: BarChart2, title: "Marketing Management" },
@@ -208,13 +209,13 @@ const BBA = () => {
       <CourseraBenefitsSection />
 
       {/* Course Curriculum Section */}
-      <CourseCurriculumSection />
+      <CourseCurriculumSection courseData={bbaCourseData} courseName="BBA" />
       
       {/* Sample Degree Section */}
       <ManipalSampleDegreeSection />
 
       {/* Course Fees Section */}
-      <CourseFeesSection />
+      <CourseFeesSection courseData={bbaCourseData} courseName="BBA" />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">

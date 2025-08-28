@@ -17,6 +17,7 @@ import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"
 import CourseFeesSection from "@/components/CourseFeesSection"; // New import
 import CounselingFormPopup from "@/components/CounselingFormPopup";
 import { useCounselingPopup } from '@/hooks/useCounselingPopup';
+import { mbaCourseData } from '@/data/courseData';
 
 const mbaSpecializations = [
   // ... (existing specialization data)
@@ -210,13 +211,13 @@ const MBA = () => {
       <CourseraBenefitsSection />
 
       {/* Course Curriculum Section */}
-      <CourseCurriculumSection />
+      <CourseCurriculumSection courseData={mbaCourseData} courseName="MBA" />
       
       {/* Sample Degree Section */}
       <ManipalSampleDegreeSection />
 
       {/* Course Fees Section */}
-      <CourseFeesSection />
+      <CourseFeesSection courseData={mbaCourseData} courseName="MBA" />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">

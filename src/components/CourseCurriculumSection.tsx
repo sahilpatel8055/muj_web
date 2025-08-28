@@ -4,10 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Clock, BookOpen, GraduationCap, Trophy } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const CourseCurriculumSection = () => {
+interface CourseCurriculumProps {
+  courseData?: any;
+  courseName?: string;
+}
+
+const CourseCurriculumSection = ({ courseData, courseName = "MBA" }: CourseCurriculumProps) => {
   const [activeYear, setActiveYear] = useState('Year 1');
 
-  const year1Content = [
+  // Default MBA curriculum
+  const defaultYear1 = [
     {
       semester: "Semester 1",
       color: "bg-blue-200",
@@ -36,7 +42,7 @@ const CourseCurriculumSection = () => {
     }
   ];
 
-  const year2Content = [
+  const defaultYear2 = [
     {
       semester: "Semester 3",
       color: "bg-blue-200",
@@ -58,7 +64,17 @@ const CourseCurriculumSection = () => {
     }
   ];
 
+  // Use provided course data or fallback to default
+  const year1Content = courseData?.curriculum?.year1 || defaultYear1;
+  const year2Content = courseData?.curriculum?.year2 || defaultYear2;
+  
   const contentToDisplay = activeYear === 'Year 1' ? year1Content : year2Content;
+  
+  // Get curriculum info from course data or use defaults
+  const duration = courseData?.curriculum?.duration || "24 months";
+  const hoursPerWeek = courseData?.curriculum?.hoursPerWeek || "15-20 Hours Per Week";
+  const totalSemesters = courseData?.curriculum?.totalSemesters || "4 Sem";
+  const credits = courseData?.curriculum?.credits || "90 Credits";
 
   return (
     <section className="py-16 bg-gray-900 text-white">
@@ -69,10 +85,10 @@ const CourseCurriculumSection = () => {
               Course Curriculum
             </h2>
             <div className="flex flex-wrap items-center space-x-4 mb-6 text-sm text-gray-400">
-              <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> 24 months</span>
-              <span className="flex items-center gap-2"><Trophy className="w-4 h-4" /> 15-20 Hours Per Week</span>
-              <span className="flex items-center gap-2"><GraduationCap className="w-4 h-4" /> 4 Sem</span>
-              <span className="flex items-center gap-2"><BookOpen className="w-4 h-4" /> 90 Credits</span>
+              <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> {duration}</span>
+              <span className="flex items-center gap-2"><Trophy className="w-4 h-4" /> {hoursPerWeek}</span>
+              <span className="flex items-center gap-2"><GraduationCap className="w-4 h-4" /> {totalSemesters}</span>
+              <span className="flex items-center gap-2"><BookOpen className="w-4 h-4" /> {credits}</span>
             </div>
           </div>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
@@ -96,7 +112,7 @@ const CourseCurriculumSection = () => {
                 window.parent.postMessage({ type: 'TRIGGER_COUNSELING_POPUP' }, '*');
               }
             }}>
-              Download MBA Brochure
+              Download {courseName} Brochure
             </Button>
           </div>
         </div>

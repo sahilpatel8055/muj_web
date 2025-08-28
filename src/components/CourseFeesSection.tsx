@@ -38,16 +38,24 @@ const scholarships = [
   { category: "Merit (80% and above in bachelor’s degree)", discount: "10%", criteria: "Mark sheet" },
 ];
 
-const CourseFeesSection = () => {
+interface CourseFeesProps {
+  courseData?: any;
+  courseName?: string;
+}
+
+const CourseFeesSection = ({ courseData, courseName = "MBA" }: CourseFeesProps) => {
   const [activeTab, setActiveTab] = useState("indian");
   const [isScholarshipModalOpen, setIsScholarshipModalOpen] = useState(false);
-  const feesData = courseFees[activeTab];
+  
+  // Use provided course data or fallback to default MBA data
+  const fees = courseData?.fees || courseFees;
+  const feesData = fees[activeTab];
 
   return (
     <section className="py-16 bg-white text-black">
       <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-bold text-left text-foreground mb-8">
-          Online MBA Course Fee
+          Online {courseName} Course Fee
         </h2>
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

@@ -15,6 +15,7 @@ import ManipalSampleDegreeSection from "@/components/ManipalSampleDegreeSection"
 import CourseFeesSection from "@/components/CourseFeesSection";
 import CounselingFormPopup from "@/components/CounselingFormPopup";
 import { useCounselingPopup } from '@/hooks/useCounselingPopup';
+import { mcaCourseData } from '@/data/courseData';
 
 const mcaSpecializations = [
   { icon: Code, title: "Software Development" },
@@ -208,13 +209,13 @@ const MCA = () => {
       <CourseraBenefitsSection />
 
       {/* Course Curriculum Section */}
-      <CourseCurriculumSection />
+      <CourseCurriculumSection courseData={mcaCourseData} courseName="MCA" />
       
       {/* Sample Degree Section */}
       <ManipalSampleDegreeSection />
 
       {/* Course Fees Section */}
-      <CourseFeesSection />
+      <CourseFeesSection courseData={mcaCourseData} courseName="MCA" />
 
       {/* Key Features */}
       <section className="py-16 bg-muted/30">

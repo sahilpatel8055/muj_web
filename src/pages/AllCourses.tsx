@@ -144,6 +144,39 @@ const AllCourses = () => {
       institutionLogo: smuLogo,
       institutionBadgeColor: 'bg-green-600',
       href: '/mcom-smu'
+    },
+    {
+      title: 'Master of Commerce',
+      institution: 'Manipal University Jaipur',
+      duration: '2 Years',
+      rating: 4.3,
+      students: '1800+',
+      imageUrl: courseBCOM,
+      institutionLogo: mujLogo,
+      institutionBadgeColor: 'bg-blue-600',
+      href: '/mcom-muj'
+    },
+    {
+      title: 'Master of Arts in JMC',
+      institution: 'Manipal University Jaipur',
+      duration: '2 Years',
+      rating: 4.4,
+      students: '800+',
+      imageUrl: courseBBA,
+      institutionLogo: mujLogo,
+      institutionBadgeColor: 'bg-blue-600',
+      href: '/ma-jmc'
+    },
+    {
+      title: 'Master of Arts in Economics',
+      institution: 'Manipal University Jaipur',
+      duration: '2 Years',
+      rating: 4.5,
+      students: '600+',
+      imageUrl: courseBBA,
+      institutionLogo: mujLogo,
+      institutionBadgeColor: 'bg-blue-600',
+      href: '/ma-economics'
     }
   ];
 
@@ -244,66 +277,6 @@ const AllCourses = () => {
             
             <div className="flex overflow-x-auto gap-4 pb-4">
               {displayCourses.map((course, index) => (
-                <div key={index} className="min-w-[320px] flex-shrink-0">
-                  <CourseCard
-                    title={course.title}
-                    institution={course.institution}
-                    duration={course.duration}
-                    rating={course.rating}
-                    students={course.students}
-                    imageUrl={course.imageUrl}
-                    institutionLogo={course.institutionLogo}
-                    institutionBadgeColor={course.institutionBadgeColor}
-                    href={course.href}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Postgraduate Programs Section */}
-        <section className="py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold">Postgraduate Programs</h2>
-              <Badge variant="secondary" className="text-sm">
-                {pgCourses.length} Courses Available
-              </Badge>
-            </div>
-            
-            <div className="flex overflow-x-auto gap-4 pb-4">
-              {pgCourses.map((course, index) => (
-                <div key={index} className="min-w-[320px] flex-shrink-0">
-                  <CourseCard
-                    title={course.title}
-                    institution={course.institution}
-                    duration={course.duration}
-                    rating={course.rating}
-                    students={course.students}
-                    imageUrl={course.imageUrl}
-                    institutionLogo={course.institutionLogo}
-                    institutionBadgeColor={course.institutionBadgeColor}
-                    href={course.href}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Undergraduate Programs Section */}
-        <section className="py-8 bg-muted/20">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold">Undergraduate Programs</h2>
-              <Badge variant="secondary" className="text-sm">
-                {ugCourses.length} Courses Available
-              </Badge>
-            </div>
-            
-            <div className="flex overflow-x-auto gap-4 pb-4">
-              {ugCourses.map((course, index) => (
                 <div key={index} className="min-w-[320px] flex-shrink-0">
                   <CourseCard
                     title={course.title}
