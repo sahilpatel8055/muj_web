@@ -29,11 +29,17 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
       const documentHeight = document.documentElement.scrollHeight;
       const scrollPercent = scrollTop / (documentHeight - windowHeight);
 
-      if (scrollPercent >= 0.3 && !hasScrolledEnough && !isInCoolingPeriod()) {
+      // Condition to make the bell icon visible after 30% scroll.
+      // The `isInCoolingPeriod()` check has been removed here to always show the icon.
+      if (scrollPercent >= 0.3 && !hasScrolledEnough) {
         setHasScrolledEnough(true);
         setIsVisible(true);
-        setIsMessageOpen(true);
-        setCountdown(20);
+        
+        // The message will only auto-open if the user is NOT in a cooling period.
+        if (!isInCoolingPeriod()) {
+          setIsMessageOpen(true);
+          setCountdown(20);
+        }
       }
     };
 
@@ -89,17 +95,18 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
     <div className="fixed bottom-4 right-4 z-50">
       {/* Message Popup */}
       {isMessageOpen && (
-        <div className="absolute bottom-16 right-0 bg-card border border-border rounded-lg shadow-lg p-4 w-72 mb-2 animate-in slide-in-from-bottom-2">
+        <div className="absolute bottom-16 right-0 bg-card border border-border rounded-lg shadow-lg p-3 w-60 md:w-64 mb-2 animate-in slide-in-from-bottom-2">
+          {/* Close button with updated styles for better touch target */}
           <Button
             variant="ghost"
             size="icon"
             onClick={handleCloseMessage}
-            className="absolute top-1 right-1 h-6 w-6 rounded-full hover:bg-destructive hover:text-destructive-foreground"
+            className="absolute top-1 right-1 h-7 w-7 rounded-full hover:bg-destructive hover:text-destructive-foreground"
           >
-            <X className="h-3 w-3" />
+            <X className="h-4 w-4" />
           </Button>
           
-          <div className="pr-6">
+          <div className="pr-2">
             <h4 className="font-semibold text-sm text-foreground mb-1">
               ⏰ Admission is Closing Soon For July Batch!
             </h4>
@@ -114,9 +121,7 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
               >
                 Apply Now
               </Button>
-              <span className="text-xs text-muted-foreground">
-                Auto-close in {countdown}s
-              </span>
+              {/* Auto-close timer has been removed from here */}
             </div>
           </div>
         </div>
