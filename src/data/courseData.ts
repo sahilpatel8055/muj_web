@@ -390,26 +390,26 @@ export const bcomCourseData = {
 export const mcaCourseData = {
   fees: {
     indian: {
-      fullFee: "1,20,000",
-      semesterFee: "30,000",
-      emi: "5,000",
+      fullFee: "1,58,000",
+      semesterFee: "39,500",
+      emi: "6,583",
     },
     nri: {
-      fullFee: "3,200",
-      semesterFee: "800",
-      emi: "160",
+      fullFee: "2,432",
+      semesterFee: "608",
+      emi: "NA",
       currency: "$"
     },
     foreign: {
-      fullFee: "2,800",
-      semesterFee: "700",
-      emi: "140",
+      fullFee: "2,836",
+      semesterFee: "709",
+      emi: "NA",
       currency: "$"
     },
     african: {
-      fullFee: "2,400",
-      semesterFee: "600",
-      emi: "120",
+      fullFee: "2,128",
+      semesterFee: "532",
+      emi: "na",
       currency: "$"
     }
   },
@@ -419,12 +419,14 @@ export const mcaCourseData = {
         semester: "Semester 1",
         color: "bg-blue-200",
         subjects: [
-          "Advanced Programming",
-          "Computer System Architecture",
-          "Database Management Systems",
-          "Discrete Mathematics",
-          "Software Engineering",
-          "Computer Networks"
+          "Funtamentals of Computer",
+          "Fundamentals of Mathematics",
+          "Python Programming",
+          "Programming & Problem-Solving using C",
+          "Relational Database Management System",
+          "Data Visualization",
+          "Python Programming – Lab",
+          "Programming & Problem-Solving using C – Lab"
         ]
       },
       {
@@ -433,10 +435,11 @@ export const mcaCourseData = {
         subjects: [
           "Data Structures & Algorithms",
           "Operating Systems",
-          "Web Technologies",
-          "Object Oriented Programming",
-          "System Analysis & Design",
-          "Computer Graphics"
+          "Computer Networks & Protocols",
+          "Object Oriented Programming using java",
+          "Object Oriented Programming using JAVA – Lab",
+          "Data Structure and Algorithms – Lab",
+          "Specialization Elective course"
         ]
       }
     ],
@@ -447,29 +450,27 @@ export const mcaCourseData = {
         subjects: [
           "Artificial Intelligence",
           "Machine Learning",
-          "Cloud Computing",
-          "Mobile Computing",
-          "Information Security",
-          "Research Methodology"
+          "Unix & Shell Programming",
+          "Web Technology",
+          "Software Engineering & Project Management",
+          "Unix & Shell Programming – Lab"
         ]
       },
       {
         semester: "Semester 4",
         color: "bg-green-200",
         subjects: [
-          "Data Mining",
-          "Big Data Analytics",
-          "IoT Applications",
-          "Blockchain Technology",
+          "Banking and Insurance Management",
           "Project Work",
-          "Dissertation"
+          "Specialization elective 1",
+          "Specialization elective 2"
         ]
       }
     ],
     duration: "24 months",
     hoursPerWeek: "18-20 Hours Per Week",
     totalSemesters: "4 Sem",
-    credits: "90 Credits"
+    credits: "85 Credits"
   }
 };
 
