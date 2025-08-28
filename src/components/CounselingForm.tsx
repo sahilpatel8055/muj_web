@@ -13,7 +13,7 @@ const CounselingForm = () => {
     email: '',
     mobile: '',
     course: '',
-    consent: false
+    consent: true
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -53,7 +53,7 @@ const CounselingForm = () => {
         email: '',
         mobile: '',
         course: '',
-        consent: false
+        consent: true
       });
       
     } catch (error) {
@@ -67,6 +67,7 @@ const CounselingForm = () => {
   return (
     <div className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-4 shadow-lg w-full max-w-sm lg:max-w-sm xl:max-w-md overflow-hidden">{/* Fixed width and added overflow-hidden */}
       <div className="text-center mb-3">
+        <h2 className="text-lg font-bold text-primary mb-2">Free Counseling Form</h2>
         <h3 className="text-sm font-bold text-foreground mb-1">
           Join <span className="text-primary">50,000+</span> Learners Across India
         </h3>

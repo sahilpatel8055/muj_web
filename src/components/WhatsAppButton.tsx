@@ -43,7 +43,7 @@ const WhatsAppButton = () => {
   }, [hasScrolled]); // Re-run if hasScrolled state changes
 
   return (
-    <div className="fixed bottom-4 left-4 z-[90] flex items-end flex-col space-y-2">
+    <div className="fixed top-1/2 right-0 -translate-y-1/2 z-[90] flex items-end flex-col space-y-2">
       <AnimatePresence>
         {showPopup && (
           <motion.div
@@ -72,11 +72,11 @@ const WhatsAppButton = () => {
         className="relative block"
       >
         <div 
-          className="bg-[#25D366] text-white rounded-r-full rounded-tl-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center pl-4 pr-6 py-3 min-w-[80px]"
+          className="bg-[#25D366] text-white rounded-l-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center px-4 py-3 min-w-[80px] flex-col"
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-6 h-6 mr-2" />
-          <span className="font-medium text-sm whitespace-nowrap">Chat</span>
+          <FaWhatsapp className="w-6 h-6 mb-1" />
+          <span className="font-medium text-xs whitespace-nowrap">Chat</span>
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
