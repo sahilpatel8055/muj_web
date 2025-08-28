@@ -105,7 +105,7 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
         }
         .text-shine {
           /* Adjusted gradient for neon orange and subtle shine */
-          background: linear-gradient(to right, #ffcc99 0%, #FF6600 20%, #ffcc99 40%, #FF6600 60%, #ffcc99 100%);
+          background: linear-gradient(to right, #FFAA66 0%, #E64A00 20%, #FFAA66 40%, #E64A00 60%, #FFAA66 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-size: 200% auto;
@@ -132,7 +132,7 @@ const BellNotification: React.FC<BellNotificationProps> = ({ onApplyNowClick }) 
               ⏰ Admission is Closing Soon For July Batch!
             </h4>
             <p className="text-xs text-muted-foreground mb-3">
-              <span className="text-[#FF6600] text-shine">Avail early bird discount on program fee</span>
+              <span className="text-[#E64A00] text-shine">Avail early bird discount on program fee</span>
             </p>
             
             <div className="flex items-center justify-between">
