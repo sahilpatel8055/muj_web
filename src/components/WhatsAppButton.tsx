@@ -8,12 +8,12 @@ const WhatsAppButton = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   // Configuration - Your WhatsApp number and message
-  const phoneNumber = "917795133908"; 
+  const phoneNumber = "7795133908"; 
   const message = "Hello, I would like to know more about the courses.";
   const encodedMessage = encodeURIComponent(message);
   
-  // WhatsApp URL logic
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  // WhatsApp URL logic - Use different format for better compatibility
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=91${phoneNumber}&text=${encodedMessage}`;
 
   // Use a timer to show the pop-up message after a delay
   useEffect(() => {
@@ -51,16 +51,16 @@ const WhatsAppButton = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ type: 'spring', stiffness: 100 }}
-            className="bg-primary text-primary-foreground p-3 rounded-lg shadow-xl max-w-xs text-sm flex items-start gap-2" // Added flex items-start gap-2
+            className="bg-primary text-primary-foreground p-3 rounded-lg shadow-xl max-w-xs text-sm flex items-start gap-2"
           >
-            <p className="flex-1"> {/* Added flex-1 */}
+            <p className="flex-1">
               Want to know more? We are here to help!
             </p>
             <button 
                 onClick={() => setShowPopup(false)}
                 className="text-primary-foreground/70 hover:text-primary-foreground transition-colors p-1 rounded-full"
             >
-                <X className="w-4 h-4" /> {/* Lucide X icon for dismiss */}
+                <X className="w-4 h-4" />
             </button>
           </motion.div>
         )}
@@ -72,13 +72,14 @@ const WhatsAppButton = () => {
         className="relative block"
       >
         <div 
-          className="relative bg-[#25D366] text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-110 active:scale-95"
+          className="bg-[#25D366] text-white rounded-r-full rounded-tl-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center pl-4 pr-6 py-3 min-w-[80px]"
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-8 h-8" />
-          <span className="absolute -top-1 -right-1 flex h-4 w-4">
+          <FaWhatsapp className="w-6 h-6 mr-2" />
+          <span className="font-medium text-sm whitespace-nowrap">Chat</span>
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-[#25D366] border-2 border-white"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
           </span>
         </div>
       </a>
