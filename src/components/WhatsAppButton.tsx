@@ -71,12 +71,28 @@ const WhatsAppButton = () => {
         rel="noopener noreferrer"
         className="relative block"
       >
+        {/* Desktop/Laptop View - Vertical Design */}
         <div 
-          className="bg-[#25D366] text-white rounded-l-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center px-4 py-3 min-w-[80px] flex-col"
+          className="hidden md:flex bg-[#25D366] text-white rounded-tl-3xl rounded-bl-3xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex-col items-center py-6 px-3 min-h-[120px]"
           aria-label="Contact us on WhatsApp"
         >
-          <FaWhatsapp className="w-6 h-6 mb-1" />
-          <span className="font-medium text-xs whitespace-nowrap">Chat</span>
+          <FaWhatsapp className="w-7 h-7 mb-2" />
+          <div className="flex flex-col items-center">
+            {/* Vertical text for desktop */}
+            <span className="font-medium text-sm whitespace-nowrap transform -rotate-90 origin-center">Chat</span>
+          </div>
+          <span className="absolute -top-1 -left-1 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
+          </span>
+        </div>
+        
+        {/* Mobile View - Small Round Button */}
+        <div 
+          className="md:hidden bg-[#25D366] text-white rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center w-12 h-12"
+          aria-label="Contact us on WhatsApp"
+        >
+          <FaWhatsapp className="w-6 h-6" />
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366]/80 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00E676]"></span>
