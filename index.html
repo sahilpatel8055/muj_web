@@ -21,7 +21,7 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <!-- Google tag (gtag.js) - Added here -->
+    <!-- Google tag (gtag.js) - Already present and correct -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17425521448"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -31,6 +31,25 @@
       gtag('config', 'AW-17425521448');
     </script>
     <!-- End Google tag -->
+
+    <!-- Google Ads Event snippet for Submit lead form conversion page - NEW ADDITION -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', { 
+            'send_to': 'AW-17425521448/FhJdCN38-o8bEKi2kfVA', // This is your unique conversion ID and label
+            'value': 1.0, // Replace with dynamic value if you track revenue
+            'currency': 'INR', // Replace with dynamic currency if needed
+            'event_callback': callback 
+        });
+        return false;
+      }
+    </script>
+    <!-- End Google Ads Event Snippet -->
 
   </head>
 
