@@ -8,6 +8,13 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
+// Declare gtag_report_conversion to make TypeScript happy
+declare global {
+  interface Window {
+    gtag_report_conversion: ((url?: string) => boolean) | undefined;
+  }
+}
+
 interface CounselingFormPopupProps {
   isOpen: boolean;
   onClose: () => void;
@@ -59,6 +66,13 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
       // Set session storage to remember form submission
       sessionStorage.setItem('counselingFormSubmitted', 'true');
       sessionStorage.setItem('counselingFormSubmittedTime', Date.now().toString());
+
+      // Google Ads Conversion Tracking - NEW ADDITION
+      if (window.gtag_report_conversion) {
+        // Call the conversion function. For a popup submission, a redirect URL is typically not passed.
+        window.gtag_report_conversion(); 
+      }
+      // End Google Ads Conversion Tracking
 
       // Reset form
       setFormData({
