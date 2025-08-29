@@ -7,6 +7,13 @@ import { Calendar, Users } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
+// Declare gtag_report_conversion to make TypeScript happy
+declare global {
+  interface Window {
+    gtag_report_conversion: ((url?: string) => boolean) | undefined;
+  }
+}
+
 const CounselingForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -47,6 +54,13 @@ const CounselingForm = () => {
 
       toast.success('Thank you! Your details have been submitted successfully. We will contact you soon.');
       
+      // Google Ads Conversion Tracking - NEW ADDITION
+      if (window.gtag_report_conversion) {
+        // Call the conversion function. For an embedded form, no redirect URL is typically passed.
+        window.gtag_report_conversion(); 
+      }
+      // End Google Ads Conversion Tracking
+
       // Reset form
       setFormData({
         name: '',
