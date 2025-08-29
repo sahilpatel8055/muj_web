@@ -1,0 +1,28 @@
+{
+  "name": "Online MANIPAL - Education That Powers Your Ambition",
+  "short_name": "Online MANIPAL",
+  "description": "Online degree programs & courses from Manipal Universities. UGC-approved programs designed to accelerate your career growth.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6b35",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/src/assets/fevicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/src/assets/fevicon.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "learning", "university"],
+  "lang": "en",
+  "scope": "/",
+  "id": "onlinemanipals-pwa"
+}

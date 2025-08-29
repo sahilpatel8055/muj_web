@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, BookOpen, Award } from "lucide-react";
+import LazyImage from './LazyImage';
 
 // Import your campus images here
 import mujImage from '@/assets/campus/muj1.png';
@@ -50,7 +51,7 @@ const TopRankedUniversities = () => {
           <div className="relative overflow-hidden rounded-xl h-full row-span-2 group">
             <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
                 <div className="relative overflow-hidden flex-grow">
-                    <img src={universities[0].image} alt={universities[0].name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <LazyImage src={universities[0].image} alt={`${universities[0].name} - Premier Online Education University`} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" width={400} height={300} />
                     <div className="absolute top-0 left-0 z-10"> {/* Adjusted positioning for the badge container */}
                         <span className="relative inline-block py-2 px-4 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
                             {universities[0].ranking}
@@ -73,7 +74,7 @@ const TopRankedUniversities = () => {
           <div className="relative overflow-hidden rounded-xl h-full group">
               <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
                 <div className="relative overflow-hidden">
-                    <img src={universities[1].image} alt={universities[1].name} className="w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <LazyImage src={universities[1].image} alt={`${universities[1].name} - Accredited Online University Programs`} className="w-full object-cover transition-transform duration-300 group-hover:scale-105" width={400} height={250} />
                     <div className="absolute top-0 left-0 z-10"> {/* Adjusted positioning for the badge container */}
                         <span className="relative inline-block py-2 px-4 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
                             {universities[1].ranking}
@@ -96,7 +97,7 @@ const TopRankedUniversities = () => {
           <div className="relative overflow-hidden rounded-xl h-full group">
               <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
                 <div className="relative overflow-hidden">
-                    <img src={universities[2].image} alt={universities[2].name} className="w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <LazyImage src={universities[2].image} alt={`${universities[2].name} - Quality Distance Learning Programs`} className="w-full object-cover transition-transform duration-300 group-hover:scale-105" width={400} height={250} />
                     <div className="absolute top-0 left-0 z-10"> {/* Adjusted positioning for the badge container */}
                         <span className="relative inline-block py-2 px-4 text-xs font-bold text-white uppercase bg-red-600 rounded-b-lg">
                             {universities[2].ranking}

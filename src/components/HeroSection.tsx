@@ -6,6 +6,7 @@ import ugcIcon from '@/assets/icons/ugc.png';
 import React, { useState, useEffect } from 'react';
 import CounselingForm from './CounselingForm';
 import CounselingFormPopup from './CounselingFormPopup';
+import LazyImage from './LazyImage';
 
 // New component for the counting animation
 const AnimatedNumber = ({ endValue, duration = 2000 }) => {
@@ -110,10 +111,13 @@ const HeroSection = () => {
           {/* Center Image */}
           <div className="lg:col-span-4 relative flex justify-center items-center"> 
             <div className="relative w-full flex items-center justify-center">
-              <img
+              <LazyImage
                 src={heroImage}
-                alt="Successful student giving thumbs up"
+                alt="Successful student giving thumbs up - Online Manipal University Education"
                 className="w-full h-auto object-contain rounded-2xl lg:h-[400px] lg:w-auto" 
+                width={400}
+                height={400}
+                priority={true}
               />
               
               {/* Floating Badge - Smaller and repositioned */}
