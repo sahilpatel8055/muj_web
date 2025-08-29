@@ -22,7 +22,7 @@ const WhatsAppButton = () => {
       if (!hasScrolled) { 
         setShowPopup(true);
       }
-    }, 5000); // Show popup after 5 seconds
+    }, 10000); // Show popup after 5 seconds
 
     return () => clearTimeout(timer);
   }, [hasScrolled]); // Re-run if scroll state changes
