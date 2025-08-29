@@ -116,17 +116,17 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                 <div className="text-muted-foreground">
-                  <p>Manipal Academy of Higher Education</p>
-                  <p>Manipal, Karnataka 576104, India</p>
+                  <p>Manipal University jaipur</p>
+                  <p>Jaipur-Ajmer Express Highway, Dehmi Kalan, Near GVK Toll Plaza, Jaipur, Rajasthan 303007</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
-                <span className="text-muted-foreground">+91 1800-123-4567</span>
+                <span className="text-muted-foreground">+91 77951 33908</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary" />
-                <span className="text-muted-foreground">info@onlinemanipal.com</span>
+                <span className="text-muted-foreground">info@onlinemanipals.com</span>
               </div>
             </div>
 
