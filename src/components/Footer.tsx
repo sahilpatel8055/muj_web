@@ -46,10 +46,10 @@ const Footer = () => {
             </div>
             <div className="space-y-4">
               <p className="text-muted-foreground leading-relaxed text-sm">
-                This website is owned and operated by Avedu Pvt Ltd, an official partner for Manipal University online admissions.We act as a marketing service partner and an official partner for Manipal University online admissions only. This is not the official Manipal University website. For official details, visit{" "}
+                This website is owned and operated by Avedu Pvt Ltd, an official partner for Manipal University online admissions. We act as a marketing service partner and an official partner for Manipal University online admissions only. This is not the official Manipal University website. For official details, visit{" "}
                 <a href="https://www.onlinemanipal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   www.onlinemanipal.com
-                </a>.Manipal University online holds full rights to request change or removal of any non-relevant content. Images used are for illustrative purposes and do not directly represent the respective colleges or universities. 
+                </a>. Manipal University online holds full rights to request change or removal of any non-relevant content. Images used are for illustrative purposes and do not directly represent the respective colleges or universities. 
               </p>
               
               {showFullDisclaimer && (
