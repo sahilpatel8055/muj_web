@@ -194,7 +194,10 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
                 className="mt-0.5 flex-shrink-0"
               />
               <label htmlFor="consent" className="text-xs text-muted-foreground leading-tight">
-                I authorize Online Manipal and its associates to contact me with updates notifications via email, SMS, WhatsApp, and voice call. This consent will override any registration for DNC / NDNC.
+                I authorize Online Manipal and its associates to contact me with updates notifications via email, SMS, WhatsApp, and voice call. This consent will override any registration for DNC / NDNC. I accept the{" "}
+                <a href="/privacy-policy" target="_blank" className="text-primary hover:underline">Privacy Policy</a>{" "}
+                and{" "}
+                <a href="/disclaimer" target="_blank" className="text-primary hover:underline">Disclaimer</a>.
               </label>
             </div>
 

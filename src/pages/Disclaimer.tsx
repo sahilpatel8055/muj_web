@@ -18,7 +18,10 @@ const Disclaimer = () => {
             
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
               <p className="text-base leading-relaxed">
-                This website is owned and operated by AVEDU, an official partner for Manipal University online admissions. This is not the official Manipal University website. For official details, visit www.onlinemanipal.com.
+                This website is owned and operated by AVEDU, an official partner for Manipal University online admissions. This is not the official Manipal University website. For official details, visit{" "}
+                <a href="https://www.onlinemanipal.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  www.onlinemanipal.com
+                </a>.
               </p>
               
               <p className="text-base leading-relaxed">
