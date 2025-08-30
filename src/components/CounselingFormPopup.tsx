@@ -95,7 +95,7 @@ const CounselingFormPopup: React.FC<CounselingFormPopupProps> = ({ isOpen, onClo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-sm sm:max-w-md md:max-w-lg mx-auto p-6 gap-0 bg-card/95 backdrop-blur-md border-border rounded-2xl shadow-lg min-h-[500px] sm:min-h-[480px] md:min-h-[450px] m-4">
+      <DialogContent className="max-w-[90vw] sm:max-w-md md:max-w-lg mx-auto p-8 gap-0 bg-card/95 backdrop-blur-md border-border rounded-2xl shadow-lg min-h-[550px] sm:min-h-[480px] md:min-h-[450px] m-2">
         <DialogTitle className="sr-only">Counseling Form</DialogTitle>
         <DialogDescription className="sr-only">Submit your details for counseling and we'll contact you soon</DialogDescription>
         {/* Close Button */}
