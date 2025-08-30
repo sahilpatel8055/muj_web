@@ -18,19 +18,11 @@ const Disclaimer = () => {
             
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
               <p className="text-base leading-relaxed">
-                This website is a third-party lead generation platform managed by the Industry partner of the University; 
-                it is a counselling & exploring platform for Online Programs offered by manipal Universities.
+                This website is owned and operated by AVEDU, an official partner for Manipal University online admissions. This is not the official Manipal University website. For official details, visit www.onlinemanipal.com.
               </p>
               
               <p className="text-base leading-relaxed">
-                Interested students enrolling for Manipal universities Online Degree Programs through this platform; 
-                the said students would be able to access various value-added skill-based trainings / courses offered 
-                by the Industry Partner of the University.
-              </p>
-              
-              <p className="text-base leading-relaxed">
-                It should be noted that the student will directly apply with the university for all Online Degree Programs, 
-                all the admission and post admission procedures will happen directly with the university.
+                It should be noted that the student will directly apply with the university for all Online Degree Programs, all the admission and post admission procedures will happen directly with the university.
               </p>
             </div>
           </div>

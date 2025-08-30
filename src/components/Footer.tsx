@@ -1,6 +1,10 @@
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import fevicon from '@/assets/fevicon.png';
 
 const Footer = () => {
+  const [showFullDisclaimer, setShowFullDisclaimer] = useState(false);
+  
   const courseCategories = [
     { name: 'Online MBA', href: '/online-mba-courses' },
     { name: 'Online MCA', href: '/online-mca-courses' },
@@ -33,17 +37,32 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">M</span>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden">
+                <img src={fevicon} alt="Online Manipal's Logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <span className="text-2xl font-bold text-card-foreground">Online MANIPAL</span>
+                <span className="text-2xl font-bold text-card-foreground">Online Manipal's</span>
               </div>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              Empowering students worldwide with quality online education from prestigious Manipal Universities. 
-              Build your future with our UGC-approved degree programs.
-            </p>
+            <div className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                This website is owned and operated by AVEDU, an official partner for Manipal University online admissions. This is not the official Manipal University website. For official details, visit www.onlinemanipal.com.
+              </p>
+              
+              {showFullDisclaimer && (
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  It should be noted that the student will directly apply with the university for all Online Degree Programs, all the admission and post admission procedures will happen directly with the university.
+                </p>
+              )}
+              
+              <button 
+                onClick={() => setShowFullDisclaimer(!showFullDisclaimer)}
+                className="flex items-center space-x-1 text-primary hover:text-primary/80 transition-smooth text-sm"
+              >
+                <span>{showFullDisclaimer ? 'See Less' : 'See More'}</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${showFullDisclaimer ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-smooth">
                 <Facebook className="w-5 h-5" />
@@ -151,7 +170,7 @@ const Footer = () => {
         <div className="border-t border-border py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © 2024 Online Manipal. All rights reserved. UGC Approved Programs.
+              © 2025 Online Manipal's Avedu Pvt Ltd. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="/disclaimer" className="text-muted-foreground hover:text-primary transition-smooth">
